@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/saga-orange/theme.css" ;
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+body {
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Questrial', sans-serif;;
+}
+body .p-component{
+    font-family: 'Questrial', sans-serif;;
+}
+body .ui-panel-content {
+    padding:0;
+}
+body .ui-widget-content {
+    padding:0;
+}
+html{
+   
+    background-color: #F9C000;
+     background-repeat: no-repeat;
+     background-position: center;
+     font-family: 'Questrial', sans-serif;;
+     
+}
+ 

@@ -1,0 +1,65 @@
+.main{
+    position: fixed;
+     z-index: 4;
+}
+.main-nav{
+    margin: 0;
+    padding: 0;
+    
+    background-color: #F9C000;
+    height: 6rem;
+    font-family: 'Questrial', sans-serif;;
+    color: white
+}
+.container-fluid{
+    margin: 0px;
+    padding: 0px;
+} 
+.navbar-brand{
+    padding-left: 2rem;
+}
+.nav-search{
+     padding-right: 2rem;
+     
+}
+.logo{
+    width: 10rem
+}
+.sub-nav{
+    height: 3rem;
+    background-color: #ffffffad;
+    z-index: 1;
+}
+.nav-link{
+    color: rgb(255, 255, 255);
+    font-weight: 500;
+    filter: drop-shadow(5px 5px 10px #888888b4);
+    font-size: 120%;
+    font-family: 'Questrial', sans-serif;;
+     
+    &:hover{
+        color: rgb(255, 102, 0);
+    }
+}
+.active{
+    color: rgb(255, 102, 0);
+}
+.search{
+    width:20rem
+}
+ 
+.login-icon{
+    color: white;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    &:hover{
+        font-weight: 600;
+        color: rgb(255, 104, 44);
+       // color: #f9bf00d8;
+         filter: drop-shadow(0px, 0px, 20px, rgb(248, 248, 248));
+    }
+}
+ 

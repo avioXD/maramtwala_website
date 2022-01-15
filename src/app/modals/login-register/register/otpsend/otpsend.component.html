@@ -1,0 +1,31 @@
+
+ <div class="container" style="margin-top: 5rem;">
+
+    <p class="text-center"> Enter your mobile no</p>
+    <span class="p-float-label "  >
+        <input id="float-input" type="text" style="width: 15rem" pInputText [(ngModel)]="contactNumber"> 
+        <label for="float-input">+91 Phone</label>
+        
+        <p class="p-button-success p-button-text" pRipple pButton (click)=" sendOtp()">Send OTP</p>
+    </span>
+    <span *ngIf="otpSend" class="p-float-label  my-2 ">
+        <input id="float-input" type="number" style="width: 9rem" pInputText> 
+        <label for="float-input">OTP</label>
+    </span>
+ </div>
+ 
+
+<!-- <p-dropdown   [options]="countries" [(ngModel)]="selectedCountry" optionLabel="name" [filter]="true" filterBy="name" [showClear]="true" placeholder="Select a Country">
+    <ng-template  pTemplate="selectedItem">
+        <div class="country-item country-item-value"  *ngIf="selectedCountry">
+            <img src="assets/showcase/images/demo/flag/flag_placeholder.png" [class]="'flag flag-' + selectedCountry.code.toLowerCase()" />
+            <div>{{selectedCountry.name}}</div>
+        </div>
+    </ng-template>
+    <ng-template let-country pTemplate="item">
+        <div class="country-item">
+            <img src="assets/showcase/images/demo/flag/flag_placeholder.png" [class]="'flag flag-' + country.code.toLowerCase()" />
+            <div>{{country.name}}</div>
+        </div>
+    </ng-template>
+</p-dropdown> -->

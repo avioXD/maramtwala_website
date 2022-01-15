@@ -1,0 +1,125 @@
+[
+    {
+        "main_catagory": "Home Appliance Repair",
+        "main_catagory_logo":"../../assets/images/homeAp.png",
+        "sub_catagories": [
+            "Air conditioner repair",
+            "Cctv repair",
+            "Chimney repair",
+            "Fridge/Refrigerator repair",
+            "Dish washer repair",
+            "Geyser repair",
+            "Icemaker repair",
+            "Inverter repair",
+            "Kitchen hob/chulha repair",
+            "Microwave repair",
+            "Mixer grinder repair",
+            "Ro water purifier repair",
+            "Room heater repair",
+            "Led tv repair",
+            "Vacuum cleaner repair",
+            "Washing machine repair",
+            "Water cooler repair",
+            "Water dispenser",
+            "Clothes iron repair",
+            "Induction cooktop/heater repair",
+            "Lock repair"
+        ]
+    },
+    {
+        "main_catagory": "Mobile and computer repairing",
+        "main_catagory_logo":"../../assets/images/mobileRepair.png",
+        "sub_catagories":[
+            "Mobile repairing",
+            "Laptop repairing",
+            "Computer repairing",
+            "Printer repair service",
+            "Mordern scanner and ups repairing"
+        ]
+    },
+    {
+        "main_catagory": "Contractor services",
+        "main_catagory_logo":"../../assets/images/ContractorService.png",
+        "sub_catagories":[
+           " Architectural service",
+            "Fabrication service",
+            "False ceiling service",
+            "Interior design service",
+            "Modular kitchen service",
+            "Packers and movers service",
+            "Painting contract service",
+            "Tiles and marble application service",
+            "Waterproofing service",
+            "Civil work service"
+        ]
+    },
+    {
+        "main_catagory": "Fashionable alteration and repair",
+        "main_catagory_logo":"../../assets/images/Fashion.png",
+        "sub_catagories":[
+            "Shoes and footwear repair",
+             "Handbag repair",
+            "Dress alteration for men",
+            "Dress alteration for women",
+            "New dress tailoring for men",
+            "New dress tailoring for women",
+            "Wrist watch repair",
+            "Luggage repair",
+            "Sunglass/Eyewear repair"
+        ]
+    },
+    {
+        "main_catagory": "Musical instrument Repair",
+        "main_catagory_logo":"../../assets/images/instrumentRepair.png",
+        "sub_catagories":[
+            "Guitar repair",
+            "Tabla repair",
+            "Piano repair",
+           " Drum repair",
+           " Classical instrument repair "
+        ]
+    },
+    {
+        "main_catagory": "Cleaning and pest control",
+        "main_catagory_logo":"../../assets/images/cleaner.png",
+        "sub_catagories":[
+            "Laundry and dry cleaning service",
+"Aquarium cleaning and maintenance service",
+"Car wash service",
+"Carpet cleaning service",
+"Floor cleaning service",
+"House keeping service",
+"Pest control service",
+"Septic tank cleaning service",
+"Sewage tank cleaning service",
+"Water tank cleaning service",
+"Garden maintenance and gardening service"
+        ]
+    },
+    {
+        "main_catagory": "Handyman service",
+        "main_catagory_logo":"../../assets/images/handyman.png",
+        "sub_catagories":[
+            "Carpenter service",
+"Electrician service",
+"Furniture installation and assembling",
+"Furniture repair/Refinishing old furniture service",
+"Plumbing service",
+"Sofa repair",
+"Wardrobe repair"
+        ]
+    },
+    {
+        "main_catagory": "Toy crafts and sports accessories repair",
+        "main_catagory_logo":"../../assets/images/crafts.png",
+        "sub_catagories":[
+                " Bicycle repair",
+                "Cricket bat repair",
+                "Other sports good repair",
+                "Soft toy repair",
+                "Handicrafts repair",
+                "Fitness Equipment repair"
+        ]
+
+    }
+]
