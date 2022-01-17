@@ -17,24 +17,29 @@ body{
     background-attachment: local;
     background-size:contain;
     background-repeat: no-repeat;
-    background-color: #F9C000;
+    background-color: #ffffff;
     height:fit-content;
     padding: 0;
     
+}
+.container{
+    border-radius: 5px;
 }
 .landing{
     height:30rem;
     
 }
- 
+ .bg-white{
+     background-color: #F9C000 ;
+ }
 .hodding{
-    color: white;
+    color: #ffffff;
     font-weight: 600;
-    filter: drop-shadow(5px 5px 4px #4747473f);
+    filter: drop-shadow(5px 5px 4px #30303094);
     font-family: 'Questrial', sans-serif;;
 }
 .select-city{
-    background-color: #f1cd587c;
+    background-color: rgba(53, 50, 36, 0.452);;
     border-radius: 6px;
     padding: 2rem 4rem 2rem 4rem;
     display: flex;
@@ -46,14 +51,15 @@ body{
 } 
 .items{
     font-family: 'Questrial', sans-serif;
-    color: rgb(20, 20, 20);
+    color: rgb(99, 84, 0);
     font-size:100%;
     font-weight: 500;
+    cursor: pointer;
      
 }
 
 .offer_title{
-    color: darkorange;
+    color: rgb(53, 50, 36);
     font-size:150%;
     width: 95%;
     text-align: left;
@@ -66,7 +72,7 @@ body{
     }
 }
 .offer_description{
-    color: rgb(8, 8, 8);
+    color: rgb(99, 84, 0);
     font-size:100%;
     width: 95%;
     text-align: left;
@@ -80,7 +86,7 @@ body{
 
 }
 .exclusive_desp{
-    color: rgb(8, 8, 8);
+    color: rgb(99, 84, 0);
     font-size:100%;
     width: 95%;
     text-align: center;

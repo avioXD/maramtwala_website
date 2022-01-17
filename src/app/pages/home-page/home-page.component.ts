@@ -7,6 +7,8 @@ import { Store } from '@ngrx/store';
 import { getUserLocation } from 'src/app/store/user/user.selector';
 import { AppState } from 'src/app/store/app.state';
 import { LocationState } from 'src/app/store/user/user.state';
+import { setSubCatagory } from 'src/app/store/Shared/shared.action';
+import { SubCatState, Sub_model } from 'src/app/store/Shared/shared.state';
 
 
  
@@ -65,6 +67,13 @@ export class HomePageComponent implements OnInit {
   onModalChange(e:boolean){
     this.modalShow = e
     console.log("Modal State: " ,this.modalShow)
+  }
+
+  onOpenSubCat(items: Sub_model[]){
+    let x : SubCatState = {
+      lists: items
+    }
+    this.store.dispatch(setSubCatagory({items: x}))
   }
 
   

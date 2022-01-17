@@ -2,7 +2,6 @@
     <div [ngSwitch]="steps">
         <app-otpsend *ngSwitchCase="1"></app-otpsend>
         <app-user-details *ngSwitchCase="2"></app-user-details>
-        <app-create-password *ngSwitchCase="3"></app-create-password>
     </div>
     <div class="container-fluid" style="position: absolute; bottom: 1rem; left: 0; padding:   0rem 2rem 0rem 2rem; ">
         <div [ngClass]="steps==1 ? 'justify-content-end' : 'justify-content-between'" class="d-flex  align-content-center " >
@@ -12,7 +11,5 @@
         </div>
         <p class="text-center"> Step: {{steps}}</p>
     </div>
-     
-     
 </div>
  

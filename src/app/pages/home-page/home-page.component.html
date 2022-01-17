@@ -1,6 +1,6 @@
-
-<div class="container-fluid">
-    <app-nav-bar></app-nav-bar>
+<app-nav-bar></app-nav-bar>
+<div class="container-fluid" style="padding-top: 10rem;">
+    
     <div class="container landing">
         <div class="col p-2">
             <div class="col-sm-12  d-flex justify-content-center  align-items-center">
@@ -10,31 +10,29 @@
                 <div class="select-city align-items-center">
                 <p class="hodding text-center h4"> <i class="pi pi-map"></i> {{ currentLocation.place }}</p>
                 <div class=" ">
-                    
                     <p-button  (click)="onModalChange(true)" label="Select your city" icon="pi pi-map-marker" iconPos="right" ></p-button>
                 </div>
                 </div>
-                 
             </div>
           </div>
     </div>
     <div class=" container w-75 ">
-        <p-card>
+      <div class="container shadow bg-white pt-4"  >
             <div class=" container" >
                 <p  data-aos="fade-right" class="h3 text-left "> <i class="pi pi-cog"></i> Services</p>
                 <div class="row p-2 ">
                   <div *ngFor="let item of catagories; i "  data-aos="zoom-in" data-aos-duration="1222"  class="col-sm-3 mt-2 d-flex flex-column align-items-center justify-content-center">
-                        <img style="width: 80%; max-width: 8rem;" class="rounded-circle" src="{{item.main_catagory_logo}}" alt="" srcset="">
-                        <p class="items text-center">{{item.main_catagory}}</p>
+                        <img style="width: 80%; max-width: 8rem;" class="rounded-circle" src="{{item.image_url}}" alt="" srcset="">
+                        <p class="items text-center" (click)="onOpenSubCat(item.items)">{{item.label}}</p>
                   </div>
                 </div>
               </div>
-        </p-card>
+            </div>
     </div>
     <div class="container w-75 my-4 ">
-        <p-card >
+        <div class="container shadow bg-white pt-4"  >
             <div class="container" >
-                <p  data-aos="fade-right" class="h3 text-left">Offers <i class="pi pi-tag"></i></p>
+                <p class="h3 text-left">Offers <i class="pi pi-tag"></i></p>
                 <div class="row p-2 ">
                   <div *ngFor="let item of offers; i "  data-aos="zoom-in" data-aos-duration="1222"  class="col-sm-6 mt-2 d-flex flex-column align-items-center justify-content-center">
                     <p-image src="{{item.offer_image}}" alt="Image" width="95%" [preview]="true"></p-image>
@@ -47,10 +45,10 @@
                  
               </div>
             
-        </p-card>
+            </div>
     </div>
     <div  *ngFor="let item of exclusiveTemp" class="container w-75 my-4 ">
-        <p-card >
+      <div class="container shadow bg-white pt-4"  >
             <div class="container" >
                 <p  class="h3 text-center"> <i data-aos-duration="1500"  data-aos="fade-right" style="color:  darkorange" class="pi pi-chevron-right"></i> {{item.exclusive_set_name}} <i data-aos-duration="1500"   data-aos="fade-left" style="color:  darkorange" class="pi pi-chevron-left"></i></p>
                 <div class="row p-2 ">
@@ -62,7 +60,7 @@
                  
               </div>
             
-        </p-card>
+            </div>
     </div>
 
 </div>

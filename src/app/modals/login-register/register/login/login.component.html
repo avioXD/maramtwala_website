@@ -1,19 +1,6 @@
  
     <div class="container pt-4 d-flex justify-content-center align-items-center flex-column">
-        <div *ngIf="!otpLogin">
-            <p class="p-text-left mx-2">Enter your userid and password:</p>
-            <span class="p-float-label">
-                <input id="float-input" type="text" style="width: 15rem" pInputText> 
-                <label for="float-input">Username</label>
-            </span>
-            <span class="p-float-label my-4">
-                <p-password  [style]="{'width':'15rem'}" [inputStyle]="{'width':'15rem'}" [(ngModel)]="loginCred.password" placeholder="Password" class="ng-invalid "></p-password>
-            </span>
-            <p-captcha siteKey="YOUR_SITE_KEY"  ></p-captcha>
-            <p-button  pRipple  label="Login" styleClass="p-button-sm my-4"></p-button>
-        </div>
-        <div *ngIf="otpLogin">
-            <app-otpsend></app-otpsend>
-        </div>
-        <a class="link-info" style=" position : absolute; bottom: 2rem;   align-self: center; cursor: pointer" pRipple (click)="switch()" > {{otpLogin? 'Login with Password':'Login through OTP'}}  </a>   
+    <div>
+        <app-otpsend></app-otpsend>
     </div>
+</div>

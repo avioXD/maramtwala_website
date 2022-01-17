@@ -1,0 +1,22 @@
+.items{
+    padding-top:1rem;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: 'Questrial', sans-serif;
+    font-size: 100%;
+    font-weight: 600;
+    color: rgb(53, 50, 36);
+     
+    &:hover{
+      color:#f94f00
+    }
+  }
+  .text-sub{
+    font-family: 'Questrial', sans-serif;
+    font-size: 150%;
+    padding-left: 1rem;
+    color:#F9C000 ;
+    position: fixed;
+     
+    top: 2rem
+  }

@@ -1,0 +1,9 @@
+ 
+<p-sidebar [(visible)]="display" (onHide)="hideBar()"   position="right" [baseZIndex]="10000">
+    <h3 class="text-sub">Microservices</h3>
+        <div class="container dropdown-menu-comtent row ">
+            <div  *ngFor="let item of items; i " class="col-sm-12 items">
+              <a class="items " > <span pRipple> {{item.label}}</span> </a>  
+            </div>
+      </div>
+</p-sidebar>

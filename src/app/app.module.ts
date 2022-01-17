@@ -32,6 +32,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { LoginComponent } from './modals/login-register/register/login/login.component';
 import { OtpsendComponent } from './modals/login-register/register/otpsend/otpsend.component';
 import { ServiceOptionsComponent } from './bars/navitems/service-options/service-options.component';
+import { SubCatagoryPageComponent } from './pages/sub-catagory-page/sub-catagory-page.component';
+import { SubCatagoriesComponent } from './modals/sub-catagories/sub-catagories.component';
 
  
  
@@ -52,6 +54,8 @@ import { ServiceOptionsComponent } from './bars/navitems/service-options/service
     LoginComponent,
     OtpsendComponent,
     ServiceOptionsComponent,
+    SubCatagoryPageComponent,
+    SubCatagoriesComponent,
 
   ],
   imports: [

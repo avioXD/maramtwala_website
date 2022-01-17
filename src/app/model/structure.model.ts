@@ -3,9 +3,12 @@ export interface City {
     code: string
 }
 export interface Catagory{
-    main_catagory: string,
-    main_catagory_logo: string,
-    sub_catagory: [string]
+    label: string,
+    image_url: string,
+    items:[ {
+        label: string,
+        code : string
+    }]
 }
 
 export interface SavedPlace{

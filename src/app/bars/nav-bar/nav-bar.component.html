@@ -1,6 +1,6 @@
-<div class="container-fluid" [ngClass]="scrolled? 'main': ''" >
+<div class="container-fluid main"  [ngClass]="scrolled? 'main': ''" >
     <div class="main-nav d-flex align-items-center justify-content-between" data-aos-duration="1000"  data-aos="fade-down">
-        <div class="navbar-brand mx-3 ">
+        <div class="navbar-brand mx-4 ">
             <img src="../../../assets/logo.png" class="logo" alt="" srcset="">
         </div>
         <div class="nav-search d-flex align-items-center justify-content-between ">
@@ -13,55 +13,6 @@
         </div>
     </div>
     <div class="sub-nav d-flex align-items-center justify-content-end" data-aos-duration="1000"  data-aos="fade-down">
-        <ul class="nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" (click)="service.toggle($event)" (mouseover)="service.toggle($event)"   >Services</a>
-              <p-overlayPanel  [autoZIndex]="true" [style]="{'text-align': 'center', 'background-color': 'rgb(255, 104, 44)', color: 'white'}" #service [showTransitionOptions]="'100ms'" [hideTransitionOptions]="'100ms'"  >
-                <ng-template pTemplate (mouseout)="service.toggle($event)" class="pf-panel-bd">
-                   <div class="d-flex">
-                    <ul style="list-style-type:circle">
-                      <li>Coffee</li>
-                      <li>Tea</li>
-                      <li>Milk</li>
-                    </ul>
-                    
-                    <ul style="list-style-type:disc">
-                      <li>Coffee</li>
-                      <li>Tea</li>
-                      <li>Milk</li>
-                    </ul>
-                    
-                    <ul style="list-style-type:square">
-                      <li>Coffee</li>
-                      <li>Tea</li>
-                      <li>Milk</li>
-                    </ul>
-                    <ul style="list-style-type:square">
-                      <li>Coffee</li>
-                      <li>Tea</li>
-                      <li>Milk</li>
-                    </ul>
-                    <ul style="list-style-type:square">
-                      <li>Coffee</li>
-                      <li>Tea</li>
-                      <li>Milk</li>
-                    </ul>
-                   </div>
-                </ng-template>
-            </p-overlayPanel>
-            
-            <!-- <button type="text" pButton label="Basic" (click)="op.toggle($event)"></button> -->
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"  >Blogs</a>
-               
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled">About Us</a>
-            </li>
-          </ul>
+          <app-service-options></app-service-options>
     </div>
 </div>

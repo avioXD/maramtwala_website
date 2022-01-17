@@ -1,7 +1,7 @@
-import { setLoginDialogSwitch, setRegitrationStepsAction } from "./shared.action"
+import { setLoginDialogSwitch, setRegitrationStepsAction, setSubCatagory } from "./shared.action"
 import { createReducer, on } from '@ngrx/store';
 import { Register_initialstate, shared_initialstate } from "./shared.state";
-
+import { Sub_catagory_init, SubCatState } from "./shared.state";
 
 const _sharedReducer = createReducer(
     shared_initialstate,
@@ -21,6 +21,15 @@ const _RegisterStepsReducer = createReducer(
     })
 )
 
+const _SubCatagoryReducer = createReducer(
+     Sub_catagory_init,
+     on(setSubCatagory,(state, action)=>{
+         return{
+             lists: action.items.lists
+         }
+     })
+)
+
 
 
 export function RegisterReducer(state, action){
@@ -31,3 +40,6 @@ export function SharedReducer(state, action){
     return _sharedReducer(state, action)
 }
 
+export function SubCatagoryReducer(state, action){
+    return _SubCatagoryReducer(state, action)
+}

@@ -21,9 +21,9 @@ import { PasswordModule } from 'primeng/password';
 import {StepsModule} from 'primeng/steps';
 import {OverlayPanelModule} from 'primeng/overlaypanel';
 import {SidebarModule} from 'primeng/sidebar';
-
-
-
+import {MenuModule} from 'primeng/menu';
+import {MegaMenuModule} from 'primeng/megamenu';
+ 
 const PrimeNgComponent = [
            CalendarModule,
            ColorPickerModule,
@@ -46,7 +46,9 @@ const PrimeNgComponent = [
            PasswordModule,
            StepsModule,
            OverlayPanelModule,
-           SidebarModule
+           SidebarModule,
+           MenuModule,
+           MegaMenuModule
 
           ]
 

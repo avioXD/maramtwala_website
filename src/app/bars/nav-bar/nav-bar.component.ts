@@ -2,8 +2,8 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import * as AOS from "aos"
 import { Store } from '@ngrx/store';
 import { setLoginDialogSwitch } from 'src/app/store/Shared/shared.action';
-
-
+import { UserendService } from 'src/app/service/userend.service';
+import {Catagory} from 'src/app/model/structure.model'
  
 
 @Component({
@@ -25,14 +25,19 @@ export class NavBarComponent implements OnInit {
     else this.scrolled = false;
      
   }
-
+  catagroyStructure: Catagory[];
   scrolled:boolean = false
-  constructor(private store: Store) { }
+  constructor(private store: Store,private userendService: UserendService) { }
   value:any
   ngOnInit(): void {
     if(this.scrolled){
       AOS.refresh()
     }
+    this.userendService.getMainCatagory().subscribe((response: Catagory[]) => {
+      this.catagroyStructure = response;
+    },(err)=>{
+      console.log(err)
+    })
     
   }
 
