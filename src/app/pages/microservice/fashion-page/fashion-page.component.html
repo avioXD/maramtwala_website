@@ -1,0 +1,92 @@
+
+<div class="container-fluid background " [style.background-image]="img" >
+    <div class="container-fluid"></div>
+    <div class="main-catagory container  " >
+        <h1 class="text-center display-3 heading">{{pageData.label}}</h1> 
+        <p-divider align="center" type="dashed"></p-divider>
+    </div>
+    <div class=" container  " >
+        <p class=" h5 despo">{{pageData.despo}}</p> 
+        <p-divider align="center" type="dashed"></p-divider>
+    </div>
+    <div class="container curve-border ">
+         
+        <h5 class="text-white display-6 filter-shadow">{{pageData.content.question}}</h5>
+        <p class="text-white filter-shadow h5" > 
+            <span *ngFor="let item of pageData.content.points">
+                <i   class="pi pi-circle-fill" style="font-size: 0.8rem; color: #F9C000"></i> {{item}} <br>
+            </span >
+        </p>
+ 
+    </div>
+    <div class="container">
+        <p-divider type="dashed"></p-divider>
+        <div class="d-flex justify-content-start p-4 align-items-center">
+            <div class="d-flex justify-content-start align-items-center">
+                <i class="pi pi-users" style="font-size: 5rem; color:white"></i>
+                <p class="h2 assign text-center m-2"> {{pageData.assign.label}}</p>
+            </div>
+            <p-button label="Assign" icon="pi pi-check" (click)="onBookingProceed()"></p-button>
+        </div>
+    </div>
+     
+</div>
+ 
+<div class="container-fluid align-items-center d-flex flex-column justify-content-center ">
+    <div class="container p-4 bg-white flex-column d-flex justify-content-center align-content-center pb-4">
+        <p class=" display-6 p-3 ">What we provide</p> 
+            <div class="container row justify-content-center bg-offwhite">
+                <div class="col-sm-6 offer_galary" *ngFor="let item of topFourService ">
+                    <div class="m-2 ">
+                       <img src="{{item.img_url}}" alt="" srcset="">
+                       <div class="offer_tag row justify-content-around  d-flex align-items-center ">
+                          <p class="h4 col-sm-8">{{item.label}}</p>
+                          <div class="col-sm-4 ">
+                            <button pButton type="button"   label="{{item.low_price}}/-" ></button>
+                        </div>
+                       </div>
+                    </div>
+                    
+                </div>
+            </div>
+    </div>
+    <div class="other_service row container bg-white  align-items-center d-flex justify-content-center"  >
+        <div class="div col-sm-4 d-flex justify-content-start align-item-start " *ngFor="let item of pageData.service_offered">
+            <!-- <img src="../../../../assets/logo.png" class="my-auto" alt="" srcset=""> -->
+            <i class="pi pi-check-square my-auto  " style=" color: #F9C000;"></i> <h6 class="text-start my-auto mx-2">{{item.label}}</h6>
+        </div>
+    </div>
+</div>
+ 
+<div class="container-fluid">
+<div class="container bg-white p-5 curve-border">
+    <p-divider type="dashed"></p-divider>
+    <div class="content  ">
+        <h5 class=" display-6 p-3">Working Procedure</h5>   
+        <p-timeline [value]="events1">
+            <ng-template pTemplate="content" let-event>
+               <p class="mx-3 h5 ">{{event.status}}</p>  
+            </ng-template>
+        </p-timeline>
+    </div>
+    <p-divider type="dashed"></p-divider>
+    <div class="content">
+        <h5 class=" display-6 p-3">Blogs</h5>   
+        <div class="blog_content" *ngFor="let item of pageData.blogs">
+            <h4 class=" h3 p-3">{{item.label}}</h4>
+            <p *ngFor="let content of item.content" class="mx-4">{{content}}</p> <br>
+        </div>
+    </div>
+    <p-divider type="dashed"></p-divider>
+    <div class="content ">
+        <h5 class=" display-6 p-3 ">Professionals</h5>   
+         <app-provider-in-detail [pageID]="pageID"></app-provider-in-detail>
+    </div>
+     
+</div>
+</div>
+ 
+
+
+
+

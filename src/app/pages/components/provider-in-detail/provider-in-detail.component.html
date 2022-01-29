@@ -1,0 +1,13 @@
+<div class="row align-content-center justify-content-center">
+    <div *ngFor="let item of providers" class="exparts-card col-sm d-flex shadow align-content-center justify-content-start">
+        <img src="../../../assets/images/user.jpg" class="rounded-circle p-2" alt="" srcset="">
+        <div class="d-flex flex-column m-2 pt-2">
+            <h5>{{item.provider_name}}</h5>
+            <p>{{item.address.label}}</p>
+            <div class="rating d-flex">
+                <p class="h6">Rating : {{item.avg_rating}} </p><p-rating class="mx-2" [ngModel]="item.avg_rating" [readonly]="true" [stars]="5" [cancel]="false"></p-rating>
+            </div>
+        </div>
+    </div>
+     
+</div>

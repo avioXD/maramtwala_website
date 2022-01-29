@@ -23,8 +23,19 @@
      
 }
 .logo{
-    width: 10rem
+     margin-left: 1rem;
+     cursor: pointer;
+  
+    img{
+        width: 12.5rem
+    }
+    p{
+        font-family: 'Questrial', sans-serif;;
+        color: rgb(255, 255, 255);
+        font-weight: 600;
+    }
 }
+ 
 .sub-nav{
      
     background-color: #535034a1;

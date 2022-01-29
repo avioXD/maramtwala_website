@@ -30,3 +30,50 @@ html{
      
 }
  
+.text-white{
+    color: white;
+    font-family: 'Questrial', sans-serif;;
+    font-weight: 500;
+}
+.filter-shadow{
+    filter: drop-shadow(5px 5px 4px #30303094);
+}
+
+ .bg-yellow{
+     background-color:#F9C000  ;
+ }
+
+ .p-timeline-event-opposite{
+    flex: 0 !important;
+}
+body .p-dialog-content{
+    border-radius: 8px !important;
+}
+ 
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body .p-scrollpanel {
+    p {
+        padding: .5rem;
+        line-height: 1.5;
+        margin: 0;
+    }
+
+
+    &.view {
+        .p-scrollpanel-wrapper {
+            border-right: 9px solid white;
+        }
+
+        .p-scrollpanel-bar {
+            background-color: #F9C000;
+            opacity: 1;
+            transition: background-color .2s;
+
+            &:hover {
+                background-color: #d95000;
+            }
+        }
+    }
+}    

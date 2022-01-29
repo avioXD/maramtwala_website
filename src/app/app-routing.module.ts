@@ -5,7 +5,9 @@ import { CreatePasswordComponent } from './modals/login-register/register/create
 import { RegisterComponent } from './modals/login-register/register/register.component';
 import { UserDetailsComponent } from './modals/login-register/register/user-details/user-details.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
+import { FashionPageComponent } from './pages/microservice/fashion-page/fashion-page.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { SubCatagoryPageComponent } from './pages/sub-catagory-page/sub-catagory-page.component';
 
 const routes: Routes = [
   {
@@ -17,26 +19,16 @@ const routes: Routes = [
   {
     path: '404error', component: PageNotFoundComponent
   },
+  {
+    path: 'asdwar ', component: SubCatagoryPageComponent
+  },
+  {
+    path: 'fashion/:code', component: FashionPageComponent
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), 
-    RouterModule.forChild([
-      {
-        path:'register',
-        component: RegisterComponent,
-        children: [
-          {path:'', redirectTo: 'userdata', pathMatch: 'full'},
-          {
-            path:'userdata', component: UserDetailsComponent,
-          },
-          {
-            path: 'createpassword' , component: CreatePasswordComponent
-          }
-        ],
-        outlet: 'registerOutlate'
-      }
-  ])],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -1,0 +1,17 @@
+.foot-main{
+    background-color: #F9C000 ;
+}
+.link{
+        color: #ffffff ;
+        font-size:100%;
+        width: 95%;
+        text-align: left;
+        font-family: 'Questrial', sans-serif;;
+        text-decoration: none;
+        margin: 0.3rem;
+        text-align: center;
+        margin-left: 1rem;
+        &:hover{
+            color: #6e5608 ;
+        }
+}

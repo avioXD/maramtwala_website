@@ -1,0 +1,13 @@
+<p class="h3">Chose your services</p>
+<p-divider type="dashed"></p-divider>
+<p-scrollPanel [style]="{width: '100%', height: '80vh'}" styleClass="view">
+    <div *ngFor="let category of catagories" class="field-checkbox ">
+        <div class="container d-flex justify-content-start align-items-start ">
+            <p-checkbox name="group2" value="category" [value]="category"   [(ngModel)]="selectedCatagories" [inputId]="category.code" [disabled]="category.code === 'R'"></p-checkbox>
+            <label class="mx-2" [for]="category.code">{{category.label}}</label>
+        </div>
+        <p-divider type="dashed"></p-divider>
+    </div>
+</p-scrollPanel>
+ 
+ 

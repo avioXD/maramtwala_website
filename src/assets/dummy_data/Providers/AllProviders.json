@@ -1,0 +1,135 @@
+[
+    {
+        "_id":"fhjlafhasawd",
+        "provider_name": "Abhishek Das",
+        "profile_image":"",
+        "contact":[
+            {"number":"9857548656"}
+        ],
+        "address": {
+            "label": "Kanpukur, KOl-700935",
+            "lat": 28.4,
+            "lon": 48.6
+        },
+        "provider_domain": [{
+            "label":"Shoes and Foot wear repair",
+            "code":"FAS1",
+            "provider_services": [
+                {
+                    "code": "FAS1S1",
+                    "label": "Shoe repair Men and Women",
+                    "price": 20.00
+                },
+                {
+                    "code": "FAS1S2",
+                    "label": "Sole/grip pasting",
+                    "price": 50.00
+                },
+                {
+                    "code": "FAS1S4",
+                    "label": "Leather sole replacement",
+                    "price": 60.00
+                }
+            ]
+        },
+        {
+            "label":"Shoes and Foot wear repair",
+            "code":"FAS2",
+            "provider_services": [
+                {
+                    "code": "FAS1S1",
+                    "label": "Shoe repair Men and Women",
+                    "price": 20.00
+                },
+                {
+                    "code": "FAS1S2",
+                    "label": "Sole/grip pasting",
+                    "price": 50.00
+                },
+                {
+                    "code": "FAS1S4",
+                    "label": "Leather sole replacement",
+                    "price": 60.00
+                }
+            ]
+        }
+    ],
+         
+    "reviews":[
+            {
+                "customer_id":"xyz",
+                "customer_name":"Bikash Roy",
+                "date":"4578465887",
+                "rating":3,
+                "comment":"Well service but not impressive",
+                "service_ref":"FAS1S4"
+            },
+            {
+                "customer_id":"iashflhf",
+                "customer_name":"Ashok Singh",
+                "date":"4578465887",
+                "rating":5,
+                "comment":"Verry good",
+                "service_ref":"FAS1S1"
+            }
+        ]
+    },
+    {
+        "_id":"hgolishjoiha",
+        "provider_name": "Biswajit Roy",
+        "profile_image":"",
+        "contact":[
+            {"number":"9857548656"}
+        ],
+        "address": {
+            "label": "Kanpukur, KOl-700935",
+            "lat": 28.4,
+            "lon": 48.6
+        },
+        "provider_domain": [{
+            "label":"Shoes and Foot wear repair",
+            "code":"FAS1",
+            "provider_services": [
+                {
+                    "code": "FAS1S1",
+                    "label": "Shoe repair Men and Women",
+                    "price": 20.00
+                },
+                {
+                    "code": "FAS1S2",
+                    "label": "Sole/grip pasting",
+                    "price": 50.00
+                },
+                {
+                    "code": "FAS1S8",
+                    "label": "Sole/grip pasting",
+                    "price": 50.00
+                },
+                {
+                    "code": "FAS1S6",
+                    "label": "Leather sole replacement",
+                    "price": 50.00
+                }
+            ]
+        }],
+        "reviews":[
+            {
+                "customer_id":"oaoaihsfi",
+                "customer_name":"Bikash Roy",
+                "date":"4578465887",
+                "rating":5,
+                "comment":"Verry good",
+                "service_ref":"FAS1S2"
+            },
+            {
+                "customer_id":"agaufguacgbsaaw",
+                "customer_name":"Purnendu purnesh",
+                "date":"4578465887",
+                "rating":2,
+                "comment":"Not so good behaviour",
+                "service_ref":"FAS1S1"
+            }
+        ]
+    }
+    
+]

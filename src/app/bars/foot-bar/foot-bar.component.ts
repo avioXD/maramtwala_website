@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class FootBarComponent implements OnInit {
 
   constructor() { }
-
+mailus: string
   ngOnInit(): void {
   }
 

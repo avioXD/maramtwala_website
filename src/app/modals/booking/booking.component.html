@@ -1,0 +1,11 @@
+<p-sidebar (onHide)="onHide()"  [(visible)]="visible" [fullScreen]="true" [baseZIndex]="10000">
+   <div class="container-fluid d-flex justify-content-center scroll-block">
+    <div class="row container">
+        <div class="col-sm-4">
+            <app-select-microservice [catagories]="BookingState.resource.microservices"></app-select-microservice>
+        </div>
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4"></div>
+    </div>
+   </div>
+</p-sidebar>

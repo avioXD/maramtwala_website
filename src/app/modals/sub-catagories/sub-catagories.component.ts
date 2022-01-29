@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { getSubCatagoryState } from 'src/app/store/Shared/shared.selector';
-import { setSubCatagory } from 'src/app/store/Shared/shared.action';
-import { SubCatState, Sub_model } from 'src/app/store/Shared/shared.state';
-import { Sub_catagory_init } from 'src/app/store/Shared/shared.state';
+import { getMicroerviceCatagoryState } from 'src/app/store/Shared/shared.selector';
+import { setMicroserviceCatagory } from 'src/app/store/Shared/shared.action';
+import { MicroserviceCatState, Sub_model } from 'src/app/store/Shared/shared.state';
+import { Microservice_init } from 'src/app/store/Shared/shared.state';
+import { Catagory } from 'src/app/model/Structure.model';
 @Component({
   selector: 'app-sub-catagories',
   templateUrl: './sub-catagories.component.html',
@@ -12,23 +13,20 @@ import { Sub_catagory_init } from 'src/app/store/Shared/shared.state';
 export class SubCatagoriesComponent implements OnInit {
 
   constructor(private store: Store) { }
-  items: Sub_model[]
+  service: Catagory
+   
   display: boolean
   ngOnInit(): void {
-    this.store.select(getSubCatagoryState).subscribe((d : Sub_model[])=>{
-      this.items = d ;
-      console.log("Shoing Sub catagories", this.items[2])
-      if(this.items[0].label!=''){
+    this.store.select(getMicroerviceCatagoryState).subscribe((res : MicroserviceCatState)=>{
+      this.service = res.Microservice ;
+      //console.log("Shoing Sub catagories", this.service )
+      if(this.service.routerLink!=''){
         this.display = true
       }
     })
   }
   hideBar(){
-    this.items =[ { label : '', code : ''}]
-    let x : SubCatState = {
-      lists: this.items
-    }
-    this.store.dispatch(setSubCatagory({items: x}))
+    this.store.dispatch(setMicroserviceCatagory(Microservice_init))
     this.display= false
   }
 

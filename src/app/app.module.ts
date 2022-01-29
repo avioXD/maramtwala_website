@@ -15,7 +15,7 @@ import { SwiperModule } from 'swiper/angular';
 //
 import { StoreModule } from '@ngrx/store';
 import { appReducer } from './store/app.state';
-
+ 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,6 +34,11 @@ import { OtpsendComponent } from './modals/login-register/register/otpsend/otpse
 import { ServiceOptionsComponent } from './bars/navitems/service-options/service-options.component';
 import { SubCatagoryPageComponent } from './pages/sub-catagory-page/sub-catagory-page.component';
 import { SubCatagoriesComponent } from './modals/sub-catagories/sub-catagories.component';
+import { FashionPageComponent } from './pages/microservice/fashion-page/fashion-page.component';
+import { BookingComponent } from './modals/booking/booking.component';
+import { SelectMicroserviceComponent } from './modals/booking/select-microservice/select-microservice.component';
+import { SelectProviderComponent } from './modals/booking/select-provider/select-provider.component';
+import { ProviderInDetailComponent } from './pages/components/provider-in-detail/provider-in-detail.component';
 
  
  
@@ -56,6 +61,11 @@ import { SubCatagoriesComponent } from './modals/sub-catagories/sub-catagories.c
     ServiceOptionsComponent,
     SubCatagoryPageComponent,
     SubCatagoriesComponent,
+    FashionPageComponent,
+    BookingComponent,
+    SelectMicroserviceComponent,
+    SelectProviderComponent,
+    ProviderInDetailComponent,
 
   ],
   imports: [
@@ -68,6 +78,7 @@ import { SubCatagoriesComponent } from './modals/sub-catagories/sub-catagories.c
     SwiperModule,
     PrimeNGModule,
     StoreModule.forRoot(appReducer),
+ 
   ],
   providers: [{provide:LocationStrategy , useClass:HashLocationStrategy }],
   bootstrap: [AppComponent]

@@ -4,30 +4,26 @@ body{
     
 }
 .background{
-    position: absolute;
-     
-    height: 50rem;
-    width: 100%;
-    top: 0;
-    z-index: -1;
-}
-.container-fluid{
     background-image: url("../../../assets/images/homeBackground.jpg");
     background-position: top;
     background-attachment: local;
-    background-size:contain;
+    background-size:cover;
     background-repeat: no-repeat;
-    background-color: #ffffff;
-    height:fit-content;
-    padding: 0;
-    
+    width: 100%;
+    padding-top: 8rem;
+    background-color: rgb(238, 238, 238);
+     height: 90vh;
 }
+.container-fluid{
+    background-color: rgb(238, 238, 238);
+}
+ 
 .container{
     border-radius: 5px;
 }
 .landing{
-    height:30rem;
-    
+   
+    margin-top: 4rem;
 }
  .bg-white{
      background-color: #F9C000 ;
@@ -39,9 +35,9 @@ body{
     font-family: 'Questrial', sans-serif;;
 }
 .select-city{
-    background-color: rgba(53, 50, 36, 0.452);;
+   // background-color: rgba(53, 50, 36, 0.452);;
     border-radius: 6px;
-    padding: 2rem 4rem 2rem 4rem;
+    padding: 0rem 4rem 2rem 0rem;
     display: flex;
     flex-direction: column;
 }
@@ -51,7 +47,7 @@ body{
 } 
 .items{
     font-family: 'Questrial', sans-serif;
-    color: rgb(99, 84, 0);
+    color:rgb(36, 36, 36);
     font-size:100%;
     font-weight: 500;
     cursor: pointer;
@@ -72,7 +68,7 @@ body{
     }
 }
 .offer_description{
-    color: rgb(99, 84, 0);
+    color: rgb(36, 36, 36);
     font-size:100%;
     width: 95%;
     text-align: left;
@@ -86,7 +82,7 @@ body{
 
 }
 .exclusive_desp{
-    color: rgb(99, 84, 0);
+    color: rgb(36, 36, 36);
     font-size:100%;
     width: 95%;
     text-align: center;

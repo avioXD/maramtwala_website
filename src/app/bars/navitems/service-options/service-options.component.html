@@ -1,14 +1,14 @@
 
 <div class="d-flex">
   <div >
-    <a class="nav-link" (mouseenter)="showMenu = false">Home</a> 
+    <a class="nav-link" (mouseenter)="showMenu = false" [routerLink]="['/']">Home</a> 
   </div>
   <div class="dropdown  " (mouseenter)="showMenu = true"  >
       <a class="nav-link" [ngClass]="showMenu? 'bg-white-c shadow': '' ">Services</a> 
       <div *ngIf="showMenu" class="dropdown-menu-fluid container d-flex justify-content-end  " (mouseleave)="showMenu=false" >
         <div class="container dropdown-menu-comtent row  shadow ">
             <div  *ngFor="let item of catagroyStructure;i " class="col-sm-6 items">
-              <a class="items " (click)="onSubSelect(item.items)" > <span pRipple> {{item.label}}</span> </a>  
+              <a class="items " (click)="onSubSelect(item)" > <span pRipple> {{item.label}}</span> </a>  
             </div>
         </div>
       </div>

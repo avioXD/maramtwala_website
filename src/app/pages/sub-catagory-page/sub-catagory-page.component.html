@@ -1,3 +1,87 @@
-<div class="container">
-    <div class="container-fluid"> Hi orking</div>
+    <app-nav-bar></app-nav-bar>
+    <div class="container-fluid background " [style.background-image]="img" >
+        <div class="main-catagory container  " >
+            <h1 class="text-center display-3 heading">Mobile Reparing</h1> 
+            <p-divider align="center" type="dashed"></p-divider>
+        </div>
+         
+        <div class="container curve-border  ">
+             
+            <h5 class="text-white display-6 filter-shadow">Why Marammatwala mobile repairing service?</h5>
+            <p class="text-white filter-shadow h5"> 
+                <i class="pi pi-circle-fill" style="font-size: 0.8rem; color: #F9C000"></i> Registered and Certified Engineers and repair partners <br>
+                <i class="pi pi-circle-fill" style="font-size: 0.8rem; color: #F9C000"></i> Professional Behaviour of service provider <br>
+                <i class="pi pi-circle-fill" style="font-size: 0.8rem; color: #F9C000"></i> Reasonable Cost With Highest Quality <br>
+                <i class="pi pi-circle-fill" style="font-size: 0.8rem; color: #F9C000"></i> Device Protection <br>
+                <i class="pi pi-circle-fill" style="font-size: 0.8rem; color: #F9C000"></i> Timely Doorstep Pickup/Delivery<br>
+                <i class="pi pi-circle-fill" style="font-size: 0.8rem; color: #F9C000"></i> Always Ready Support from service provider<br>
+                <i class="pi pi-circle-fill" style="font-size: 0.8rem; color: #F9C000"></i> Final Inspection Of Each Device<br>
+                </p>
+     
+        </div>
+        <div class="container flex-column d-flex justify-content-center align-content-center ">
+            <p-divider type="dashed"></p-divider>
+                <div class="container row justify-content-center">
+                    <div class="col-sm m-card shadow">
+                         <img src="../../../assets//pngs/person.png" alt="" srcset="">
+                         <p class="text-center text mb-5"> <span style="font-size: 130%; color: rgb(46, 24, 24)">  Assign a Marammatwala Engineer </span> <br>
+                            (Please note this is minimum visiting charge required, which will be taken off from the final invoice/bill) 
+                        </p>
+                        <button pButton pRipple type="button" label="Assign" class="p-button-warning card-btn"></button>
+                    </div>
+                    <div class="col-sm m-card shadow">
+                        <img src="../../../assets//pngs/onlinesupport.png" alt="" srcset="">
+                         <p class="text-center text mb-5"> <span style="font-size: 130%; color: rgb(46, 24, 24)"> Get online support form exparts</span> <br>
+                            (Please note this is minimum visiting charge required, which will be taken off from the final invoice/bill) 
+                        </p>
+                        <button pButton pRipple type="button" label="Book slot" class="p-button-warning card-btn"></button>
+                    </div>
+                    <!-- <div class="col-sm m-card shadow">
+                        <img src="../../../assets//pngs/booking.png" alt="" srcset="">
+                         <p class="text-center text mb-5"> <span style="font-size: 130%; color: rgb(46, 24, 24)">Call and book a slot for repair </span> <br>
+                            (Please note this is minimum visiting charge required, which will be taken off from the final invoice/bill) 
+                        </p>
+                        <button pButton pRipple type="button" label="Call" class="p-button-danger card-btn"></button>
+                    </div> -->
+                </div>
+        </div>
+    </div>
+<div class="container-fluid">
+    <div class="container bg-white p-5 curve-border">
+        <div class="content">
+            <h5 class=" display-6 p-3">Working Procedure</h5>   
+            <p-timeline [value]="events1">
+                <ng-template pTemplate="content" let-event>
+                   <p class="mx-3 h5 ">{{event.status}}</p>  
+                </ng-template>
+            </p-timeline>
+        </div>
+        <p-divider type="dashed"></p-divider>
+        <div class="content">
+            <h5 class=" display-6 p-3">Blogs</h5>   
+        <p class="mx-4">In today's digital world, where mobile phones are more than just a necessity, what do we do if it inevitably breaks? We  get baffled, try to look for repair options and just replace it with a new phone. Why because we don't want to go through the hassle of mobile phone repair process. With smartphone repair market being unorganized and cluttered, we get confused ith where to go and what to do. At Marammatwala we take away all these hassles with our state-of-the-art mobile repair services. We pick-repair-drop your phone in any part of the India, supply you with a reliable, dependable, fast mobile repair service and help you cut costs and efforts. B it Apple smartphone, OnePlus, Xiaomi, Lenovo, or etc, our registered service providers trained and competent to repair them all.</p>
+        </div>
+        <p-divider type="dashed"></p-divider>
+        <div class="content ">
+            <h5 class=" display-6 p-3 ">Professionals</h5>   
+            <div class="row align-content-center justify-content-center">
+                <div *ngFor="let item of [0,1,3,5,6,8,4,5]" class="exparts-card col-sm d-flex shadow align-content-center justify-content-start">
+                    <img src="../../../assets/images/user.jpg" class="rounded-circle p-2" alt="" srcset="">
+                    <div class="d-flex flex-column m-2 pt-2">
+                        <h5>Sudipta Saha</h5>
+                        <p>Panpukur, Kadapara, Kolkata, West Bengal</p>
+                        <div class="rating d-flex">
+                            <p class="h6">Rating : {{val}}</p><p-rating class="mx-2" [ngModel]="val" [readonly]="true" [stars]="5" [cancel]="false"></p-rating>
+                        </div>
+                    </div>
+                </div>
+                 
+            </div>
+            
+        </div>
+    </div>
 </div>
+  
+   
+
+ 

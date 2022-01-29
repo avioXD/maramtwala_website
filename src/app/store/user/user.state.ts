@@ -13,9 +13,5 @@ export const  User_initialstate : UserState = {
     auth_token : "",
     username : "",
     dob: "",
-    location: {
-        place: "INDIA",
-        lat: 20,
-        lon:  20
-    },
+    location: { place: "Chose your city ", lat: 0, lon:0}
 }

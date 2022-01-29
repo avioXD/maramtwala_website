@@ -1,0 +1,115 @@
+[
+    {
+        "code": "MCS1",
+        "label": "Mobile repairing",
+        "image_url": "../images/background2.jpg",
+        "content":{
+            "question": "Why Marammatwala Right 2 Repair?",
+            "why_this_service": [
+                "Repair saves money",
+                "Repair saves environment",
+                "Repair create jobs",
+                "Repair promote localization “Vocal for Local”",
+                "Repair is sustainable",
+               " Always Ready Support from service provider",
+                "Final Inspection Of Each Device"
+            ],
+            "service_offered": [
+                "No Power Fault",
+                "Liquid Damage",
+                "SIM Not Detect",
+                "Software Fault/ Slow performance",
+                "Speaker & Microphone Fault",
+                "Charging problem",
+                "Battery Replacement",
+                "LCD/Digitizer Replacement",
+                "LCD Glass changing/Replace",
+                "Dropped or physically damaged phone"
+            ]
+        }
+    },
+    {
+        "code": "MCS1",
+        "label": "Mobile repairing",
+        "image_url": "../images/background2.jpg",
+        "content":{
+            "why_this_service": [
+                "Registered and Certified Engineers and repair partners",
+                "Professional Behaviour of service provider",
+                "Reasonable Cost With Highest Quality",
+                "Device Protection",
+                "Timely Doorstep Pickup/Delivery",
+               " Always Ready Support from service provider",
+                "Final Inspection Of Each Device"
+            ],
+            "service_offered": [
+                "No Power Fault",
+                "Liquid Damage",
+                "SIM Not Detect",
+                "Software Fault/ Slow performance",
+                "Speaker & Microphone Fault",
+                "Charging problem",
+                "Battery Replacement",
+                "LCD/Digitizer Replacement",
+                "LCD Glass changing/Replace",
+                "Dropped or physically damaged phone"
+            ]
+        }
+    },
+    {
+        "code": "MCS1",
+        "label": "Mobile repairing",
+        "image_url": "../images/background2.jpg",
+        "content":{
+            "why_this_service": [
+                "Registered and Certified Engineers and repair partners",
+                "Professional Behaviour of service provider",
+                "Reasonable Cost With Highest Quality",
+                "Device Protection",
+                "Timely Doorstep Pickup/Delivery",
+               " Always Ready Support from service provider",
+                "Final Inspection Of Each Device"
+            ],
+            "service_offered": [
+                "No Power Fault",
+                "Liquid Damage",
+                "SIM Not Detect",
+                "Software Fault/ Slow performance",
+                "Speaker & Microphone Fault",
+                "Charging problem",
+                "Battery Replacement",
+                "LCD/Digitizer Replacement",
+                "LCD Glass changing/Replace",
+                "Dropped or physically damaged phone"
+            ]
+        }
+    },
+    {
+        "code": "MCS1",
+        "label": "Mobile repairing",
+        "image_url": "../images/background2.jpg",
+        "content":{
+            "why_this_service": [
+                "Registered and Certified Engineers and repair partners",
+                "Professional Behaviour of service provider",
+                "Reasonable Cost With Highest Quality",
+                "Device Protection",
+                "Timely Doorstep Pickup/Delivery",
+               " Always Ready Support from service provider",
+                "Final Inspection Of Each Device"
+            ],
+            "service_offered": [
+                "No Power Fault",
+                "Liquid Damage",
+                "SIM Not Detect",
+                "Software Fault/ Slow performance",
+                "Speaker & Microphone Fault",
+                "Charging problem",
+                "Battery Replacement",
+                "LCD/Digitizer Replacement",
+                "LCD Glass changing/Replace",
+                "Dropped or physically damaged phone"
+            ]
+        }
+    }
+]

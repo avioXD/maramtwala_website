@@ -23,16 +23,25 @@ import {OverlayPanelModule} from 'primeng/overlaypanel';
 import {SidebarModule} from 'primeng/sidebar';
 import {MenuModule} from 'primeng/menu';
 import {MegaMenuModule} from 'primeng/megamenu';
- 
+import {DividerModule} from 'primeng/divider';
+import {TimelineModule} from 'primeng/timeline';
+import {RatingModule} from 'primeng/rating';
+import {CarouselModule} from 'primeng/carousel';
+import {CheckboxModule} from 'primeng/checkbox';
+import {GalleriaModule} from 'primeng/galleria';
+import {ScrollPanelModule} from 'primeng/scrollpanel';
 const PrimeNgComponent = [
            CalendarModule,
            ColorPickerModule,
            InputNumberModule,
            InputTextModule,
            AvatarModule,
+           ScrollPanelModule,
            DropdownModule,
            CardModule,
+           CheckboxModule,
            DialogModule,
+           GalleriaModule,
            ToastModule,
            RippleModule,
            ToastrModule.forRoot(),
@@ -48,8 +57,12 @@ const PrimeNgComponent = [
            OverlayPanelModule,
            SidebarModule,
            MenuModule,
-           MegaMenuModule
-
+           CarouselModule,
+           MegaMenuModule,
+           DividerModule,
+           TimelineModule,
+           RatingModule,
+           
           ]
 
 @NgModule({

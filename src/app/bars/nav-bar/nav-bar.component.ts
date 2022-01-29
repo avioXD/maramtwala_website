@@ -18,7 +18,7 @@ export class NavBarComponent implements OnInit {
     const verticalOffset = window.pageYOffset 
     || document.documentElement.scrollTop 
     || document.body.scrollTop || 0;
-    console.log(verticalOffset)
+    //console.log(verticalOffset)
     if(verticalOffset >= 70){
       this.scrolled = true
     }
@@ -36,7 +36,7 @@ export class NavBarComponent implements OnInit {
     this.userendService.getMainCatagory().subscribe((response: Catagory[]) => {
       this.catagroyStructure = response;
     },(err)=>{
-      console.log(err)
+      //console.log(err)
     })
     
   }

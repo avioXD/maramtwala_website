@@ -3,8 +3,8 @@ import { UserendService } from 'src/app/service/userend.service';
 import {Catagory} from 'src/app/model/structure.model'
 import { MegaMenuItem } from 'primeng/api';
 import { Store } from '@ngrx/store';
-import { setSubCatagory } from 'src/app/store/Shared/shared.action';
-import { SubCatState } from 'src/app/store/Shared/shared.state';
+import { setMicroserviceCatagory } from 'src/app/store/Shared/shared.action';
+import { MicroserviceCatState } from 'src/app/store/Shared/shared.state';
 
 interface  Sub_model{
   label: string,
@@ -24,15 +24,14 @@ export class ServiceOptionsComponent implements OnInit {
   ngOnInit(): void {
       this.userendService.getMainCatagory().subscribe((response: Catagory[]) => {
         this.catagroyStructure = response;
+        //console.log()
       },(err)=>{
-        console.log(err)
+        //console.log(err)
       })
   }
-  onSubSelect(item: Sub_model[]){
-    let x : SubCatState = {
-      lists: item
-    }
-    this.store.dispatch(setSubCatagory({items: x }))
+  onSubSelect(item: Catagory){
+     
+    this.store.dispatch(setMicroserviceCatagory({ Microservice: item}))
   }
 
 }

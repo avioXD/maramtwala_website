@@ -31,12 +31,12 @@ export class PlacesComponent implements OnInit , OnDestroy{
   ngOnInit(): void {
     this.placesFetch = this.placesService.getPlaces().subscribe((data: Places[])=>{
       this.places = data
-      console.log(this.places)
+      //console.log(this.places)
     })
 
     
     this.store.select(getUserLocation).subscribe((data : LocationState)=>{
-    console.log("Store Object in show", data)
+    //console.log("Store Object in show", data)
     this.storedData = data 
   })
       
@@ -61,7 +61,7 @@ export class PlacesComponent implements OnInit , OnDestroy{
      
     
     this.storedData
-    console.log(this.storedData)
+    //console.log(this.storedData)
     this.store.dispatch(setUserCurrentLocation({location: this.savedPlace}))
 
     let done = this.placesService.setMyLocation(this.savedPlace)

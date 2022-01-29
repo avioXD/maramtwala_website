@@ -8,7 +8,17 @@ export interface Catagory{
     items:[ {
         label: string,
         code : string
-    }]
+    }],
+    routerLink: string,
+}
+export interface microserviceContent{
+    code: string,
+     label : string,
+     image_url :  string,
+     content :{
+        why_this_service: string[],
+        service_offered:string[]
+     }
 }
 
 export interface SavedPlace{
