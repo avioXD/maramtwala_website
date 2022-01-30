@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
 import { isDevMode } from '@angular/core';
 import { filter, map } from 'rxjs/operators';
 import { microserviceContent } from '../model/Structure.model';
-import { ProviderModel } from '../model/ProviderModel';
+import { FilteredProviderModel, ProviderModel } from '../model/ProviderModel';
 import { SelectedMicroserviceState } from '../store/Shared/shared.state';
 
 
@@ -27,7 +27,7 @@ export class UserendService {
   constructor(private http: HttpClient) { }
   getMainCatagory(){
     if(isDevMode()){
-      return this.http.get("../../assets/dummy_data/Services.json") 
+      return this.http.get("../../assets/dummy_data/catagory.json") 
     } else{
       return null;
     } 
@@ -101,9 +101,33 @@ export class UserendService {
    }
   }
 
-  
+  compareArray(arr1,arr2){
+    const intersection = arr1.filter(element => arr2.includes(element));
+    return intersection
+  }
+   defferArray(arr1,arr2){
+     const inter = arr1.filter(element => arr2.includes(element));
+      
+   }
   getProviderByArray(code: SelectedMicroserviceState[]){
-    return this.http.get('../../assets/dummy_data/Providers/AllProviders.json')
+    return this.http.get('../../assets/dummy_data/Providers/AllProviders.json').pipe(map((val: ProviderModel[])=>{
+     let FINAL : FilteredProviderModel ;
+     let pro = val.map(pre=>{
+      pre.provider_domain.filter(res=>{
+           let  a = this.compareArray(res.provider_services.map(x=> x.code), code.map(x=> x.code))
+           console.log("a",a)
+      })
+          //  FINAL = {
+          //   _id:pre._id,
+          //   profile_image: pre.profile_image,
+          //   provider_name: pre.provider_name,
+          //   avg_rating: pre.avg_rating,
+          //   provider_domain:   
+          //  }
+         })
+          
+         return pro
+    }))
   }
 
 

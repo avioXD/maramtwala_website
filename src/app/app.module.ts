@@ -29,7 +29,7 @@ import { UserDetailsComponent } from './modals/login-register/register/user-deta
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { RegisterComponent } from './modals/login-register/register/register.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { LoginComponent } from './modals/login-register/register/login/login.component';
+import { LoginComponent } from './modals/login-register/login/login.component';
 import { OtpsendComponent } from './modals/login-register/register/otpsend/otpsend.component';
 import { ServiceOptionsComponent } from './bars/navitems/service-options/service-options.component';
 import { SubCatagoryPageComponent } from './pages/sub-catagory-page/sub-catagory-page.component';

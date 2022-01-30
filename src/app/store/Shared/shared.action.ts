@@ -8,6 +8,8 @@ export const MICROSERVICE_CATAGORY_MODAL = '[shared state] microservice catagory
 export const BOOKING_MODAL_SWITCH = '[shared state] booking modal switch'
 export const BOOKED_SERVICES = '[shared state] booked services'
 
+
+
 export const setLoginDialogSwitch = createAction(
     SET_LOGIN_DIALOG_SWITCH,
     props<{toggle: boolean}>()
@@ -32,4 +34,5 @@ export const setSelectedMicroservice = createAction(
     BOOKED_SERVICES,
     props<{selected_state: SelectedMicroserviceState[]}>()
 )
+
 

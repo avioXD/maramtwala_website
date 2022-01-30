@@ -4,11 +4,12 @@ import { City, Catagory, SavedPlace, Offers, Exclusive} from '../../model/struct
  
 //
 import { Store } from '@ngrx/store';
-import { getUserLocation } from 'src/app/store/user/user.selector';
+import { getUser  } from 'src/app/store/user/user.selector';
 import { AppState } from 'src/app/store/app.state';
 import { LocationState } from 'src/app/store/user/user.state';
 import { setMicroserviceCatagory } from 'src/app/store/Shared/shared.action';
 import { MicroserviceCatState, Sub_model } from 'src/app/store/Shared/shared.state';
+import { map } from 'rxjs';
 
 
  
@@ -71,8 +72,8 @@ export class HomePageComponent implements OnInit {
     this.exclusiveTemp = data
   })
   //state management
-    this.store.select(getUserLocation).subscribe((data : LocationState)=>{
-      this.currentLocation =  data 
+    this.store.select(getUser).pipe(map(x=> x.location)).subscribe((data : LocationState)=>{
+      this.currentLocation =  data
    })
 
  

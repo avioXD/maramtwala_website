@@ -5,6 +5,8 @@ export const USER_STATE_NAME = 'user'
 
 const getUserState = createFeatureSelector<UserState>(USER_STATE_NAME)
 
-export const getUserLocation = createSelector(getUserState, (state)=>{
-    return state.location
+export const getUser = createSelector(getUserState, (state)=>{
+    return state
 })
+
+

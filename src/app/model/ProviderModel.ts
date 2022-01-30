@@ -33,3 +33,25 @@ export interface  ProviderModel{
     ]
     
 }
+
+
+
+export interface FilteredProviderModel{
+    _id:string,
+    profile_image: string,
+    provider_name: string,
+    avg_rating: number,
+    provider_domain: [
+        {
+            label:string,
+            code: string,
+            provider_services: [
+                {
+                    code: string,
+                    label: string,
+                    price: number
+                }
+            ],
+        },
+    ],
+}

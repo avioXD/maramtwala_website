@@ -13,7 +13,7 @@ import { PrimeNGConfig } from 'primeng/api';
 export class AppComponent implements OnInit{
   color:any 
   title = 'marammatwala-website';
-   blocked: false
+   blocked = true
 
   constructor(private primengConfig: PrimeNGConfig,  ){
       AOS.init()

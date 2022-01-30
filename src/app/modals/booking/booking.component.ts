@@ -16,13 +16,12 @@ export class BookingComponent implements OnInit {
   visible:boolean= false
   ngOnInit(): void {
     this.store.select(getBookingModalState).subscribe((res: BookingStepState)=>{
-      console.log(res)
+     // console.log(res)
       this.BookingState = res
       this.visible = this.BookingState.resource.switch
     })
   }
   onHide(){
-     
     this.store.dispatch(setBokingModalSwitch({resource:BookingStep_init}))
   }
 }

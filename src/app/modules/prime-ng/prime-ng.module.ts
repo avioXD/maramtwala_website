@@ -30,8 +30,11 @@ import {CarouselModule} from 'primeng/carousel';
 import {CheckboxModule} from 'primeng/checkbox';
 import {GalleriaModule} from 'primeng/galleria';
 import {ScrollPanelModule} from 'primeng/scrollpanel';
+import {FocusTrapModule} from 'primeng/focustrap';
+
 const PrimeNgComponent = [
            CalendarModule,
+           FocusTrapModule,
            ColorPickerModule,
            InputNumberModule,
            InputTextModule,

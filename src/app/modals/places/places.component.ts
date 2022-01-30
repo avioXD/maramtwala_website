@@ -6,8 +6,8 @@ import { ToastrService } from 'ngx-toastr';
 import { Store } from '@ngrx/store';
 import { setUserCurrentLocation } from 'src/app/store/user/user.action';
 import { AppState } from 'src/app/store/app.state';
-import { LocationState } from 'src/app/store/user/user.state';
-import { getUserLocation } from 'src/app/store/user/user.selector';
+import { LocationState, UserState } from 'src/app/store/user/user.state';
+import { getUser } from 'src/app/store/user/user.selector';
  
  
 
@@ -35,9 +35,9 @@ export class PlacesComponent implements OnInit , OnDestroy{
     })
 
     
-    this.store.select(getUserLocation).subscribe((data : LocationState)=>{
+    this.store.select(getUser).subscribe((data : UserState)=>{
     //console.log("Store Object in show", data)
-    this.storedData = data 
+    this.storedData = data.location
   })
       
   }

@@ -1,7 +1,6 @@
 export interface UserState{
     auth_token: string, 
-    username: string,
-    dob: string,
+    isLogin: boolean
     location: LocationState
 }
 export interface LocationState{
@@ -11,7 +10,6 @@ export interface LocationState{
 }
 export const  User_initialstate : UserState = {
     auth_token : "",
-    username : "",
-    dob: "",
-    location: { place: "Chose your city ", lat: 0, lon:0}
+    isLogin: false,
+    location: { place: "Chose your city ", lat: 0, lon: 0}
 }

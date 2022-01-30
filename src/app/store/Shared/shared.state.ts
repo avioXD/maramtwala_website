@@ -29,12 +29,15 @@ export const BookingStep_init = {
 
 export  const selectedMicroService_init : SelectedMicroserviceState [] = [{
     label:"", 
-    code :""
+    code :"FAS1S1"
+},
+{
+    label:"", 
+    code :"FAS1S8"
 }]
 export interface SelectedMicroserviceState{
-  label:string, 
-  code :string
-    
+    label:string, 
+    code :string
 }
 
 export interface Catagory{

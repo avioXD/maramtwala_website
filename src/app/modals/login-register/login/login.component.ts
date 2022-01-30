@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,  OnInit } from '@angular/core';
+ 
+ 
+
 export interface LoginCredentials{
   username: string,
   password: string
@@ -10,20 +13,20 @@ export interface LoginCredentials{
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+
+  constructor( ) { }
   loginCred: LoginCredentials = {
     username: "",
     password: ""
   }
-  otpSend: boolean = false;
-  otpLogin: boolean = false
 
   ngOnInit(): void {
+     
   }
-   switch(){
-     this.otpLogin = !this.otpLogin
-   }
-   switchOtp(){
-     this.otpSend = !this.otpSend
+  onVerify(event: any ){
+    if(event.value.token!=""){
+
+    }
+      
    }
 }

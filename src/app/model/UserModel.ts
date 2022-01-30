@@ -13,3 +13,9 @@ export interface ServiceRequest{
     providerId: string,
 
 }
+
+export interface VerifyOTP{
+    phone:  string,
+    code: number[],
+    isLoggin: boolean,
+}

@@ -6,17 +6,20 @@
         <input id="float-input" type="text" style="width: 15rem" pInputText [(ngModel)]="contactNumber"> 
         <label for="float-input">+91 Phone</label>
         
-        <p class="p-button-success p-button-text" pRipple pButton (click)=" sendOtp()">Send OTP</p>
+        <p class="p-button-success p-button-text" pRipple pButton (click)="sendOtp()">Send OTP</p>
     </span>
-    <div  *ngIf="otpSend" class="otpinput my-2">
-        <h6>Enter OTP</h6>
-        <input id="float-input" #otp1  class="otpBox" pInputText  [(ngModel)]="otp.one" (keyup)="onKeyUp(1)" > 
-        <input id="float-input"  #otp2 class="otpBox" pInputText  [(ngModel)]="otp.two"   (keyup)="onKeyUp(2)"> 
-        <input id="float-input"  #otp3 class="otpBox" pInputText  [(ngModel)]="otp.three" (keyup)="onKeyUp(3)"> 
-        <input id="float-input"  #otp4 class="otpBox" pInputText  [(ngModel)]="otp.four" (keyup)="onKeyUp(4)"> 
-        
+    <div>
+        <div  *ngIf="otpSend" class="otpinput my-2">
+            <h6>Enter OTP</h6>
+            <input id="float-input" #otp1  class="otpBox" pInputText  [(ngModel)]="otp[0]" (keyup)="onKeyUp(1)" > 
+            <input id="float-input"  #otp2 class="otpBox" pInputText  [(ngModel)]="otp[1]"   (keyup)="onKeyUp(2)"> 
+            <input id="float-input"  #otp3 class="otpBox" pInputText  [(ngModel)]="otp[2]" (keyup)="onKeyUp(3)"> 
+            <input id="float-input"  #otp4 class="otpBox" pInputText  [(ngModel)]="otp[3]" (keyup)="onKeyUp(4)"> 
+        </div>
+        <p-button *ngIf="otpSend" pButton pRipple icon="pi pi-check"  (click)="verifyOtp()"></p-button>
+     
     </div>
-      <button *ngIf="otpSend" pButton pRipple type="button" label="submit"></button>
+     
  </div>
  
 

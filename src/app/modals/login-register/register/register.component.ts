@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,   OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {MenuItem} from 'primeng/api';
 import { AppState } from 'src/app/store/app.state';
 import { Store } from '@ngrx/store';
 import { getRegisterState } from 'src/app/store/Shared/shared.selector';
@@ -29,6 +28,11 @@ export class RegisterComponent implements OnInit {
   prevPage(): void{
     this.steps--;
     this.store.dispatch(setRegitrationStepsAction({step: this.steps}))
+  }
+  onVerifyOtp(event){
+    if(event.value){
+      this.nextPage()
+    }
   }
    
   

@@ -1,6 +1,6 @@
 <div class="container align-self-center ">
     <div [ngSwitch]="steps">
-        <app-otpsend *ngSwitchCase="1"></app-otpsend>
+        <app-otpsend *ngSwitchCase="1"  (newVerifyEvent)="onVerifyOtp($event)"></app-otpsend>
         <app-user-details *ngSwitchCase="2"></app-user-details>
     </div>
     <div class="container-fluid" style="position: absolute; bottom: 1rem; left: 0; padding:   0rem 2rem 0rem 2rem; ">

@@ -25,6 +25,7 @@ body{
    
     margin-top: 4rem;
 }
+ 
  .bg-white{
      background-color: #F9C000 ;
  }
@@ -32,6 +33,12 @@ body{
     color: #ffffff;
     font-weight: 600;
     filter: drop-shadow(5px 5px 4px #30303094);
+    font-family: 'Questrial', sans-serif;;
+}
+.sub-title{
+    color: #ffffff;
+    font-weight:400;
+    filter: drop-shadow(5px 5px 4px #00000067);
     font-family: 'Questrial', sans-serif;;
 }
 .select-city{
@@ -88,3 +95,5 @@ body{
     text-align: center;
     font-family: 'Questrial', sans-serif;;
 }
+
+ 
