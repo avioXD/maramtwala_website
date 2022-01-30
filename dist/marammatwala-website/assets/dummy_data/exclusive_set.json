@@ -1,0 +1,36 @@
+[
+    {
+        "exclusive_set_name": "Spa service at your door",
+        "service": [
+            {
+                "ex_img": "../../assets/exclusive/camille-brodard-VxAwTeiqDao-unsplash.jpg",
+                "info": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+            },
+            {
+                "ex_img": "../../assets/exclusive/engin-akyurt-ZbzYDboN7fg-unsplash.jpg",
+                "info": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+            },
+            {
+                "ex_img": "../../assets/exclusive/raphael-lovaski-cJwl8182Mjs-unsplash.jpg",
+                "info": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+            }
+        ]
+    },
+    {
+        "exclusive_set_name": "Electrical Service at your door",
+        "service": [
+            {
+                "ex_img": "../../assets/exclusive/emmanuel-ikwuegbu--0-kl1BjvFc-unsplash.jpg",
+                "info": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+            },
+            {
+                "ex_img": "../../assets/exclusive/markus-spiske-kK7uPfb2YWU-unsplash.jpg",
+                "info": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+            },
+            {
+                "ex_img": "../../assets/exclusive/shirish-suwal-ctmuaOO-JJI-unsplash.jpg",
+                "info": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+            }
+        ]
+    }
+]
