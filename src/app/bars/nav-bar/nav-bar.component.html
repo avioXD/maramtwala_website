@@ -8,8 +8,12 @@
                 <i class="pi pi-search"></i>
                 <input class="search" type="text" pInputText [(ngModel)]="value" placeholder="Search for service">         
             </span>
-            <p-avatar class="p-3" image="../../../assets/images/user.jpg" pBadge value="4" shape="circle" severity="danger" size="large"></p-avatar> 
-            <p (click)="onOpenLogin()" class="login-icon ">Login / Signup</p>
+             <div [ngSwitch]="isLogin" class="mx-4 my-auto">
+                 <div *ngSwitchCase="true" > <p-avatar  class="p-3 cursor-pointer"  image="../../../assets/images/user.jpg" pBadge value="4" shape="circle" severity="danger" size="large" [routerLink]="['profile']"></p-avatar> </div>
+                 <div *ngSwitchCase="false"><p  (click)="onOpenLogin()" class="login-icon mt-3">Login / Signup</p></div>
+             </div>
+            
+             
         </div>
     </div>
     <div class="sub-nav d-flex align-items-center justify-content-end" data-aos-duration="1000"  data-aos="fade-down">

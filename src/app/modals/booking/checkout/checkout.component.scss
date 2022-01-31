@@ -1,3 +1,11 @@
+.field-checkbox{
+    border-left: 1px solid rgba(235, 141, 0, 0.808);
+    border-right:  1px solid rgba(235, 141, 0, 0.808);
+    background-color: #F9C000;
+    color : white;
+    transition: all 0.5s;
+     
+}
 .assign{
     color: white;
     font-weight: 500;
@@ -21,7 +29,4 @@
          cursor: pointer;
     }
 
-}
-.bg-green{
-    background-color: #7fdb9d;
 }

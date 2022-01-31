@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { setAuthTokenService, setUserCurrentLocation, setUserLogedinState } from './user.action';
+import { setAuthUserService, setUserCurrentLocation, setUserLogedinState } from './user.action';
 import { User_initialstate } from './user.state';
 
 
@@ -11,10 +11,10 @@ const _userReducer = createReducer(
               location: action.location  
          }
     }),
-    on(setAuthTokenService,(state, action)=>{
+    on(setAuthUserService,(state, action)=>{
         return{
             ...state,
-             auth_token: action.token 
+             user_data: action.user_data 
         }
    }),
    on(setUserLogedinState,(state, action)=>{

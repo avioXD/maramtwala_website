@@ -5,24 +5,26 @@
     <span class="p-float-label my-3"  >
         <input id="float-input" type="text" style="width: 15rem" pInputText [(ngModel)]="contactNumber"> 
         <label for="float-input">+91 Phone</label>
-        
-        <p class="p-button-success p-button-text" pRipple pButton (click)="sendOtp()">Send OTP</p>
+        <p class="p-button-success p-button-text" pRipple pButton (click)="sendOtp()">{{txt}}</p>
     </span>
-    <div>
-        <div  *ngIf="otpSend" class="otpinput my-2">
-            <h6>Enter OTP</h6>
-            <input id="float-input" #otp1  class="otpBox" pInputText  [(ngModel)]="otp[0]" (keyup)="onKeyUp(1)" > 
-            <input id="float-input"  #otp2 class="otpBox" pInputText  [(ngModel)]="otp[1]"   (keyup)="onKeyUp(2)"> 
-            <input id="float-input"  #otp3 class="otpBox" pInputText  [(ngModel)]="otp[2]" (keyup)="onKeyUp(3)"> 
-            <input id="float-input"  #otp4 class="otpBox" pInputText  [(ngModel)]="otp[3]" (keyup)="onKeyUp(4)"> 
-        </div>
-        <p-button *ngIf="otpSend" pButton pRipple icon="pi pi-check"  (click)="verifyOtp()"></p-button>
-     
+    <div class="otp-input d-flex"  *ngIf="otpSend">
+        <input #otpbox type="text" id="inputtext"  [(ngModel)]="OTPcode" (keyup)="otpisFour()" pInputText class=" ng-dirty " placeholder="code"  >
+        <button *ngIf="loading" pButton pRipple type="button" icon="pi pi-spin pi-spinner" class="p-button-outlined p-button-rounded mx-3"></button>
     </div>
      
  </div>
  
-
+ <!-- <div>
+    <div  *ngIf="otpSend" class="otpinput my-2">
+        <h6>Enter OTP</h6>
+        <input id="float-input" #otp1  class="otpBox" pInputText  [(ngModel)]="otp[0]" (keyup)="onKeyUp(1)" > 
+        <input id="float-input"  #otp2 class="otpBox" pInputText  [(ngModel)]="otp[1]"   (keyup)="onKeyUp(2)"> 
+        <input id="float-input"  #otp3 class="otpBox" pInputText  [(ngModel)]="otp[2]" (keyup)="onKeyUp(3)"> 
+        <input id="float-input"  #otp4 class="otpBox" pInputText  [(ngModel)]="otp[3]" (keyup)="onKeyUp(4)"> 
+    </div>
+    <p-button *ngIf="otpSend" pButton pRipple icon="pi pi-check"  (click)="verifyOtp()"></p-button>
+ 
+</div> -->
 <!-- <p-dropdown   [options]="countries" [(ngModel)]="selectedCountry" optionLabel="name" [filter]="true" filterBy="name" [showClear]="true" placeholder="Select a Country">
     <ng-template  pTemplate="selectedItem">
         <div class="country-item country-item-value"  *ngIf="selectedCountry">

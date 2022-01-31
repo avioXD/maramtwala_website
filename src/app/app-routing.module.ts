@@ -7,6 +7,7 @@ import { UserDetailsComponent } from './modals/login-register/register/user-deta
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { FashionPageComponent } from './pages/microservice/fashion-page/fashion-page.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 import { SubCatagoryPageComponent } from './pages/sub-catagory-page/sub-catagory-page.component';
 
 const routes: Routes = [
@@ -23,7 +24,10 @@ const routes: Routes = [
     path: 'asdwar ', component: SubCatagoryPageComponent
   },
   {
-    path: 'fashion/:code', component: FashionPageComponent
+    path: 'services/:code', component: FashionPageComponent
+  },
+  { 
+    path: 'profile', component: ProfileComponent
   }
 ];
 

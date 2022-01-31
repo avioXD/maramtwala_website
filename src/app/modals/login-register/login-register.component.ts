@@ -4,7 +4,7 @@ import { map } from 'rxjs';
 import { AppState } from 'src/app/store/app.state';
 import { setLoginDialogSwitch } from 'src/app/store/Shared/shared.action';
 import { getLoginModalSwitch } from 'src/app/store/Shared/shared.selector';
-import { setAuthTokenService, setUserLogedinState } from 'src/app/store/user/user.action';
+import { setAuthUserService, setUserLogedinState } from 'src/app/store/user/user.action';
 import { getUser } from 'src/app/store/user/user.selector';
  
  
@@ -36,11 +36,13 @@ export class LoginRegisterComponent implements OnInit {
     this.store.dispatch(setUserLogedinState({islogin: !this.newuser$}))
   }
   onSuccess(event){
-    if(event.value.token){
-       this.store.dispatch(setAuthTokenService({token: event.value.token}))
-       this.store.dispatch(setUserLogedinState({islogin: event.value.isLogin}))
+    if(event){
+       this.store.dispatch(setAuthUserService({user_data: event }))
+       this.store.dispatch(setUserLogedinState({islogin: true}))
        this.onClose()
     }
   }
+
+ 
    
 }

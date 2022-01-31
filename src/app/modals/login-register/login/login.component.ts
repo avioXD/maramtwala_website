@@ -1,4 +1,4 @@
-import { Component,  OnInit } from '@angular/core';
+import { Component,  EventEmitter,  OnInit, Output } from '@angular/core';
  
  
 
@@ -11,10 +11,11 @@ export interface LoginCredentials{
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent implements OnInit {
+@Output() loginevent = new EventEmitter<any>()
 
-
-  constructor( ) { }
+  constructor(   ) { }
   loginCred: LoginCredentials = {
     username: "",
     password: ""
@@ -23,9 +24,9 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
      
   }
-  onVerify(event: any ){
-    if(event.value.token!=""){
-
+  onLogin(event: any ){
+    if(event!=""){
+      this.loginevent.emit(event)
     }
       
    }

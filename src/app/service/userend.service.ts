@@ -7,8 +7,9 @@ import { filter, map } from 'rxjs/operators';
 import { microserviceContent } from '../model/Structure.model';
 import { FilteredProviderModel, ProviderModel } from '../model/ProviderModel';
 import { SelectedMicroserviceState } from '../store/Shared/shared.state';
+import { PostOrder } from '../model/UserModel';
 
-
+const base_url = 'https://marammatwala-api.herokuapp.com'
 @Injectable({
   providedIn: 'root'
 })
@@ -25,24 +26,24 @@ export class UserendService {
   
 
   constructor(private http: HttpClient) { }
+
+  createHashKey(code){
+    return code
+ }
+ decodeHashKey(code){
+  return code
+ }
+
+
   getMainCatagory(){
-    if(isDevMode()){
-      return this.http.get("../../assets/dummy_data/catagory.json") 
-    } else{
-      return null;
-    } 
+    return this.http.get("../../assets/dummy_data/catagory.json") 
   }
   getPlaces(){
-    if(isDevMode()){
     return this.http.get("../../assets/dummy_data/our_locations.json")
-    }else{
-      return null;
-    }
   }
   setMyLocation(location: SavedPlace){
       this.myLocation = location
       //console.log(this.myLocation)
-      
       return true
   }
   getMyLocation(){
@@ -50,19 +51,11 @@ export class UserendService {
      return of(this.myLocation)
   }
   getOfferList(){
-    if(isDevMode()){
     return this.http.get('../../assets/dummy_data/offer_set.json')
-    }else{
-      return null;
-    }
   }
 
   getExclTemp(){
-    if(isDevMode()){
-      return this.http.get('../../assets/dummy_data/exclusive_set.json')
-      }else{
-        return null;
-      } 
+    return this.http.get('../../assets/dummy_data/exclusive_set.json')
   }
   getPageContent(contentId: string){
     this.http.get('../../assets/dummy_data/microservice_data.json').pipe(
@@ -72,33 +65,25 @@ export class UserendService {
     return null
   }
   getFashionPageData() {
-    if(isDevMode()){
-       return this.http.get('../../assets/dummy_data/Fashion&Alternation/Fashion_Service.json')
-    }else{
-      return  null
-    }
+    return this.http.get('../../assets/dummy_data/Fashion&Alternation/Fashion_Service.json')
   }
 
   getProviderByCode(code: string){
-    if(isDevMode()){
     return this.http.get('../../assets/dummy_data/Providers/AllProviders.json').pipe(map((val:ProviderModel[], i) => { 
-        const pro = val.map(pre=>{
-          let arrayRatings = pre.reviews.map(rev=> rev.rating)
-          //console.log(arrayRatings)
-          var sum = 0;
-          for( var x = 0; x < arrayRatings.length; x++ ){
-           sum += arrayRatings[x], 10 //don't forget to add the base
-          } 
-          var avg = sum/arrayRatings.length;
-          pre.avg_rating = Math.floor(avg)
-          return pre
-      })
-     // console.log("Values",pro)
-      return pro
-    }))
-   }else{
-     return  null
-   }
+      const pro = val.map(pre=>{
+        let arrayRatings = pre.reviews.map(rev=> rev.rating)
+        //console.log(arrayRatings)
+        var sum = 0;
+        for( var x = 0; x < arrayRatings.length; x++ ){
+         sum += arrayRatings[x], 10 //don't forget to add the base
+        } 
+        var avg = sum/arrayRatings.length;
+        pre.avg_rating = Math.floor(avg)
+        return pre
+    })
+   // console.log("Values",pro)
+    return pro
+  }))
   }
 
   compareArray(arr1,arr2){
@@ -128,6 +113,32 @@ export class UserendService {
           
          return pro
     }))
+  }
+
+  getProviderByProductCode(code: string){
+    return  this.http.post(`${base_url}/api/v1/provider`, {lat: 0, lon: 0}).pipe(map((res:any)=>{
+           if(res.status == 'success'){
+           return res.data.map(x=>{
+                if(x.code == code) return x
+                else null
+              })
+           }
+     },(err)=>{
+       console.log(err)
+     }))
+  }
+  getAllproviders(){
+    return  this.http.post(`${base_url}/api/v1/provider`, {lat: 0, lon: 0}).pipe(map((res:any)=>{
+      if(res.status == 'success'){
+      return res.data
+      }
+},(err)=>{
+  console.log(err)
+}))
+  }
+
+  submitOrder(order:PostOrder){
+    return this.http.post(`${base_url}/api/v1/requestService`,order)
   }
 
 

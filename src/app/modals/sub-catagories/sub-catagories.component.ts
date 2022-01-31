@@ -5,6 +5,7 @@ import { setMicroserviceCatagory } from 'src/app/store/Shared/shared.action';
 import { MicroserviceCatState, Sub_model } from 'src/app/store/Shared/shared.state';
 import { Microservice_init } from 'src/app/store/Shared/shared.state';
 import { Catagory } from 'src/app/model/Structure.model';
+import { AuthService } from 'src/app/service/auth.service';
 @Component({
   selector: 'app-sub-catagories',
   templateUrl: './sub-catagories.component.html',
@@ -12,9 +13,8 @@ import { Catagory } from 'src/app/model/Structure.model';
 })
 export class SubCatagoriesComponent implements OnInit {
 
-  constructor(private store: Store) { }
+  constructor(private store: Store, private _auth: AuthService) { }
   service: Catagory
-   
   display: boolean
   ngOnInit(): void {
     this.store.select(getMicroerviceCatagoryState).subscribe((res : MicroserviceCatState)=>{
@@ -24,10 +24,16 @@ export class SubCatagoriesComponent implements OnInit {
         this.display = true
       }
     })
+    
   }
   hideBar(){
     this.store.dispatch(setMicroserviceCatagory(Microservice_init))
     this.display= false
   }
+
+  createhashKey(code){
+    return this._auth.createHashKey(code)
+  }
+  
 
 }

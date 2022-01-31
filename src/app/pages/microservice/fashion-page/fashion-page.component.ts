@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { setBokingModalSwitch } from 'src/app/store/Shared/shared.action';
 import { AppState } from 'src/app/store/app.state';
+import { AuthService } from 'src/app/service/auth.service';
  
 
 @Component({
@@ -17,7 +18,9 @@ export class FashionPageComponent implements OnInit {
 
   constructor(private _ClientService: UserendService,
      private _Activatedroute:ActivatedRoute,
-     private store: Store<AppState>) { }
+     private store: Store<AppState>,
+     private _auth: AuthService
+     ) { }
   events1: any[];
   img: string = ""
   pageData: FashionServicePageModel
@@ -40,7 +43,7 @@ export class FashionPageComponent implements OnInit {
         this._ClientService.getFashionPageData().subscribe((data: FashionServicePageModel[])=>{
           //geting page data by filtering
         let storeData: FashionServicePageModel[] =  data.filter((x)=>{
-           return x.code == this.pageID
+           return x.code ==  this._auth.decodeHashKey(this.pageID)
          })
          this.pageData = storeData[0]
          this.img = `url(${this.pageData.image_url})`

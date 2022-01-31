@@ -1,8 +1,8 @@
 export interface UserRegisterModel{
-    f_nanme: string,
+    f_name: string,
     l_name: string,
-    phone_no: number,
-    alternate_no: number,
+    phone_no: string,
+    alternate_no: string,
     email: string,
     address: string,
     profile:string
@@ -18,4 +18,15 @@ export interface VerifyOTP{
     phone:  string,
     code: number[],
     isLoggin: boolean,
+}
+
+export interface PostOrder {
+    serviceDetailId : string,
+    userId: string
+}
+
+export interface BillDetails{
+provider: any,
+service: any,
+
 }

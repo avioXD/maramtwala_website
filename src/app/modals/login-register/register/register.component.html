@@ -1,13 +1,13 @@
 <div class="container align-self-center ">
     <div [ngSwitch]="steps">
-        <app-otpsend *ngSwitchCase="1"  (newVerifyEvent)="onVerifyOtp($event)"></app-otpsend>
-        <app-user-details *ngSwitchCase="2"></app-user-details>
+        <app-otpsend *ngSwitchCase="1"  (registerEvent)="onVerifyOtp($event)"></app-otpsend>
+        <app-user-details *ngSwitchCase="2" [number]="verified_number" (sendDataEvent)="onEmmit($event)"></app-user-details>
     </div>
     <div class="container-fluid" style="position: absolute; bottom: 1rem; left: 0; padding:   0rem 2rem 0rem 2rem; ">
-        <div [ngClass]="steps==1 ? 'justify-content-end' : 'justify-content-between'" class="d-flex  align-content-center " >
-            <button  *ngIf="steps!=1"  (click)="prevPage()"  pButton pRipple type="button" icon="pi pi-chevron-left" class="p-button-rounded align-self-start"></button>
-            <button *ngIf="steps!=2"  pButton pRipple type="button" (click)="nextPage()" icon="pi pi-chevron-right" class="p-button-rounded  align-self-end"></button>
-            <p-button  *ngIf="steps==2"  pRipple icon="pi pi-check" label="save" styleClass="p-button-sm"></p-button>
+        <div   class="d-flex  align-content-end" >
+            <!-- <button  *ngIf="steps!=1"  (click)="prevPage()"  pButton pRipple type="button" icon="pi pi-chevron-left" class="p-button-rounded align-self-start"></button> -->
+            <!-- <button *ngIf="steps!=2"  pButton pRipple type="button" (click)="nextPage()" icon="pi pi-chevron-right" class="p-button-rounded  align-self-end"></button> -->
+            <p-button   *ngIf=" steps == 2 && showSave "  pRipple icon="pi pi-check" label="save" styleClass="p-button-sm" (click)="onSave()"></p-button>
         </div>
         <p class="text-center"> Step: {{steps}}</p>
     </div>

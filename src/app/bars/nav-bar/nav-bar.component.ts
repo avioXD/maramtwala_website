@@ -4,6 +4,8 @@ import { Store } from '@ngrx/store';
 import { setLoginDialogSwitch } from 'src/app/store/Shared/shared.action';
 import { UserendService } from 'src/app/service/userend.service';
 import {Catagory} from 'src/app/model/structure.model'
+import { getUser } from 'src/app/store/user/user.selector';
+import { setUserLogedinState } from 'src/app/store/user/user.action';
  
 
 @Component({
@@ -27,6 +29,7 @@ export class NavBarComponent implements OnInit {
   }
   catagroyStructure: Catagory[];
   scrolled:boolean = false
+  isLogin: boolean = false
   constructor(private store: Store,private userendService: UserendService) { }
   value:any
   ngOnInit(): void {
@@ -39,6 +42,13 @@ export class NavBarComponent implements OnInit {
       //console.log(err)
     })
     
+    this.store.select(getUser).subscribe((res: any)=>{
+      console.log("User Data", res.user_data)
+      if(res.user_data.token){
+          this.isLogin = true
+      }
+    })
+
   }
 
 
@@ -49,5 +59,4 @@ export class NavBarComponent implements OnInit {
       this.store.dispatch(setLoginDialogSwitch({toggle: true}));
   }
   
-
 }

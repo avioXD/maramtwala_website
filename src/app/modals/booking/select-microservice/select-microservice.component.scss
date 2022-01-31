@@ -1,5 +1,18 @@
-
- .field-checkbox{
-     border-left: 1px solid rgba(128, 128, 128, 0.74);
-     border-right:  1px solid rgba(128, 128, 128, 0.74);
- }
+.field-checkbox{
+     border-left: 1px solid rgba(235, 141, 0, 0.808);
+     border-right:  1px solid rgba(235, 141, 0, 0.808);
+     background-color: #F9C000;
+     color : white;
+     transition: all 0.5s;
+     &:hover{
+        background-color: #d95000;
+        cursor: pointer;
+        box-shadow: 2px 2px 5px rgba(173, 173, 173, 0.651);
+     }
+}
+ 
+.selected{
+    background-color: #d95000;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(173, 173, 173, 0.651);
+}

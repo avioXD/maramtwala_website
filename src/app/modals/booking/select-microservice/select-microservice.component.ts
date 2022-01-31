@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/app.state';
 import { setSelectedMicroservice } from 'src/app/store/Shared/shared.action';
@@ -11,9 +11,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SelectMicroserviceComponent implements OnInit {
   @Input() catagories:Sub_model[]
+  @Output() sendProductCode = new EventEmitter<any>()
   constructor(private store: Store<AppState>,private _Activatedroute:ActivatedRoute,) { }
   selectedCatagories:SelectedMicroserviceState[]
   pageId:string
+  selectedProduct: boolean[] = [false]
   ngOnInit(): void {
     this._Activatedroute.paramMap.subscribe(params =>{
       this.pageId = params.get("code")})
@@ -21,6 +23,11 @@ export class SelectMicroserviceComponent implements OnInit {
   onCheck(){
       console.log("Selected",this.selectedCatagories)
       this.store.dispatch(setSelectedMicroservice({selected_state: this.selectedCatagories}))
+  }
+  onSelect(item, i){
+      this.selectedProduct = [false]
+      this.selectedProduct[i] = true
+      this.sendProductCode.emit(item)
   }
 
 }

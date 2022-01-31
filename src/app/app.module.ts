@@ -39,6 +39,7 @@ import { BookingComponent } from './modals/booking/booking.component';
 import { SelectMicroserviceComponent } from './modals/booking/select-microservice/select-microservice.component';
 import { SelectProviderComponent } from './modals/booking/select-provider/select-provider.component';
 import { ProviderInDetailComponent } from './pages/components/provider-in-detail/provider-in-detail.component';
+import { CheckoutComponent } from './modals/booking/checkout/checkout.component';
 
  
  
@@ -66,6 +67,7 @@ import { ProviderInDetailComponent } from './pages/components/provider-in-detail
     SelectMicroserviceComponent,
     SelectProviderComponent,
     ProviderInDetailComponent,
+    CheckoutComponent,
 
   ],
   imports: [

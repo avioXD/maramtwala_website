@@ -14,7 +14,7 @@
                 <a class="link-info" style="cursor: pointer" pRipple (click)="switchPage(false)"> Login </a>
             </div>
             <div class="d-flex justify-content-center align-content-center" style="min-height: 30rem;">
-                <app-register  ></app-register>
+                <app-register  (registerEvent)="onSuccess($event)" ></app-register>
             </div>
         </div>
         <div *ngSwitchCase="true" header="Sign Up">
@@ -24,7 +24,7 @@
                 </span>
                 <a class="link-info" style="cursor: pointer" pRipple (click)="switchPage(true)"> Sign Up </a>
             </div>
-                        <app-login ></app-login>
+                        <app-login (loginevent)="onSuccess($event)" ></app-login>
         </div>
     </div>
      

@@ -3,25 +3,19 @@
     <p class="p-text-left mx-2">Enter your personal details:</p>
     <div class="d-flex my-2">
      <span class="p-float-label">
-        <input id="float-input" type="text" style="width: 11rem" pInputText> 
+        <input id="float-input" type="text" style="width: 11rem" pInputText  [(ngModel)]="userData.f_name" (keyup)="onKeyUp()"> 
         <label for="float-input">First Name</label>
     </span>
     <span class="p-float-label  ">
-        <input id="float-input" type="text" style="width: 11rem" pInputText> 
+        <input id="float-input" type="text" style="width: 11rem" pInputText [(ngModel)]="userData.l_name" (keyup)="onKeyUp()"> 
         <label for="float-input">Last Name</label>
     </span>
     </div>
-     
-    <span *ngIf="otpSend" class="p-float-label  my-2 ">
-        <input id="float-input" type="number" style="width: 9rem" pInputText> 
-        <label for="float-input">OTP</label>
-         
-    </span>
     <span class="p-float-label  my-2  ">
-        <input id="float-input" type="text" style="width: 15rem" pInputText> 
+        <input id="float-input" type="text" style="width: 15rem" pInputText  [(ngModel)]="userData.email" (keyup)="onKeyUp()"> 
         <label for="float-input">Email</label>
     </span>
-    <span class="p-float-label my-2">
-        <textarea id="float-input" rows="3" cols="30" pInputTextarea></textarea>
+    <span class="p-float-label my-2"  >
+        <textarea id="float-input" rows="3" cols="30" pInputTextarea (keyup)="onKeyUp()" [(ngModel)]="userData.address"></textarea>
         <label for="float-input">Address</label>
     </span>
