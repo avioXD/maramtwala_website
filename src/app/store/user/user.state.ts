@@ -1,23 +1,16 @@
 export interface UserState{
-    user_data: {
-        status: string,
-        token: string,
-        data: any
-    }, 
-    isLogin: boolean
+    token:  string, 
+    isLogin: boolean, 
+    isuserexist: boolean
     location: LocationState
 }
 export interface LocationState{
-    place: string,
     lat: number,
     lon:  number
 }
-export const  User_initialstate : UserState = {
-    user_data : {
-        status: "",
-        token: '',
-        data: {}
-    },
+export const  user_init : UserState = {
+    token: '',
     isLogin: false,
-    location: { place: "Chose your city ", lat: 0, lon: 0}
+    location: {  lat: 0, lon: 0 },
+    isuserexist: false
 }

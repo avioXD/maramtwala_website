@@ -1,70 +1,68 @@
  
+ 
+/////// Shared Storage /////////////
+ 
 
-export interface SharedState{
-    switch: boolean
-}
 
-export const shared_initialstate: SharedState = {
-    switch: false
-}
-export interface RegSetpState {
-    level: number
-}
-export const Register_initialstate: RegSetpState = {
-    level: 1
+export interface CategoryTreeState{
+    label:string,
+    code: string,
+    image_url: string,
+    subcategory: SubcategoryState[]
 }
 
-export interface BookingStepState{
-   resource:{ switch: boolean,
-    microservices:  Sub_model[]
-   }
+export interface SubcategoryState{
+    label:string,
+    code: string,
 }
-export const BookingStep_init = {
-    resource:{switch: false,
-    microservices: [
-        {label: "" ,code: ""}
-    ]
-    }
+export interface  ServicesState{
+    label: string,
+    code: string,
+    image_url: string
 }
 
-export  const selectedMicroService_init : SelectedMicroserviceState [] = [{
-    label:"", 
-    code :"FAS1S1"
-},
-{
-    label:"", 
-    code :"FAS1S8"
-}]
-export interface SelectedMicroserviceState{
-    label:string, 
-    code :string
-}
-
-export interface Catagory{
+export interface SubcategoryPageState{
     label: string,
     image_url: string,
-    items:[ {
-        label: string,
-        code : string
-    }],
-    routerLink: string
+    assign: any,
+    services: ServicesState[]
 }
 
-export interface  Sub_model{
-    label: string,
+export interface AvailabePlacesState{
+    logo: string,
+    name: string,
     code: string
-  }
-export interface MicroserviceCatState{
-    Microservice: Catagory,
 }
-export const Microservice_init : MicroserviceCatState ={
-    Microservice: {
-        label: "",
-        image_url: "",
-        items:[ {
-            label: "",
-            code : ""
-        }],
-        routerLink: ""
-    }
+export interface ProviderState{
+    providerId: string,
+    provider_name: string,
+    profile_img: string,
+    address: {
+        local: string,
+        place: string,
+        lat: number,
+        lng: number
+    },
+    provider_rating: number,
+    phone_no: string,
+    id: string,
+    code: string,
+    label: string,
+    price: number
+}
+
+/*******ROOT***** */
+export interface AppSharedStoreState{
+    category_tree: CategoryTreeState[],
+    all_providers: ProviderState[]
+    final_services_content:  ServicesState[],
+    available_service_places: AvailabePlacesState[],
+    subCategoryList: SubcategoryState[]
+}
+export const appSharedStore_init:AppSharedStoreState = {
+    category_tree: [],
+    all_providers:  [],
+    final_services_content: [],
+    available_service_places: [],
+    subCategoryList: []
 }

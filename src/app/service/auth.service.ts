@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { of } from 'rxjs';
-import { UserRegisterModel } from '../model/UserModel';
+import { UserRegisterModel } from '../model/user.model';
 import jwtDecode from 'jwt-decode';
+import { environment } from 'src/environments/environment';
+import { StateService } from './state.service';
+import { map } from 'rxjs';
  
 const base_url = 'https://marammatwala-api.herokuapp.com'
 @Injectable({
@@ -11,36 +13,63 @@ const base_url = 'https://marammatwala-api.herokuapp.com'
  
 export class AuthService {
 
-  constructor(private http: HttpClient) {
+  constructor(private _http: HttpClient, private _state: StateService) {
 
    }
 
-   sendOtp(creds: any){
+   _otpSendLogin(phone: string){
     //  return of({otp: 2456})
-     return  this.http.post(`${base_url}/api/v1/auth/sentOTP`,{ phone: `+91${creds.phone}`, isLogin: creds.isLogin})
+    console.log("loginSEND")
+     return  this._http.post(`${base_url}/api/v1/auth/sentOTP`,{ phone: `+91${phone}`, isLogin: true})
    }
-   verifyOtpLogin(creds: any){
-     return this.http.post(`${base_url}/api/v1/user/login`,{phone: `+91${creds.phone}`, code: creds.code})
+   _otpSendSignUp(phone:string){
+      console.log("SignUpSEND")
+      return  this._http.post(`${base_url}/api/v1/auth/sentOTP`,{ phone: `+91${ phone}`, isLogin: false})
    }
-   verifyOtpSignup(creds: any){
+   _otpVerifyLogin(creds: any){
+     return this._http.post(`${base_url}/api/v1/user/login`,{phone: `+91${creds.phone}`, code: creds.code}).pipe(map((res: any)=>{
+      if(res.status == 'success'){
+          console.log(res)
+         this._state.setToken(res.token)
+      } 
+      return res
+    },(err)=>{console.log(err)}))
+   }
+   _otpVerifySignUp(creds: any){
       // return of({token: "success"})
-      return this.http.post(`${base_url}/api/v1/auth/verifyOTP`,{phone: `+91${creds.phone}`, code: creds.code})
+      return this._http.post(`${base_url}/api/v1/auth/verifyOTP`,{phone: `+91${creds.phone}`, code: creds.code})
    }
-   userSignup(creds: UserRegisterModel){
+   _registerUser(creds: UserRegisterModel){
     // return of({token: "success"})
-    return this.http.post(`${base_url}/api/v1/user/signup`, creds)
+    return this._http.post(`${base_url}/api/v1/user/signup`, creds).pipe(map((res: any)=>{
+      if(res.status == 'success'){
+         this._state.setToken(res.token)
+      } 
+      return res
+    },(err)=>{console.log(err)}))
    }
 
-   createHashKey(code){
-      return code
+   logoutUser(){
+      this._state.setToken('')
    }
-   decodeHashKey(code){
-    return code
+
+   syncUserInApp(){
+      const token = this._state.getTokenLocal()
+      if(token && this._state.isTokenValid(this._state.getTokenObject(token).exp) ){
+         this._state.setUserIsLogin(true)
+         this._state.setToken(token)
+         this._state.setIsNewUser(false)
+      }
+      // else{
+      //    this._state.setUserIsLogin(false)
+      //    this._state.setToken('')
+      //    this._state.setIsNewUser(true)
+      // }
    }
-   getUserDetails(token){
-      return jwtDecode(token)
+   _isLoggedIn(){
+      this.syncUserInApp()
+      return this._state.getUserIsLogin().subscribe(res=> res)
    }
-   
 
 
 }

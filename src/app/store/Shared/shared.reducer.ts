@@ -1,72 +1,46 @@
-import { setLoginDialogSwitch, setRegitrationStepsAction, setMicroserviceCatagory, setBokingModalSwitch, setSelectedMicroservice } from "./shared.action"
+import { setCategorytree_Store, setAllProviders_Store, setfinalServicesContent, setServiceAvailablePlaces, setSubcategoryItems } from "./shared.action"
 import { createReducer, on } from '@ngrx/store';
-import { BookingStep_init, Register_initialstate, selectedMicroService_init, shared_initialstate } from "./shared.state";
-import { Microservice_init, MicroserviceCatState } from "./shared.state";
+import { appSharedStore_init } from "./shared.state";
 
-const _sharedReducer = createReducer(
-    shared_initialstate,
-    on(setLoginDialogSwitch, (state, action)=>{
+
+
+/***Shared Storage Reducer********** */
+
+const _selectSharedStoreReducer = createReducer(
+    appSharedStore_init,
+    on(setCategorytree_Store, (state,action)=>{
         return {
             ...state,
-            switch: action.toggle
-        };
-    })
-);
-
-
-const _sharedBookingModalReducer = createReducer(
-    BookingStep_init,
-     on(setBokingModalSwitch, (state, action)=>{
+            category_tree: action.state
+        }
+    }),
+    on(setAllProviders_Store, (state,action)=>{
         return {
-            resource: action.resource.resource
+            ...state,
+            all_providers: action.state
         }
-    })
-)
-
-const _RegisterStepsReducer = createReducer(
-    Register_initialstate,
-    on(setRegitrationStepsAction, (state, action)=>{
-        return{
-            level: action.step
+    }),
+    on(setfinalServicesContent, (state,action)=>{
+        return {
+            ...state,
+            final_services_content: action.state
         }
-    })
+    }),
+    on(setServiceAvailablePlaces, (state,action)=>{
+        return {
+            ...state,
+            available_service_places: action.state
+        }
+    }),
+    on(setSubcategoryItems, (state,action)=>{
+        return {
+            ...state,
+            subCategoryList: action.state
+        }
+    }),
+
 )
 
-const _MicroserviceCatagoryReducer = createReducer(
-    Microservice_init,
-     on(setMicroserviceCatagory,(state, action)=>{
-         return{
-             Microservice: action.Microservice
-         }
-     })
-)
-
-
-const _selectedMicroServiceReducer = createReducer(
-    selectedMicroService_init,
-    on(setSelectedMicroservice, (state,action)=>{
-        return action.selected_state
-    })
-)
-
-
-export function RegisterReducer(state, action){
-    return _RegisterStepsReducer(state,action)
-}
-export function SharedBookingModalReducer(state, action){
-    return _sharedBookingModalReducer(state,action)
-}
-
-
-export function SharedReducer(state, action){
-    return _sharedReducer(state, action)
-}
-
-export function MicroserviceCatagoryReducer(state, action){
-    return  _MicroserviceCatagoryReducer(state, action)
-}
-
-
-export function SelectedMicroServiceReducer(state, action){
-    return  _selectedMicroServiceReducer(state, action)
+export function SelectSharedStoreReducer(state, action){
+    return  _selectSharedStoreReducer(state, action)
 }

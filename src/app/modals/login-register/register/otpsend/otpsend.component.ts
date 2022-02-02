@@ -1,9 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef, Input, Output , EventEmitter} from '@angular/core';
-import { Store } from '@ngrx/store';
 import { map } from 'rxjs';
 import { AuthService } from 'src/app/service/auth.service';
-import { setUserLogedinState } from 'src/app/store/user/user.action';
-import { getUser } from 'src/app/store/user/user.selector';
+import { StateService } from 'src/app/service/state.service';
+ 
 interface City {
   name: string,
   code: string
@@ -24,124 +23,93 @@ interface City {
 })
 export class OtpsendComponent implements OnInit {
   
-  constructor(private auth: AuthService , private _store: Store) { }
-  @ViewChild('otpbox') otpbox: ElementRef;
-  @ViewChild('otp2') otp2: ElementRef;
-  @ViewChild('otp3') otp3: ElementRef;
-  @ViewChild('otp4') otp4: ElementRef;
-  @Output() loginEvent = new EventEmitter<any>() 
-  @Output() registerEvent = new EventEmitter<{number: string}>()
-  selectedCountry: City;
-  otpSend: boolean = false;
-  countries: any[];
-  contactNumber: string ;
-  onOTPResponse: any;
-  onOTPverify: any
-  isLogin: boolean
-  OTPcode: string
-  otpISfour : boolean 
-  loading: boolean = false
-  txt = "send OTP"
+  constructor(private _state: StateService, private _auth: AuthService) { }
+  @Output() newEvent_Signup = new EventEmitter<{phone: string}>() 
+  @Output() newEvent_Login = new EventEmitter<any>()
+  
 
+  isLoading: boolean = false
+  OTP: string
+  phone_number: string
+  switchOtpField: boolean = false
+  isOTP : boolean = false
+  text: string = "send OTP"
+  isforLogin: boolean
   ngOnInit(): void {
-    this.countries = [
-      {name: 'Australia', code: 'AU'},
-      {name: 'Brazil', code: 'BR'},
-      {name: 'China', code: 'CN'},
-      {name: 'Egypt', code: 'EG'},
-      {name: 'France', code: 'FR'},
-      {name: 'Germany', code: 'DE'},
-      {name: 'India', code: 'IN'},
-      {name: 'Japan', code: 'JP'},
-      {name: 'Spain', code: 'ES'},
-      {name: 'United States', code: 'US'}
-  ];
-  console.log(this.contactNumber)
-  this._store.select(getUser).pipe(map(x=> x.isLogin)).subscribe((res)=>{
-    this.isLogin = res
-  })
-
+    this._state.getLoginToSignUp().subscribe(res=>{
+      this.isforLogin = res
+    })
   }
   timmer: any;
   // onOtpChange(otp) {
   //   this.otp = otp;
   // }
   sendOtp(){
-      this.loading = true
-      this.auth.sendOtp({phone: this.contactNumber, isLogin: this.isLogin}).subscribe((res)=>{
-        console.log(res)
-        this.otpSend = true
-        this.loading = false
-        //this._store.dispatch(setUserLogedinState({islogin: true}))
+     if(this.isforLogin){
+       this._auth._otpSendLogin(this.phone_number).pipe(map((res: any)=> res.status =='success')).subscribe((result)=>{
+         this.switchOtpField = true
+         this.OTP = ""
+         console.log(this.OTP)
+       },(err)=>{
+         console.log(err)
+       })
+     }else{
+      this._auth._otpSendSignUp(this.phone_number).pipe(map((res: any)=> res.status =='success')).subscribe((result)=>{
+        this.switchOtpField = true
+        this.OTP = ""
+        console.log(this.OTP)
       },(err)=>{
-        console.log(err )
-        this._store.dispatch(setUserLogedinState({islogin: false}))
+        console.log(err)
       })
+     }
+      
   }
    
-
-  // otp : number []  
-  // onKeyUp(i){
-  //   switch(i){
-  //     case 1: if(this.otp[0]<10) this.otp2.nativeElement.focus();   break;
-  //     case 2: if(this.otp[1]<10) this.otp3.nativeElement.focus();   break;
-  //     case 3: if(this.otp[2]<10) this.otp4.nativeElement.focus();  break;
-  //     case 4: if(this.otp[3]<10) this.otp4.nativeElement.focus() ; break;
-  //   }
-  // }
-  otpisFour(){
+  isOTPcheck(){
    // console.log(this.OTPcode)
-    if(this.OTPcode.length < 4)
+    if(this.OTP.length < 4)
     {
-      this.otpISfour = true
+      this.isOTP = false
     }
-    if(this.OTPcode.length > 4){
-      this.otpISfour = true
-      this.otpSend = true
+    if(this.OTP.length > 4){
+      this.isOTP = false
     }
-    if(this.OTPcode.length == 4){
-      this.loading = true
-      this.verifyOtp(this.OTPcode)
-      setTimeout(() => {
-        this.otpISfour = false
-      }, 1000);
+    if(this.OTP.length == 4){
+      this.isLoading = true
+      this.isOTP = true
+      this.otpVerify(this.OTP)
     }
   }
 
-  verifyOtp(code: string){
-    const otp =  Number(code)
-    let creds = {
-      phone: this.contactNumber, code: otp, isLogin: this.isLogin
+  otpVerify(code: string){
+    const creds = {
+      phone: this.phone_number,
+       code:  code
     } 
-    if(!this.isLogin){
-      this.auth.verifyOtpSignup(creds).subscribe((res)=>{
-        this.onOTPverify = res
-        console.log(res)
-        this.loading = false
-        this.registerEvent.emit({number:  `+91${this.contactNumber}`})
+    if(this.isforLogin){
+      this._auth._otpVerifyLogin(creds).subscribe((result: any)=>{
+            console.log(result)  
+            this.isLoading = false
+            this._state.setUserIsLogin(true)
+            this._state.setSwitch_signuplogin(false)
       },(err)=>{
-        console.log(err)
-        this.OTPcode = ""
-        this.contactNumber = ""
-        this.loading = false
-        this.otpSend = false
-        this.txt = "resend OTP"
+          this.resendOTP()
       })
     }else{
-      this.auth.verifyOtpLogin(creds).subscribe((res: any)=>{
-        this.onOTPverify = res;
-        this.loading = false
-        this.loginEvent.emit(res)
-      },(err)=>{
-        this.OTPcode = ""
-        this.loading = false
-        this.otpSend = false
-        this.contactNumber = ""
-        this.txt = "resend OTP"
-        console.log(err)
-      })
+      this._auth._otpVerifySignUp(creds).subscribe((result: any)=>{
+        this.isLoading = false
+        this.newEvent_Signup.emit({phone : this.phone_number})
+    },(err)=>{
+        this.resendOTP()
+    })
     }
      
 }
+  resendOTP(){
+    this.text = "resend OTP"
+    this.isLoading = false
+    this.phone_number = ""
+    this.OTP = ""
+  }
 
 }

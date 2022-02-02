@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Store} from "@ngrx/store"
-import { map } from 'rxjs';
-import { AppState } from 'src/app/store/app.state';
-import { setLoginDialogSwitch } from 'src/app/store/Shared/shared.action';
-import { getLoginModalSwitch } from 'src/app/store/Shared/shared.selector';
-import { setAuthUserService, setUserLogedinState } from 'src/app/store/user/user.action';
-import { getUser } from 'src/app/store/user/user.selector';
+
+import { AuthService } from 'src/app/service/auth.service';
+import { StateService } from 'src/app/service/state.service';
+
  
  
 @Component({
@@ -14,35 +11,27 @@ import { getUser } from 'src/app/store/user/user.selector';
   styleUrls: ['./login-register.component.scss']
 })
 export class LoginRegisterComponent implements OnInit {
-  display!:boolean;
+  visible!:boolean;
+  isLoginToSignup: boolean = true
   constructor(
-    private store: Store<AppState>, 
+      private _state: StateService,
+      private _auth: AuthService
      ) { }
-   newuser$: boolean  = false
+
   ngOnInit(): void {
-    this.store.select(getLoginModalSwitch).subscribe((v)=>{
-      this.display = v;
-    })
-    this.store.select(getUser).pipe(map(x=> x.isLogin)).subscribe((res)=>{
-      this.newuser$ = res
-    })
+      this._state.getSwitch_signuplogin().subscribe((res: boolean)=>{
+        this.visible = res
+      })
+      this._state.getLoginToSignUp().subscribe((res: boolean)=>{
+        this.isLoginToSignup = res
+      })
 
   }
   onClose(): void{
-    this.store.dispatch(setLoginDialogSwitch({toggle: false}))
+    this._state.setSwitch_signuplogin(false)
   }
   switchPage(state: boolean ):void{
-    this.newuser$ = state
-    this.store.dispatch(setUserLogedinState({islogin: !this.newuser$}))
+      this._state.setLoginToSignUp(state)
   }
-  onSuccess(event){
-    if(event){
-       this.store.dispatch(setAuthUserService({user_data: event }))
-       this.store.dispatch(setUserLogedinState({islogin: true}))
-       this.onClose()
-    }
-  }
-
  
-   
 }

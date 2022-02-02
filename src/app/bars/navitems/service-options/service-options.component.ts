@@ -1,37 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { UserendService } from 'src/app/service/userend.service';
-import {Catagory} from 'src/app/model/structure.model'
-import { MegaMenuItem } from 'primeng/api';
-import { Store } from '@ngrx/store';
-import { setMicroserviceCatagory } from 'src/app/store/Shared/shared.action';
-import { MicroserviceCatState } from 'src/app/store/Shared/shared.state';
+import { CategoryTreeState } from 'src/app/store/shared/shared.state';
+import { StateService } from 'src/app/service/state.service';
 
-interface  Sub_model{
-  label: string,
-  code: string
-}
 @Component({
   selector: 'app-service-options',
   templateUrl: './service-options.component.html',
   styleUrls: ['./service-options.component.scss']
 })
 export class ServiceOptionsComponent implements OnInit {
-
-  constructor(private userendService: UserendService,private store: Store) { }
-  items: MegaMenuItem[];
-  catagroyStructure: Catagory[];
+  constructor(private _state: StateService) { }
   showMenu: boolean;
+  Category_names: CategoryTreeState[]
   ngOnInit(): void {
-      this.userendService.getMainCatagory().subscribe((response: Catagory[]) => {
-        this.catagroyStructure = response;
-        //console.log()
-      },(err)=>{
-        //console.log(err)
-      })
+    this._state.getCategoryTree().subscribe(res=>{
+      this.Category_names = res
+      this._state.setCategoryTree(res)
+    })
   }
-  onSubSelect(item: Catagory){
-     
-    this.store.dispatch(setMicroserviceCatagory({ Microservice: item}))
+  onCategorySelect(item: CategoryTreeState){
+    console.log(item)
+     this._state.setSubcategoryList(item.subcategory)
+     this._state.setSwitch_subCategory(true)
   }
 
 }

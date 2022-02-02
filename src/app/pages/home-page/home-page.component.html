@@ -7,8 +7,8 @@
             <p class="text-white sub-title">Formed in 2021, MARAMMATWALA “Right 2 Repair” is a brand of Swadesi Indigene Technologies Private Limited. At Marammatwala, we are committed to being there for all your home service, repair and maintenance needs. We are custom service and solution provider</p>
             <div class="select-city align-items-center d-flex flex-row ">
               <div class="d-flex " >
-                <button (click)="onModalChange(true)" pButton pRipple type="button" icon="pi pi-map-marker" class="p-button-rounded "></button> 
-                <p class="hodding text-center h4 mx-3 mt-1">  {{ currentLocation.place }}</p>
+                <p class="hodding text-center h4 mx-3 mt-1">Our service locations</p>
+                <button (click)="onOALswitchOpen()" pButton pRipple type="button" icon="pi pi-map-marker" class="p-button-rounded "></button> 
               </div>
               </div>
           </div>
@@ -75,5 +75,5 @@
 </div>
 
  
-<app-places [modalShow]="modalShow" (modalShowEvent)="onModalChange($event)"></app-places>
+<app-places ></app-places>
  

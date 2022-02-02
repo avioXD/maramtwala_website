@@ -15,7 +15,6 @@ import { SwiperModule } from 'swiper/angular';
 //
 import { StoreModule } from '@ngrx/store';
 import { appReducer } from './store/app.state';
- 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,17 +31,15 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { LoginComponent } from './modals/login-register/login/login.component';
 import { OtpsendComponent } from './modals/login-register/register/otpsend/otpsend.component';
 import { ServiceOptionsComponent } from './bars/navitems/service-options/service-options.component';
-import { SubCatagoryPageComponent } from './pages/sub-catagory-page/sub-catagory-page.component';
-import { SubCatagoriesComponent } from './modals/sub-catagories/sub-catagories.component';
-import { FashionPageComponent } from './pages/microservice/fashion-page/fashion-page.component';
-import { BookingComponent } from './modals/booking/booking.component';
-import { SelectMicroserviceComponent } from './modals/booking/select-microservice/select-microservice.component';
-import { SelectProviderComponent } from './modals/booking/select-provider/select-provider.component';
+import { SubCategoryPageComponent } from './pages/sub-category-page/sub-category-page.component';
+import { SubCategoriesComponent } from './modals/sub-categories/sub-categories.component';
 import { ProviderInDetailComponent } from './pages/components/provider-in-detail/provider-in-detail.component';
-import { CheckoutComponent } from './modals/booking/checkout/checkout.component';
+import { CartedItemsComponent } from './pages/carted-items/carted-items.component';
+ 
+import { BookingPageComponent } from './pages/sub-category-page/booking-page/booking-page.component';
+import { SelectProviderComponent } from './pages/sub-category-page/booking-page/select-provider/select-provider.component';
+import { SelectServiceComponent } from './pages/sub-category-page/booking-page/select-service/select-service.component';
 
- 
- 
 
 @NgModule({
   declarations: [
@@ -60,15 +57,13 @@ import { CheckoutComponent } from './modals/booking/checkout/checkout.component'
     LoginComponent,
     OtpsendComponent,
     ServiceOptionsComponent,
-    SubCatagoryPageComponent,
-    SubCatagoriesComponent,
-    FashionPageComponent,
-    BookingComponent,
-    SelectMicroserviceComponent,
-    SelectProviderComponent,
+    SubCategoryPageComponent,
+    SubCategoriesComponent,
     ProviderInDetailComponent,
-    CheckoutComponent,
-
+    CartedItemsComponent,
+    BookingPageComponent,
+    SelectProviderComponent,
+    SelectServiceComponent,
   ],
   imports: [
     BrowserModule,

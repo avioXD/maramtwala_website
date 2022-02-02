@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { UserendService } from 'src/app/service/userend.service';
-import { City, Catagory, SavedPlace, Offers, Exclusive} from '../../model/structure.model';
+import { City, Category, SavedPlace, Offers, Exclusive} from '../../model/structure.model';
  
 //
 import { Store } from '@ngrx/store';
 import { getUser  } from 'src/app/store/user/user.selector';
 import { AppState } from 'src/app/store/app.state';
 import { LocationState } from 'src/app/store/user/user.state';
-import { setMicroserviceCatagory } from 'src/app/store/Shared/shared.action';
-import { MicroserviceCatState, Sub_model } from 'src/app/store/Shared/shared.state';
 import { map } from 'rxjs';
+import { StateService } from 'src/app/service/state.service';
+import { ApiService } from 'src/app/service/api.service';
+import { AuthService } from 'src/app/service/auth.service';
 
 
  
@@ -27,7 +27,7 @@ export class HomePageComponent implements OnInit {
   images: any[]
   val: any
   cities!: City[];
-  catagories: Catagory[] ;
+  catagories: Category[] ;
   modalShow: boolean = false
   currentLocation !: LocationState ;
   offers!: Offers[]; 
@@ -47,44 +47,31 @@ export class HomePageComponent implements OnInit {
     }
 ];
 
-  constructor(private clientService: UserendService,private store : Store<AppState> ) { 
+  constructor(private _state: StateService, private _api: ApiService , private _auth: AuthService ) { 
 
   }
    
   ngOnInit(): void {
-     this.clientService.getMainCatagory().subscribe((value: Catagory[])=>{
-      console.log(value)
-      this.catagories = value
-      console.log(this.catagories)
-  })
-
-  this.clientService.getMyLocation().subscribe((location: SavedPlace)=>{
-       console.log("Saved",location)
-       this.currentLocation = location
-  });
-
+  this._api.__getHomeCategory_API()
+  this._auth.syncUserInApp()
   //offers: 
-  this.clientService.getOfferList().subscribe((data:Offers[])=>{
+  this._api._getOfferList_API().subscribe((data:Offers[])=>{
     this.offers = data
   })
   //excluve data set : 
-  this.clientService.getExclTemp().subscribe((data:Exclusive[])=>{
+  this._api._getExclusiveOffers().subscribe((data:Exclusive[])=>{
     this.exclusiveTemp = data
   })
-  //state management
-    this.store.select(getUser).pipe(map(x=> x.location)).subscribe((data : LocationState)=>{
-      this.currentLocation =  data
-   })
+ 
 
  
   }
-  onModalChange(e:boolean){
-    this.modalShow = e
-    console.log("Modal State: " ,this.modalShow)
+  onOALswitchOpen(){
+   this._state.setSwitch_places(true)
   }
 
-  onOpenMicroservice(item: Catagory){
-      this.store.dispatch(setMicroserviceCatagory({Microservice: item}))
+  onOpenMicroservice(item: Category){
+    
   }
 
   

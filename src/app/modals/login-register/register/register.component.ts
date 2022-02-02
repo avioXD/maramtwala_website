@@ -1,11 +1,7 @@
 import { Component,   EventEmitter,   OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
-import { AppState } from 'src/app/store/app.state';
-import { Store } from '@ngrx/store';
-import { getRegisterState } from 'src/app/store/Shared/shared.selector';
-import { setRegitrationStepsAction } from 'src/app/store/Shared/shared.action';
-import { UserRegisterModel } from 'src/app/model/UserModel';
+import { UserRegisterModel } from 'src/app/model/user.model';
 import { AuthService } from 'src/app/service/auth.service';
+import { StateService } from 'src/app/service/state.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -14,43 +10,38 @@ import { AuthService } from 'src/app/service/auth.service';
 export class RegisterComponent implements OnInit {
 @Output() registerEvent = new EventEmitter<any>()
   
-  steps: number = 1
+  page: number = 1
   verified_number : string = ""
-  constructor(private route: Router, private store: Store<AppState> , private _auth: AuthService) { }
+  constructor( private _state: StateService, private _auth: AuthService) { }
   registeredData : UserRegisterModel
-  showSave: boolean = false
+  showSaveBtn: boolean = false
   ngOnInit(): void {
-     this.store.select(getRegisterState).subscribe((v)=>{
-       this.steps = v
-     })
+    this.verified_number = this.verified_number
   }
   nextPage(): void{
-    this.steps++;
-    this.store.dispatch(setRegitrationStepsAction({step: this.steps}))
+    this.page++;
   }
   prevPage(): void{
-    this.steps--;
-    this.store.dispatch(setRegitrationStepsAction({step: this.steps}))
+    this.page--;
   }
-  onVerifyOtp(event){
-    if(event.number){
+  afterNumberVerify(event){
+    if(event.phone){
       this.verified_number = event.number
       this.nextPage()
     }
   }
-   onEmmit(event){
-    
+  afterRecivedFromData(event){
       this.registeredData = event
-      this.showSave = true
+      this.showSaveBtn = true
    }
    onSave(){
-     console.log(this.registeredData)
-    this._auth.userSignup(this.registeredData).subscribe((res:any)=>{
-      let response = res  
-      this.registerEvent.emit(response)
-    },(err)=>{
-        console.log(err)
-    })
+      this._auth._registerUser(this.registeredData).subscribe(res=>{
+        this._state.setLoginToSignUp(true)
+        this._state.setUserIsLogin(true)
+        this._state.setSwitch_signuplogin(false)
+      },(err)=>{
+        
+      })
    }
    
   

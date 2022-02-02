@@ -1,11 +1,10 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import * as AOS from "aos"
-import { Store } from '@ngrx/store';
-import { setLoginDialogSwitch } from 'src/app/store/Shared/shared.action';
-import { UserendService } from 'src/app/service/userend.service';
-import {Catagory} from 'src/app/model/structure.model'
+import { AuthService } from 'src/app/service/auth.service';
+import { StateService } from 'src/app/service/state.service';
+import { CategoryTreeState } from 'src/app/store/shared/shared.state';
 import { getUser } from 'src/app/store/user/user.selector';
-import { setUserLogedinState } from 'src/app/store/user/user.action';
+import { UserState } from 'src/app/store/user/user.state';
  
 
 @Component({
@@ -25,38 +24,32 @@ export class NavBarComponent implements OnInit {
       this.scrolled = true
     }
     else this.scrolled = false;
-     
   }
-  catagroyStructure: Catagory[];
+ 
   scrolled:boolean = false
   isLogin: boolean = false
-  constructor(private store: Store,private userendService: UserendService) { }
+  userData: any
+  constructor(private _state: StateService, private _auth: AuthService) { }
   value:any
   ngOnInit(): void {
     if(this.scrolled){
       AOS.refresh()
     }
-    this.userendService.getMainCatagory().subscribe((response: Catagory[]) => {
-      this.catagroyStructure = response;
-    },(err)=>{
-      //console.log(err)
-    })
-    
-    this.store.select(getUser).subscribe((res: any)=>{
-      console.log("User Data", res.user_data)
-      if(res.user_data.token){
-          this.isLogin = true
+  
+    this._state.getUserIsLogin().subscribe(res=>{
+      this.isLogin = res
+      if(this.isLogin){
+      this._state.getUserObject().subscribe((res)=>{
+        this.userData = res
+      },(err=>{}))
       }
     })
+     
 
   }
-
-
-  onOpenLogin():void{
-      const toggle = {
-        switch: true
-      }
-      this.store.dispatch(setLoginDialogSwitch({toggle: true}));
+  switchLoginSignup(){
+   
+    this._state.setSwitch_signuplogin(true)
   }
   
 }

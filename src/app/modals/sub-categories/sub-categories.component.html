@@ -1,0 +1,9 @@
+ 
+<p-sidebar [(visible)]="visible" (onHide)="hideBar()"   position="right" [baseZIndex]="10000">
+    <h3 class="text-sub">Services</h3>
+        <div class="container dropdown-menu-comtent row ">
+            <div  *ngFor="let item of subCategory; i " class="col-sm-12 items">
+              <a class="items " (click)="hideBar()" [routerLink]="['/services', createhashKey(item.code)]" >   <span pRipple> {{item.label}} </span> </a>  
+            </div>
+      </div>
+</p-sidebar>

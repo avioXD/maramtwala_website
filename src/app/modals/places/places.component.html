@@ -1,11 +1,8 @@
-<p-dialog header="Location" [modal]="true" (onHide)="onModalChange(false)" [(visible)]="modalShow" [style]="{width: '50rem'}">
+<p-dialog  [modal]="true" (onHide)="onOALswitchClose()" [(visible)]="visible" [style]="{width: '50rem'}">
     <div class="row p-2 ">
-        <div *ngFor="let item of places ; i "  (click)="onModalChangeWithLocation(false, item)"  data-aos="zoom-in" data-aos-duration="1222"  class="col-sm-3 mt-2 d-flex flex-column align-items-center justify-content-center balls">
+        <div *ngFor="let item of places ; i "   data-aos="zoom-in" data-aos-duration="1222"  class="col-sm-3 mt-2 d-flex flex-column align-items-center justify-content-center balls">
               <img style="width:5rem" class="rounded-circle" src="{{item.logo}}" alt="" srcset="">
               <p class="items">{{item.name}}</p>
         </div>
         </div>
-    <ng-template pTemplate="footer">
-        <p-button icon="pi pi-check"  pRipple (click)="onModalChange(false)" label="Set" styleClass="p-button-text"></p-button>
-    </ng-template>
 </p-dialog>

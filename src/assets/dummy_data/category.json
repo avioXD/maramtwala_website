@@ -1,0 +1,130 @@
+[
+    {
+        "label": "Home Appliance Repair",
+        "image_url":"../../assets/images/homeAp.png",
+        "code":"HARS",
+        "subcategory": [
+            {"label": "Air conditioner repair" , "code": "HARS1"},
+            {"label": "Cctv repair" ,"code": "HARS2"},
+            {"label": "Chimney repair" , "code": "HARS3"},
+            {"label": "Fridge/Refrigerator repair" , "code": "HARS4"},
+            {"label": "Dish washer repair" , "code": "HARS5"},
+            {"label": "Geyser repair" , "code": "HARS6" },
+            {"label":  "Icemaker repair"  , "code": "HARS7"},
+            {"label": "Kitchen hob/chulha repair"  , "code": "HARS8"},
+            {"label": "Microwave repair" , "code": "HARS9"},
+            {"label":  "Mixer grinder repair"  , "code": "HARS10"},
+            {"label":  "Ro water purifier repair" , "code": "HARS11"},
+            {"label":  "Room heater repair" , "code": "HARS12"},
+            {"label":  "Vacuum cleaner repair", "code": "HARS13"},
+            {"label":  "Washing machine repair", "code": "HARS14"},
+            {"label":   "Water cooler repair", "code": "HARS15"},
+            {"label":   "Clothes iron repair" , "code": "HARS16"},
+            {"label":   "Induction cooktop/heater repair" , "code": "HARS17"},
+            {"label":   "Lock repair", "code": "HARS18"}
+        ]
+    },
+    
+    {
+        "label": "Mobile and computer repairing",
+        "image_url":"../../assets/images/mobileRepair.png",
+        "code":"MCS",
+        "subcategory":[
+            {"label":   "Mobile repairing", "code": "MCS1"},
+            {"label":   "Laptop repairing", "code": "MCS2"},
+            {"label":   "Computer repairing", "code": "MCS3"},
+            {"label":    "Printer repair service", "code": "MCS4"},
+            {"label":   "Mordern scanner and ups repairing", "code": "MCS5"}
+        ]
+    },
+    {
+        "label": "Contractor services",
+        "image_url":"../../assets/images/ContractorService.png",
+        "code":"CS",
+        "subcategory":[
+            {"label":   " Architectural service", "code": "CS1"},
+            {"label":   "Fabrication service", "code": "CS2"},
+            {"label":   "False ceiling service", "code": "CS3"},
+            {"label":   "Interior design service", "code": "CS4"},
+            {"label":   "Modular kitchen service", "code": "CS5"},
+            {"label":    "Packers and movers service", "code": "CS6"},
+            {"label":   "Painting contract service", "code": "CS7"},
+            {"label":    "Tiles and marble application service", "code": "CS8"},
+            {"label":   "Waterproofing service","code": "CS9"},
+            {"label":    "Civil work service",  "code": "CS10"}
+        ]
+    },
+    {
+        "label": "Fashionable alteration and repair",
+        "image_url":"../../assets/images/Fashion.png",
+        "code":"FAS",
+        "subcategory":[
+            {"label": "Shoes and Foot wear repair", "code": "FAS1"},
+            {"label":    "Handbag repair",  "code": "FAS2"},
+            {"label":     "Dress alteration for Men", "code": "FAS3"},
+            {"label":     "Dress alteration for Women",  "code": "FAS4"},
+            {"label":   "New Dress Tailoring for Men", "code": "FAS5"},
+            {"label":   "New Dress Tailoring for Women",  "code": "FAS6"},
+            {"label":    "Luggage repair",  "code": "FAS7"},
+            {"label":   "Sunglasses/Eyewear Repair",  "code": "FAS8"},
+            {"label":   "Wrist watch repair", "code": "FAS9"}
+        ]
+    },
+    {
+        "label": "Musical instrument Repair",
+        "image_url":"../../assets/images/instrumentRepair.png",
+        "code":"MIS",
+        "subcategory":[
+            {"label":   "Guitar repair", "code": "MIS1"},
+            {"label":   "Tabla repair", "code": "MIS1"},
+            {"label":    "Piano repair", "code": "MIS1"},
+            {"label":   " Drum repair", "code": "MIS1"},
+            {"label":   " Classical instrument repair ", "code": "MIS1"}
+        ]
+    },
+    {
+        "label": "Cleaning and pest control",
+        "image_url":"../../assets/images/cleaner.png",
+        "code":"CPCS",
+        "subcategory":[
+            {"label":  "Laundry and dry cleaning service", "code": "CPCS1"},
+            {"label":   "Aquarium cleaning and maintenance service", "code": "CPCS2"},
+            {"label":   "Car wash service", "code": "CPCS3"},
+            {"label":  "Carpet cleaning service", "code": "CPCS4"},
+            {"label":   "Floor cleaning service", "code": "CPCS5"},
+            {"label":   "House keeping service", "code": "CPCS6"},
+            {"label":   "Pest control service", "code": "CPCS7"},
+            {"label":   "Septic tank cleaning service", "code": "CPCS8"},
+            {"label":   "Sewage tank cleaning service", "code": "CPCS9"},
+            {"label":  "Water tank cleaning service", "code": "CPCS10"},
+            {"label":   "Garden maintenance and gardening service", "code": "CPCS11"}
+        ]
+    },
+    {
+        "label": "Handyman service",
+        "image_url":"../../assets/images/handyman.png",
+        "code":"HMS",
+        "subcategory":[
+            {"label":  "Carpenter service", "code": "HMS1"},
+            {"label":  "Electrician service", "code": "HMS1"},
+            {"label":  "Furniture installation and assembling", "code": "HMS1"},
+            {"label":  "Furniture repair/Refinishing old furniture service", "code": "HMS1"},
+            {"label":  "Sofa repair", "code": "HMS1"},
+            {"label":  "Wardrobe repair", "code": "HMS1"}
+        ]
+    },
+    {
+        "label": "Sports accessories repair",
+        "image_url":"../../assets/images/crafts.png",
+        "code":"SPAS",
+        "subcategory":[
+            {"label":   " Bicycle repair", "code": "SPAS1"},
+            {"label":  "Cricket bat repair","code": "SPAS2"},
+            {"label":  "Other sports good repair", "code": "SPAS3"},
+            {"label":  "Soft toy repair", "code": "SPAS4"},
+            {"label":  "Handicrafts repair", "code": "SPAS5"},
+            {"label":  "Fitness Equipment repair", "code": "SPAS6"}
+        ]
+
+    }
+]

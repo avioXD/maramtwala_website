@@ -1,38 +1,29 @@
 import { createAction, props } from '@ngrx/store';
-import { Catagory } from 'src/app/model/Structure.model';
-import { BookingStepState, SelectedMicroserviceState } from './shared.state';
-
-export const SET_LOGIN_DIALOG_SWITCH = '[shared state] switch login page'
-export const REGISTER_SETPS = '[shared state] register steps'
-export const MICROSERVICE_CATAGORY_MODAL = '[shared state] microservice catagory'
-export const BOOKING_MODAL_SWITCH = '[shared state] booking modal switch'
-export const BOOKED_SERVICES = '[shared state] booked services'
+import { CategoryTreeState, AvailabePlacesState, ServicesState,   ProviderState, SubcategoryState } from './shared.state';
 
 
+////// shared storage //////////
 
-export const setLoginDialogSwitch = createAction(
-    SET_LOGIN_DIALOG_SWITCH,
-    props<{toggle: boolean}>()
+export const APP_SHARED_STORAGE = '[Shared Storage] store data'
+export const setCategorytree_Store = createAction(
+    '[Shared Storage] store category' ,
+    props<{state: CategoryTreeState[]}>()
 )
-export const setRegitrationStepsAction = createAction(
-    REGISTER_SETPS,
-    props<{step: number}>()
+export const setSubcategoryItems = createAction(
+    '[Shared Storage] store  subcategory',
+    props<{state: SubcategoryState[]}>()
 )
-export const setMicroserviceCatagory = createAction(
-   MICROSERVICE_CATAGORY_MODAL,
-    props<{Microservice:Catagory}>()
+export const setAllProviders_Store = createAction(
+    '[Shared Storage] store  Allproviders' ,
+    props<{state: ProviderState[]}>()
 )
-
-
-export const setBokingModalSwitch = createAction(
-    BOOKING_MODAL_SWITCH,
-    props<{resource: BookingStepState}>()
+export const setfinalServicesContent = createAction(
+    '[Shared Storage] store FinalServiceContent',
+    props<{state: ServicesState[]}>()
 )
-
-
-export const setSelectedMicroservice = createAction(
-    BOOKED_SERVICES,
-    props<{selected_state: SelectedMicroserviceState[]}>()
+export const setServiceAvailablePlaces = createAction(
+    '[Shared Storage] store Available Places',
+    props<{state: AvailabePlacesState[]}>()
 )
 
 

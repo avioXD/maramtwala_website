@@ -7,8 +7,8 @@
       <a class="nav-link" [ngClass]="showMenu? 'bg-white-c shadow': '' ">Services</a> 
       <div *ngIf="showMenu" class="dropdown-menu-fluid container d-flex justify-content-end  " (mouseleave)="showMenu=false" >
         <div class="container dropdown-menu-comtent row  shadow ">
-            <div  *ngFor="let item of catagroyStructure;i " class="col-sm-6 items">
-              <a class="items " (click)="onSubSelect(item)" > <span pRipple> {{item.label}}</span> </a>  
+            <div  *ngFor="let item of Category_names;i " class="col-sm-6 items">
+              <a class="items " (click)="onCategorySelect(item)" > <span pRipple> {{item.label}}</span> </a>  
             </div>
         </div>
       </div>

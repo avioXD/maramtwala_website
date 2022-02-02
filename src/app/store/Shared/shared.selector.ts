@@ -1,43 +1,24 @@
-import { BookingStepState, RegSetpState, SelectedMicroserviceState, SharedState } from "./shared.state";
+import { AppSharedStoreState } from "./shared.state";
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { MicroserviceCatState } from "./shared.state";
 
-export const SHARED_STATE_NAME = 'shared';
-const getSharedState = createFeatureSelector<SharedState>(SHARED_STATE_NAME);
+/**** Shared Store Selector********* */
 
-export const getLoginModalSwitch = createSelector(getSharedState, (state)=>{
-    return state.switch
-} )
+ export const  APP_SHARED_STORE_NAME = 'appstore'
+ const _selectedAppSharedStore = createFeatureSelector<AppSharedStoreState>(APP_SHARED_STORE_NAME)
 
-export const SHARED_BOOKING_MODAL_STATE = 'bookingstate'
-const getBookingModalSharedState = createFeatureSelector<BookingStepState>(SHARED_BOOKING_MODAL_STATE);
-export const getBookingModalState = createSelector(getBookingModalSharedState, (state)=>{
-    return state
-} )
-
-export const REGISTER_STATE_NAME = 'register';
-
-const getRegisterFeatures = createFeatureSelector<RegSetpState>(REGISTER_STATE_NAME);
-
-export const getRegisterState = createSelector(getRegisterFeatures, (state)=>{
-    return state.level
+export const getCategorytree =  createSelector(_selectedAppSharedStore, (state)=>{
+    return state.category_tree
+})
+export const getSubcategoryList =  createSelector(_selectedAppSharedStore, (state)=>{
+    return state.subCategoryList
+})
+export const getAllProviders =  createSelector(_selectedAppSharedStore, (state)=>{
+    return state.all_providers
+})
+export const getFinalServicescontent =  createSelector(_selectedAppSharedStore, (state)=>{
+    return state.final_services_content
+})
+export const getAvailableServicePlaces =  createSelector(_selectedAppSharedStore, (state)=>{
+    return state.available_service_places
 })
 
-
-
-export const MICROSERVICE_CATAGORY_SET = 'catagories';
-
-const getMicroserviceCat = createFeatureSelector<MicroserviceCatState>(MICROSERVICE_CATAGORY_SET)
-
-export const getMicroerviceCatagoryState = createSelector(getMicroserviceCat, (state)=>{
-    return state
-})
-
-
-export const SELECTED_MICROSERVICE_NAME= 'selectedservice'
-
-const getSelectedMicroserviceList = createFeatureSelector<SelectedMicroserviceState[]>(SELECTED_MICROSERVICE_NAME)
-
-export const getSelectedMicroServiceList = createSelector(getSelectedMicroserviceList, (state)=>{
-    return state
-})

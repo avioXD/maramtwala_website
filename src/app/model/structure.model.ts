@@ -2,7 +2,7 @@ export interface City {
     name: string,
     code: string
 }
-export interface Catagory{
+export interface Category{
     label: string,
     image_url: string,
     items:[ {

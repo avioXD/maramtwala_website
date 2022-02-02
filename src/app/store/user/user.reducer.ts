@@ -1,31 +1,37 @@
 import { createReducer, on } from '@ngrx/store';
-import { setAuthUserService, setUserCurrentLocation, setUserLogedinState } from './user.action';
-import { User_initialstate } from './user.state';
+import { setUser_exist, setUser_isLogin, setUser_location, setUser_token } from './user.action';
+import { user_init } from './user.state';
 
 
 const _userReducer = createReducer(
-    User_initialstate,
-    on(setUserCurrentLocation, (state, action)=>{
+    user_init,
+    on(setUser_location, (state, action)=>{
          return{
              ...state,
-              location: action.location  
+              location: action.state
          }
     }),
-    on(setAuthUserService,(state, action)=>{
+    on(setUser_token,(state, action)=>{
         return{
             ...state,
-             user_data: action.user_data 
+             token: action.state
         }
    }),
-   on(setUserLogedinState,(state, action)=>{
+   on(setUser_isLogin,(state, action)=>{
     return{
         ...state,
-         isLogin: action.islogin
+         isLogin: action.state
     }
-})
+    }),
+    on(setUser_exist,(state, action)=>{
+        return{
+            ...state,
+            isuserexist: action.state
+        }
+    })
    
 )
 
-export function UserReducer(state, action){
+export function SelectUserReducer(state, action){
     return _userReducer(state,action)
 }

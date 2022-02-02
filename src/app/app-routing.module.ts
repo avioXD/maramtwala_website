@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginRegisterComponent } from './modals/login-register/login-register.component';
-import { CreatePasswordComponent } from './modals/login-register/register/create-password/create-password.component';
-import { RegisterComponent } from './modals/login-register/register/register.component';
-import { UserDetailsComponent } from './modals/login-register/register/user-details/user-details.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
-import { FashionPageComponent } from './pages/microservice/fashion-page/fashion-page.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { SubCatagoryPageComponent } from './pages/sub-catagory-page/sub-catagory-page.component';
+import { BookingPageComponent } from './pages/sub-category-page/booking-page/booking-page.component';
+import { SelectProviderComponent } from './pages/sub-category-page/booking-page/select-provider/select-provider.component';
+import { SelectServiceComponent } from './pages/sub-category-page/booking-page/select-service/select-service.component';
+import { SubCategoryPageComponent } from './pages/sub-category-page/sub-category-page.component';
+
 
 const routes: Routes = [
   {
@@ -21,14 +20,26 @@ const routes: Routes = [
     path: '404error', component: PageNotFoundComponent
   },
   {
-    path: 'asdwar ', component: SubCatagoryPageComponent
+  path: 'services/:code', component: SubCategoryPageComponent
   },
   {
-    path: 'services/:code', component: FashionPageComponent
+    path: 'create-booking/:pageid', 
+    component: BookingPageComponent,
+    children: [
+      {
+        path: 'select-service',
+        component: SelectServiceComponent,
+      },
+      {
+        path: 'select-provider',
+        component:  SelectProviderComponent
+      }
+    ]
   },
   { 
     path: 'profile', component: ProfileComponent
-  }
+  },
+  
 ];
 
 @NgModule({

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { UserRegisterModel } from 'src/app/model/UserModel';
+import { UserRegisterModel } from 'src/app/model/user.model';
 
 @Component({
   selector: 'app-user-details',
@@ -7,8 +7,8 @@ import { UserRegisterModel } from 'src/app/model/UserModel';
   styleUrls: ['./user-details.component.scss']
 })
 export class UserDetailsComponent implements OnInit {
-@Input() number : string
-@Output() sendDataEvent = new EventEmitter<UserRegisterModel>()
+@Input() phone : string
+@Output() newEvensnedData = new EventEmitter<UserRegisterModel>()
   constructor() { }
   otpSend: boolean = false;
   userData: UserRegisterModel = {
@@ -33,15 +33,14 @@ export class UserDetailsComponent implements OnInit {
       let sendData: UserRegisterModel = {
         f_name: this.userData.f_name,
         l_name: this.userData.l_name,
-        phone_no: this.number,
+        phone_no: this.phone,
         alternate_no: this.userData.alternate_no,
         email: this.userData.email,
         address: this.userData.address,
         profile: this.userData.profile
       }
-      this.sendDataEvent.emit(sendData)
+      this.newEvensnedData.emit(sendData)
     }
-     
   }
   
 }
