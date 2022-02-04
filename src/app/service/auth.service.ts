@@ -19,34 +19,45 @@ export class AuthService {
 
    _otpSendLogin(phone: string){
     //  return of({otp: 2456})
-    console.log("loginSEND")
-     return  this._http.post(`${base_url}/api/v1/auth/sentOTP`,{ phone: `+91${phone}`, isLogin: true})
+     return  this._http.post(`${base_url}/api/v1/auth/sentOTP`,{ phone: `+91${phone}`, isLogin: true}).pipe(map((res:any)=>{
+      if(res.status == 'success') return 200
+      else  return  res.status
+      
+     }))
    }
    _otpSendSignUp(phone:string){
-      console.log("SignUpSEND")
-      return  this._http.post(`${base_url}/api/v1/auth/sentOTP`,{ phone: `+91${ phone}`, isLogin: false})
+      return  this._http.post(`${base_url}/api/v1/auth/sentOTP`,{ phone: `+91${ phone}`, isLogin: false}).pipe(map((res:any)=>{
+         if(res.status == 'success') return 200 
+         else  return res.status
+       }))
    }
    _otpVerifyLogin(creds: any){
      return this._http.post(`${base_url}/api/v1/user/login`,{phone: `+91${creds.phone}`, code: creds.code}).pipe(map((res: any)=>{
       if(res.status == 'success'){
-          console.log(res)
          this._state.setToken(res.token)
-      } 
-      return res
+         return 200
+      } else return res.status
+       
     },(err)=>{console.log(err)}))
    }
    _otpVerifySignUp(creds: any){
       // return of({token: "success"})
-      return this._http.post(`${base_url}/api/v1/auth/verifyOTP`,{phone: `+91${creds.phone}`, code: creds.code})
+      return this._http.post(`${base_url}/api/v1/auth/verifyOTP`,{phone: `+91${creds.phone}`, code: creds.code}).pipe(map((res: any)=>{
+         if(res.status == 'success') {
+            return 200
+         } 
+         else return res.status
+      }))
    }
    _registerUser(creds: UserRegisterModel){
     // return of({token: "success"})
     return this._http.post(`${base_url}/api/v1/user/signup`, creds).pipe(map((res: any)=>{
+     console.log(res)
       if(res.status == 'success'){
          this._state.setToken(res.token)
-      } 
-      return res
-    },(err)=>{console.log(err)}))
+         return 200
+      } else return res.status
+    } ))
    }
 
    logoutUser(){
@@ -69,6 +80,10 @@ export class AuthService {
    _isLoggedIn(){
       this.syncUserInApp()
       return this._state.getUserIsLogin().subscribe(res=> res)
+   }
+   logOutUser(){
+      this._state.setToken('')
+      this._state.setUserIsLogin(false)
    }
 
 

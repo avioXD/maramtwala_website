@@ -1,0 +1,35 @@
+.foot-main {
+  background: linear-gradient(60deg, #543ab7 0%, #00acc1 100%);
+}
+
+.link {
+  width: 100ch;
+  text-align: left;
+  color: #dbe3ff;
+  font-size: 110%;
+  font-family: 'Poppins', sans-serif;
+  text-decoration: none;
+  margin: 0.3rem;
+  text-align: center;
+  margin-left: 1rem;
+}
+
+.link:hover {
+  color: #00ffc8;
+}
+
+.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media screen and (max-width: 1000px) {
+  .flex {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+/*# sourceMappingURL=foot-bar.component.css.map */

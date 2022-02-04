@@ -1,16 +1,60 @@
 
- <div class="container" style="margin-top: 5rem;">
-
-    <p class="text-left h5"> Enter your mobile no</p>
+ <div class="" style="margin-top: 5rem;">
+    <span data-aos="fade-right" class="content-header"><mat-icon> stay_current_portrait</mat-icon><p>Enter your number</p> </span>
     <span class="p-float-label my-3"  >
         <input id="float-input" type="text" style="width: 15rem" pInputText [(ngModel)]="phone_number"> 
-        <label for="float-input">+91 Phone</label>
-        <p class="p-button-success p-button-text" pRipple pButton (click)="sendOtp()">{{text}}</p>
+        <label for="float-input">Phone</label>
+        <p class="p-button-outlined mx-2 " pRipple pButton (click)="sendOtp()">{{text}}</p>
     </span>
-    <div class="otp-input d-flex"  *ngIf="switchOtpField">
-        <input #otpbox type="text" id="inputtext"  [(ngModel)]="OTP" (keyup)="isOTPcheck()" pInputText class=" ng-dirty " placeholder="code"  >
-        <button *ngIf="isLoading" pButton pRipple type="button" icon="pi pi-spin pi-spinner" class="p-button-outlined p-button-rounded mx-3"></button>
+    <div *ngIf="isSnedOtpLoading" class="d-flex justify-content-start mx-3">
+        <div class="loader loader--style8" title="7">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+               width="24px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+              <rect x="0" y="10" width="4" height="10" fill="#333" opacity="0.2">
+                <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0s" dur="0.6s" repeatCount="indefinite" />
+                <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0s" dur="0.6s" repeatCount="indefinite" />
+                <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0s" dur="0.6s" repeatCount="indefinite" />
+              </rect>
+              <rect x="8" y="10" width="4" height="10" fill="#333"  opacity="0.2">
+                <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.15s" dur="0.6s" repeatCount="indefinite" />
+                <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.15s" dur="0.6s" repeatCount="indefinite" />
+                <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.15s" dur="0.6s" repeatCount="indefinite" />
+              </rect>
+              <rect x="16" y="10" width="4" height="10" fill="#333"  opacity="0.2">
+                <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.3s" dur="0.6s" repeatCount="indefinite" />
+                <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.3s" dur="0.6s" repeatCount="indefinite" />
+                <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.3s" dur="0.6s" repeatCount="indefinite" />
+              </rect>
+            </svg>
+          </div>
     </div>
+    <div data-aos="fade-right" class="otp-input d-flex"  *ngIf="switchOtpField">
+        <input #otpbox type="text" id="inputtext"  [(ngModel)]="OTP" (keyup)="isOTPcheck()" pInputText class=" ng-dirty " placeholder="code"  >
+        <div *ngIf="isLoading" class="d-flex justify-content-start mx-3">
+            <div class="loader loader--style8" title="7">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                   width="24px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+                  <rect x="0" y="10" width="4" height="10" fill="#333" opacity="0.2">
+                    <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0s" dur="0.6s" repeatCount="indefinite" />
+                    <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0s" dur="0.6s" repeatCount="indefinite" />
+                    <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0s" dur="0.6s" repeatCount="indefinite" />
+                  </rect>
+                  <rect x="8" y="10" width="4" height="10" fill="#333"  opacity="0.2">
+                    <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.15s" dur="0.6s" repeatCount="indefinite" />
+                    <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.15s" dur="0.6s" repeatCount="indefinite" />
+                    <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.15s" dur="0.6s" repeatCount="indefinite" />
+                  </rect>
+                  <rect x="16" y="10" width="4" height="10" fill="#333"  opacity="0.2">
+                    <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.3s" dur="0.6s" repeatCount="indefinite" />
+                    <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.3s" dur="0.6s" repeatCount="indefinite" />
+                    <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.3s" dur="0.6s" repeatCount="indefinite" />
+                  </rect>
+                </svg>
+              </div>
+        </div>
+        <!-- <button *ngIf="isLoading" pButton pRipple type="button" icon="pi pi-spin pi-spinner" class="p-button-outlined p-button-rounded mx-3"></button> -->
+    </div>
+    <p class="text-center text-danger">{{errorMessage}}</p>
      
  </div>
  

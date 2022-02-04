@@ -2,14 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { City, Category, SavedPlace, Offers, Exclusive} from '../../model/structure.model';
  
 //
-import { Store } from '@ngrx/store';
-import { getUser  } from 'src/app/store/user/user.selector';
-import { AppState } from 'src/app/store/app.state';
+
 import { LocationState } from 'src/app/store/user/user.state';
-import { map } from 'rxjs';
 import { StateService } from 'src/app/service/state.service';
 import { ApiService } from 'src/app/service/api.service';
 import { AuthService } from 'src/app/service/auth.service';
+import { CategoryTreeState } from 'src/app/store/shared/shared.state';
 
 
  
@@ -27,7 +25,7 @@ export class HomePageComponent implements OnInit {
   images: any[]
   val: any
   cities!: City[];
-  catagories: Category[] ;
+  catagories: CategoryTreeState[] ;
   modalShow: boolean = false
   currentLocation !: LocationState ;
   offers!: Offers[]; 
@@ -52,7 +50,9 @@ export class HomePageComponent implements OnInit {
   }
    
   ngOnInit(): void {
-  this._api.__getHomeCategory_API()
+     this._state.getCategoryTree().subscribe(res=>{
+       this.catagories = res
+     })
   this._auth.syncUserInApp()
   //offers: 
   this._api._getOfferList_API().subscribe((data:Offers[])=>{
@@ -70,7 +70,7 @@ export class HomePageComponent implements OnInit {
    this._state.setSwitch_places(true)
   }
 
-  onOpenMicroservice(item: Category){
+  onOpenMicroservice(item:any ){
     
   }
 

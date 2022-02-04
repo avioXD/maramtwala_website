@@ -4,9 +4,9 @@
     <a class="nav-link" (mouseenter)="showMenu = false" [routerLink]="['/']">Home</a> 
   </div>
   <div class="dropdown  " (mouseenter)="showMenu = true"  >
-      <a class="nav-link" [ngClass]="showMenu? 'bg-white-c shadow': '' ">Services</a> 
+      <a class="nav-link" [ngClass]="showMenu? 'bg-white-c ': '' ">Services</a> 
       <div *ngIf="showMenu" class="dropdown-menu-fluid container d-flex justify-content-end  " (mouseleave)="showMenu=false" >
-        <div class="container dropdown-menu-comtent row  shadow ">
+        <div class="container dropdown-menu-comtent shadow row">
             <div  *ngFor="let item of Category_names;i " class="col-sm-6 items">
               <a class="items " (click)="onCategorySelect(item)" > <span pRipple> {{item.label}}</span> </a>  
             </div>
@@ -16,6 +16,10 @@
    
   <div >
     <a class="nav-link" (mouseenter)="showMenu = false">About Us</a> 
+  </div>
+     
+  <div >
+    <a class="nav-link" href="#specialoffer-div" (mouseenter)="showMenu = false">Special offers</a> 
   </div>
   <div >
     <a class="nav-link" (mouseenter)="showMenu = false">Partner with us</a> 

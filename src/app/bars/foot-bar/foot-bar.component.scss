@@ -1,17 +1,25 @@
 .foot-main{
-    background-color: #F9C000 ;
+    background:  linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
 }
 .link{
-        color: #ffffff ;
-        font-size:100%;
-        width: 95%;
+        width:100ch;
         text-align: left;
-        font-family: 'Questrial', sans-serif;;
+        color: #dbe3ff;
+        font-size: 110%;
+        font-family: 'Poppins', sans-serif;;
         text-decoration: none;
         margin: 0.3rem;
         text-align: center;
         margin-left: 1rem;
         &:hover{
-            color: #6e5608 ;
+            color:  rgb(0, 255, 200);
         }
+}
+.flex{
+    display: flex;
+}
+@media screen and (max-width: 1000px) {
+    .flex{
+        flex-direction: column;
+    }
 }

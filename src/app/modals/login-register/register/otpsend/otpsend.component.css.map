@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,OAAO,CAAA;EACH,KAAK,EAAE,IAAK;EACX,MAAM,EAAE,IAAI;EACZ,SAAS,EAAE,IAAI;EACf,UAAU,EAAE,MAAM;EAClB,YAAY,EAAE,IACnB;CAAC;;AACD,AAAA,WAAW,CAAA;EACP,OAAO,EAAE,IACb;CAAC;;AAED,AAAA,GAAG,CAAC,IAAI;AACR,GAAG,CAAC,IAAI,CAAA;EACN,IAAI,EAAE,OAAO;CACd",
+    "sources": [
+        "otpsend.component.scss"
+    ],
+    "names": [],
+    "file": "otpsend.component.css"
+}

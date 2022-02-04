@@ -57,12 +57,16 @@ export interface AppSharedStoreState{
     all_providers: ProviderState[]
     final_services_content:  ServicesState[],
     available_service_places: AvailabePlacesState[],
-    subCategoryList: SubcategoryState[]
+    subCategoryList: SubcategoryState[],
+    window_width: number,
+    subcatagory_page_content: any
 }
 export const appSharedStore_init:AppSharedStoreState = {
     category_tree: [],
     all_providers:  [],
     final_services_content: [],
     available_service_places: [],
-    subCategoryList: []
+    subCategoryList: [],
+    window_width: 250000,
+    subcatagory_page_content: {}
 }

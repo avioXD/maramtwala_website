@@ -21,4 +21,9 @@ export const getFinalServicescontent =  createSelector(_selectedAppSharedStore, 
 export const getAvailableServicePlaces =  createSelector(_selectedAppSharedStore, (state)=>{
     return state.available_service_places
 })
-
+export const getWindowWidth =  createSelector(_selectedAppSharedStore, (state)=>{
+    return state.window_width
+})
+export const getSubcategorypageContent =  createSelector(_selectedAppSharedStore, (state)=>{
+    return state.subcatagory_page_content
+})

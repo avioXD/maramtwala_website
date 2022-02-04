@@ -26,3 +26,7 @@ export const setLoginToSignupSwitch = createAction(
     '[shared state] logintosignup',
     props<{state: boolean}>()
 )
+export const setSideMenuSwitch = createAction(
+    '[shared state] sidemenu',
+    props<{state: boolean}>()
+)

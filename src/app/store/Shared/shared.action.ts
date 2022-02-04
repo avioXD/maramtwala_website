@@ -25,5 +25,11 @@ export const setServiceAvailablePlaces = createAction(
     '[Shared Storage] store Available Places',
     props<{state: AvailabePlacesState[]}>()
 )
-
-
+export const setWindowWidth = createAction(
+    '[Shared Storage] store Available Places',
+    props<{state: number}>()
+)
+export const setSubcategoryPageContent = createAction(
+    '[Shared Storage] store subcategorypagecontent  ',
+    props<{state: number}>()
+)

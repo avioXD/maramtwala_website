@@ -18,14 +18,16 @@ export class PlacesComponent implements OnInit {
    visible: boolean = false
   places!:Places[]
   ngOnInit(): void {
-    this._api._getServiceAvailablePlaces_API().subscribe((res=>{
-      this.places = res
-    }))
     this._state.getSwitch_places().subscribe(((res: boolean)=>{
-        this.visible = res
-    }))
+      this.visible = res
+      this._api._getServiceAvailablePlaces_API().subscribe((res=>{
+        this.places = res
+      }))
+  }))
+    
+    
   }
-  onOALswitchClose(){
+  onHide(){
     this._state.setSwitch_places(false)
    }
 

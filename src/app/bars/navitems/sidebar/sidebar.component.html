@@ -1,0 +1,53 @@
+<p-sidebar [(visible)]="visible" position="right" [baseZIndex]="10000" (onHide)="onHide()">
+  <div class="nav-user d-flex flex-column justify-content-start">
+    <span class="p-input-icon-left ">
+        <i class="pi pi-search"></i>
+        <input class="search" type="text" pInputText [(ngModel)]="searchValue" placeholder="Search for service">         
+    </span>
+     <div [ngSwitch]="isLogin" class="d-flex flex-column justify-content-around align-items-center mt-5">
+      <div *ngSwitchCase="true" > <p-avatar  class="p-3 cursor-pointer"  image="{{userData.profile_pic? userData.profile_pic: '../../../assets/images/user.jpg' }}" pBadge shape="circle" severity="danger" size="large" [routerLink]="['profile']"></p-avatar> </div>
+      <div class="d-flex justify-content-center login-text align-items-center">
+        <p *ngSwitchCase="true" class="  cursor-pointer mt-3">{{userData.first_name}} {{userData.last_name}} </p>
+        <mat-icon *ngSwitchCase="true" (click)="logOutUser()" [routerLink]="['/home']"    class=" cursor-pointer mx-2" pTooltip="logout" tooltipPosition="bottom">exit_to_app</mat-icon>   
+      </div>
+      <div *ngSwitchCase="false"><p (click)="switchLoginSignup()" class="login-text cursor-pointer mt-3">Login / Signup</p></div>
+      <div class="d-flex">
+        <div class="cart mx-2 cursor-pointer " pBadge value="2">
+          <mat-icon style="color: rgba(84,58,183,1)" pTooltip="Carted service" tooltipPosition="bottom" >shopping_cart</mat-icon>
+         </div>
+        
+      </div>
+      </div>
+       
+     <div class="mx-auto my-auto"  >
+      
+    </div>
+  </div>
+  <div class="d-flex flex-column my-5">
+    <div >
+      <a class="nav-link" (mouseenter)="showMenu = false" [routerLink]="['/']">Home</a> 
+    </div>
+    <div class="dropdown  " >
+        <a class="nav-link" (click)="showMenu = !showMenu">Services <i *ngIf="showMenu" class="pi pi-angle-down"></i> <i *ngIf="!showMenu" class="pi pi-angle-right"></i> </a> 
+    </div>
+    <div *ngIf="showMenu" class="dropdown-menu-fluid">
+      <div class="mx-2 dropdown-menu-comtent">
+          <div  *ngFor="let item of Category_names;i " class="pt-2">
+            <div class="d-flex">
+            <div class="items  "><i class="pi pi-angle-right"></i></div>
+            <a class="items mx-1" (click)="onCategorySelect(item)"><span pRipple>{{item.label}}</span> </a> 
+          </div>
+          </div>
+      </div>
+    </div>
+    <div >
+      <a class="nav-link" (mouseenter)="showMenu = false">About Us</a> 
+    </div>
+    <div >
+      <div >
+        <a class="nav-link" href="#specialoffer-div" (mouseenter)="showMenu = false">Special offers</a> 
+      </div>
+      <a class="nav-link" (mouseenter)="showMenu = false">Partner with us</a> 
+    </div>
+  </div>
+</p-sidebar>

@@ -1,23 +1,91 @@
-<div *ngIf="pageData" class="container-fluid background " [style.background-image]="img" >
-    <div class="container-fluid"></div>
-    <div class="main-Category container  " >
-        <h1 class="text-center display-3 heading">{{pageData.label}}</h1> 
-        <p-divider align="center" type="dashed"></p-divider>
+<div class="background" [style.background-image]="img">
+    
+ 
+<div class="header" >
+    <!--Content before waves-->
+    <div class="inner-header"  >
+      <div class="container landing"  >
+        <div class="row align-items-center">
+            <div class="col-sm-12 d-flex justify-content-start flex-column align-items-start ">
+              <div class="logo">
+                <img src="../../../assets/logo.png" class=" " alt="" srcset="">
+              </div>
+                <p class="title  display-2 ">{{pageData.label}} with <span style="text-decoration: underline; margin-bottom: 0.5rem;
+                  text-decoration-color:  rgb(0, 255, 200);">Marammatwala</span>   </p> 
+                <p class="sub-title display-6">{{pageData.despo}}</p>
+                <!-- <p class="text-white sub-title">Formed in 2021, MARAMMATWALA “Right 2 Repair” is a brand of Swadesi Indigene Technologies Private Limited. At Marammatwala, we are committed to being there for all your home service, repair and maintenance needs. We are custom service and solution provider</p> -->
+                <div class="curve-border ">
+                    <p class="title  display-5">Why Marammatwala Right 2 Repair?</p>
+                    <p class="sub-title display-6" > 
+                        <span *ngFor="let item of whyRepair">
+                            <i   class="pi pi-circle-fill" style="font-size: 0.8rem; color: #F9C000"></i> {{item}} <br>
+                        </span >
+                    </p>
+                </div>
+              </div>
+            <!-- <div class="col-sm-4 " data-aos="zoom-in" data-aos-duration="1500">
+                <div class="d-flex justify-content-start" >
+                    <p class="sub-title mt-1">Our service locations</p>
+                    <button   pButton pRipple type="button" icon="pi pi-map-marker" class="p-button-rounded mx-2 "></button> 
+                  </div>
+                 
+            </div> -->
+          </div>
     </div>
+    
+    </div>
+    
+    <!--Waves Container-->
+    <div>
+    <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+    <defs>
+    <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+    </defs>
+    <g class="parallax">
+    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+    <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+    </g>
+    </svg>
+    </div>
+    <!--Waves end-->
+    
+    </div>
+</div>
+    <!--Header ends-->
+    <!-- content -->
+<div class="content">
+    <div class="container services">
+        <span data-aos="fade-right" class="content-header"> <mat-icon>extension</mat-icon><p> Select Services</p> </span>
+        <div class="row">
+            <div class="col-sm-4" *ngFor="let item of [0,1,2,3,4]">
+                <div class="service-card ">
+                    <div class="card-bg" >
+                        <!-- [style.background-image]="'url('+item.image_url+')'" -->
+                        <div class="card-forground container">
+                        </div>
+                        <p class="sub-title h6">{{"Shoe leather replacement"}}</p>
+                        <button pButton pRipple type="button  " label="select provider" class="p-button-outlined add-button"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- content end -->
+
+
+
+
+
     <!-- <div class=" container  " >
         <p class=" h5 despo">{{pageData.despo}}</p> 
         <p-divider align="center" type="dashed"></p-divider>
     </div>
-    <div class="container curve-border ">
-         
-        <h5 class="text-white display-6 filter-shadow">{{pageData.content.question}}</h5>
-        <p class="text-white filter-shadow h5" > 
-            <span *ngFor="let item of pageData.content.points">
-                <i   class="pi pi-circle-fill" style="font-size: 0.8rem; color: #F9C000"></i> {{item}} <br>
-            </span >
-        </p>
- 
-    </div>
+    
     <div class="container">
         <p-divider type="dashed"></p-divider>
         <div class="d-flex justify-content-start p-4 align-items-center">
@@ -25,11 +93,11 @@
                 <i class="pi pi-users" style="font-size: 5rem; color:white"></i>
                 <p class="h2 assign text-center m-2"> {{pageData.assign.label}}</p>
             </div>
-            <p-button label="Book" icon="pi pi-check" (click)="onBookingProceed()"></p-button>
+             
         </div>
     </div> -->
      
-</div>
+ 
 <!--  
 <div class="container-fluid align-items-center d-flex flex-column justify-content-center ">
     <div class="container p-4 bg-white flex-column d-flex justify-content-center align-content-center pb-4">

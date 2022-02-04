@@ -1,6 +1,6 @@
 .dropbtn {
-    background-color: #04AA6D;
-    color: white;
+   
+    color: #dbe3ff;
     padding: 16px;
     font-size: 16px;
     border: none;
@@ -17,7 +17,6 @@
 .dropdown-menu-fluid{
    position: absolute;
    right: 0rem;
-   background-color: #04aa6d00;
    margin-top:0;
    z-index: 4;
    border-radius: 5px;
@@ -25,39 +24,51 @@
    max-width: 45rem;
  } 
 .dropdown-menu-comtent{
-  background-color: rgba(255, 255, 255, 0.966);
+  background-color: rgb(255, 255, 255);
   z-index: 4;
   padding: 1rem;
   padding-bottom: 3rem;
-  border-radius: 5px;
+  border-radius: 10px 0px 10px 10px;
+ 
 }
 .items{
   padding-top:1rem;
   cursor: pointer;
   text-decoration: none;
-  font-family: 'Questrial', sans-serif;
+  font-family: 'Poppins', sans-serif;;
   font-size: 100%;
-  color: rgb(53, 50, 36);
-  font-weight: 500;
+  color: #425ab9;
+  font-weight: 400;
   &:hover{
-    color:#f94f00
+    color:rgba(84,58,183,1)
   }
 }
 
+ 
 .nav-link{
-  color: rgb(241, 241, 241);
-  font-weight: 500;
-  filter: drop-shadow(5px 5px 10px #888888b4);
+  color: #dbe3ff;
+  font-weight: 400;
+  //filter: drop-shadow(5px 5px 10px #888888b4);
   font-size: 120%;
-  font-family: 'Questrial', sans-serif;
   cursor: pointer;
+  font-family: 'Poppins', sans-serif;;
+  border-radius: 10px 10px 10px 10px;
+  margin-left: 0.3rem;
   &:hover{
-      color:  rgb(53, 50, 36);
-      background-color:rgba(255, 255, 255, 0.966); 
+   // background-color: rgba(255, 255, 255, 0.966);
+    font-weight: 400;
+  //filter: drop-shadow(5px 5px 10px #888888b4);
+  font-size: 120%;
+    color: rgb(0, 255, 200);
+     
   }
 }
 .bg-white-c{
-  background-color: rgba(255, 255, 255, 0.966);
-  color:  rgb(53, 50, 36);
+  font-weight: 400;
+  //filter: drop-shadow(5px 5px 10px #888888b4);
+  font-size: 120%;
+//  background-color: rgba(255, 255, 255, 0.966);
+  color: rgb(0, 255, 200);
+  border-radius: 10px 10px 0px 0px;
 }
  

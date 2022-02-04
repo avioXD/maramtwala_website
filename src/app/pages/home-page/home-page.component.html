@@ -1,79 +1,146 @@
 
-<div class="container-fluid background ">
-  <div class="container landing  ">
-    <div class="row p-2  ">
-        <div class="col-sm-6 d-flex justify-content-start flex-column align-items-start">
-            <p class="display-3 hodding text-start ">Your satisfaction is our first priority</p>
-            <p class="text-white sub-title">Formed in 2021, MARAMMATWALA “Right 2 Repair” is a brand of Swadesi Indigene Technologies Private Limited. At Marammatwala, we are committed to being there for all your home service, repair and maintenance needs. We are custom service and solution provider</p>
-            <div class="select-city align-items-center d-flex flex-row ">
-              <div class="d-flex " >
-                <p class="hodding text-center h4 mx-3 mt-1">Our service locations</p>
-                <button (click)="onOALswitchOpen()" pButton pRipple type="button" icon="pi pi-map-marker" class="p-button-rounded "></button> 
+<div class="header">
+  <!--Content before waves-->
+  <div class="inner-header">
+    <div class="container landing">
+      <div class="row align-items-center">
+          <div class="col-sm-7 d-flex justify-content-start flex-column align-items-start ">
+            <div class="logo">
+              <img src="../../../assets/logo.svg" class=" " alt="" srcset="">
+            </div>
+              <p class="title  display-4 ">Right 2 Repair with <br> <span style="text-decoration: underline; margin-bottom: 0.5rem;
+                text-decoration-color:  rgb(0, 255, 200);">Marammatwala</span>   </p> 
+              <p class="sub-title">MARAMMATWALA “Right 2 Repair is a brand of Swadesi Indigene Technologies Private Limited</p>
+              <!-- <p class="text-white sub-title">Formed in 2021, MARAMMATWALA “Right 2 Repair” is a brand of Swadesi Indigene Technologies Private Limited. At Marammatwala, we are committed to being there for all your home service, repair and maintenance needs. We are custom service and solution provider</p> -->
+              <div class="d-flex justify-content-start" >
+                <p class="sub-title mt-1">Our service locations</p>
+                <button (click)="onOALswitchOpen()" pButton pRipple type="button" icon="pi pi-map-marker" class="p-button-rounded mx-2 "></button> 
               </div>
-              </div>
+            </div>
+          <div class="col-sm-5 d-flex justify-content-center align-items-center" data-aos="zoom-in" data-aos-duration="1500">
+            <img style="width:70%" class="hero-img" src="../../../assets/images/hero-img.png" alt="" srcset="">
           </div>
-        <div class="col-sm-6 d-flex justify-content-center align-items-center" data-aos="zoom-in" data-aos-duration="1500">
-          <img style="width:95%" src="../../../assets/images/XMLID_177_.svg" alt="" srcset="">
+        </div>
+  </div>
+  
+  </div>
+  
+  <!--Waves Container-->
+  <div>
+  <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+  <defs>
+  <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+  </defs>
+  <g class="parallax">
+  <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+  <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+  <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+  <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+  </g>
+  </svg>
+  </div>
+  <!--Waves end-->
+  
+  </div>
+  <!--Header ends-->
+  
+  <!--Content starts-->
+  <div class="content d-flex flex-column" id="services-div" >
+  <!-- services -->
+    <div class="container services"  >
+      <div class="" >
+          <span data-aos="fade-right" class="content-header"> <mat-icon>label_important</mat-icon><p>Services</p> </span>
+          <div class="row p-2 ">
+            <div *ngFor="let item of catagories; "  data-aos="zoom-in" data-aos-duration="1222"  class="col-sm-3 mt-2 flex-column d-flex align-items-center justify-content-center">
+                  <img style="width: 100%; max-width: 12rem;" class="rounded-circle shadow-sm p-3" src="{{item.image_url}}" alt="" srcset="">
+                  <!-- <p class="text-items text-center" (click)="onOpenMicroservice(item)">{{item.label}}</p> -->
+            </div>
+          </div>
+        </div>
+    </div>
+
+<!-- end services -->
+<!-- offers -->
+<div class="container pt-4" id="specialoffer-div"  >
+      <span data-aos="fade-right" class="content-header"> <mat-icon>loyalty</mat-icon><p>Exclusive Offers</p> </span>
+      <div class="d-block p-2 ">
+        <div *ngFor="let item of offers; let odd = odd; let even = even "  data-aos="zoom-in" data-aos-duration="1222"  class="row shadow-sm justify-content-center offers ">
+           
+          <div class="col-sm-5 mx-auto">
+            <p-image src="{{item.offer_image}}" alt="Image" width="100%" [preview]="true"></p-image>
+           </div>   
+           <!-- <img class="offerTag" src="{{item.offer_tag}}" alt="" srcset=""> -->
+           <div class="col-sm-7 mx-auto">
+            <a class="offer_title">{{item.offer_title}}</a>
+            <p class="offer_description">{{item.offer_desc}}</p>
+           </div>
+              
         </div>
       </div>
 </div>
+<!-- end offers -->
+<div class="container">
+  <div  *ngFor="let item of exclusiveTemp" class="">
+    <div class="container shadow-sm bg-white pt-4"  >
+          <div class=" " >
+            <span data-aos="fade-right" class="content-header"> <mat-icon>loyalty</mat-icon><p>{{item.exclusive_set_name}}</p> </span>
+              <!-- <p  class="h3 text-center"> <i data-aos-duration="1500"  data-aos="fade-right" style="color:  darkorange" class="pi pi-chevron-right"></i> {{item.exclusive_set_name}} <i data-aos-duration="1500"   data-aos="fade-left" style="color:  darkorange" class="pi pi-chevron-left"></i></p> -->
+              <div class="row">
+                <div  *ngFor="let s of item.service" class="col-sm-4 cursor-pointer">
+                  <div class="container-hover-image">
+                    <img src="{{s. ex_img}}" class="image"/>
+                    <div class="middle">
+                    <div class="text text-stat"> {{s.info}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+               
+            </div>
+          
+          </div>
+  </div>
 </div>
- 
-<div class="container-fluid"  >
-    <div class=" container w-75 pt-4">
-   
-      <div class="container  bg-white pt-4"  >
-            <div class=" container" >
-                <p  data-aos="fade-right" class="h3 text-left "> <i class="pi pi-cog"></i> Services</p>
-                <div class="row p-2 ">
-                  <div *ngFor="let item of catagories; i "  data-aos="zoom-in" data-aos-duration="1222"  class="col-sm-3 mt-2 d-flex flex-column align-items-center justify-content-center">
-                        <img style="width: 80%; max-width: 8rem;" class="rounded-circle" src="{{item.image_url}}" alt="" srcset="">
-                        <p class="items text-center" (click)="onOpenMicroservice(item)">{{item.label}}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-    </div>
- 
-    <div class="container w-75 my-4 ">
-      <p-divider type="dashed"></p-divider>
-        <div class="container    pt-2"  >
-            <div class="container" >
-                <p class="h3 text-left">Offers <i class="pi pi-tag"></i></p>
-                <div class="row p-2 ">
-                  <div *ngFor="let item of offers; i "  data-aos="zoom-in" data-aos-duration="1222"  class="col-sm-6 mt-2 d-flex flex-column p-2 bg-white align-items-center justify-content-center">
-                    <p-image src="{{item.offer_image}}" alt="Image" width="95%" [preview]="true"></p-image>
-                        
-                     <img class="offerTag" src="{{item.offer_tag}}" alt="" srcset="">
-                        <a class="offer_title">{{item.offer_title}}</a>
-                        <p class="offer_description">{{item.offer_desc}}</p>
-                  </div>
-                </div>
-                 
-              </div>
-            
-            </div>
-    </div>
+</div>
+  <!--Content ends-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="background">
+  <div class="layer">
     
-    <div  *ngFor="let item of exclusiveTemp" class="container w-75 pt-2 pb-4 ">
-      <p-divider type="dashed"></p-divider>
-      <div class="container  bg-white pt-4"  >
-            <div class="container" >
-                <p  class="h3 text-center"> <i data-aos-duration="1500"  data-aos="fade-right" style="color:  darkorange" class="pi pi-chevron-right"></i> {{item.exclusive_set_name}} <i data-aos-duration="1500"   data-aos="fade-left" style="color:  darkorange" class="pi pi-chevron-left"></i></p>
-                <div class="row p-2 ">
-                  <div *ngFor="let s of item.service; i "  data-aos="zoom-in" data-aos-duration="1222"  class="col-sm-4 mt-2 d-flex flex-column align-items-center justify-content-center">
-                    <p-image src="{{s. ex_img}}" alt="Image" width="95%" [preview]="true"></p-image>
-                        <p class="exclusive_desp">{{s.info}}</p>
-                  </div>
-                </div>
-                 
-              </div>
-            
-            </div>
-    </div>
-
 </div>
 
+  
+  <div class="container-fluid"  >
+      <div class=" container w-75 pt-4">
+     
+        
+      </div>
+   
+       
+      
+      
  
+
+    </div>
+  </div>
 <app-places ></app-places>
  

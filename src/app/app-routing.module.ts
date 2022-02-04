@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CartedItemsComponent } from './pages/carted-items/carted-items.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { ProfileComponent } from './pages/profile/profile.component';
@@ -20,8 +21,11 @@ const routes: Routes = [
     path: '404error', component: PageNotFoundComponent
   },
   {
-  path: 'services/:code', component: SubCategoryPageComponent
+    path: 'services', component: SubCategoryPageComponent,
   },
+  {
+  path: 'services/:code', component: SubCategoryPageComponent,
+   },
   {
     path: 'create-booking/:pageid', 
     component: BookingPageComponent,
@@ -39,6 +43,9 @@ const routes: Routes = [
   { 
     path: 'profile', component: ProfileComponent
   },
+  {
+    path: 'cart', component: CartedItemsComponent
+  }
   
 ];
 

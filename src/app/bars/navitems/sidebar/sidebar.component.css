@@ -1,0 +1,84 @@
+.dropdown {
+  position: relative;
+  display: inline-block;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+
+.nav-link {
+  color: #425ab9;
+  font-weight: 500;
+  font-size: 125%;
+  cursor: pointer;
+}
+
+.nav-link:hover {
+  color: #543ab7;
+  background-color: rgba(255, 255, 255, 0.966);
+}
+
+.dropdown-menu-comtent .items {
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 110%;
+  color: #425ab9;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+}
+
+.dropdown-menu-comtent .items:hover {
+  color: #543ab7;
+}
+
+.nav-user .search {
+  width: 100%;
+}
+
+.nav-user .login-text {
+  font-weight: 500;
+  color: #425ab9;
+  font-size: 125%;
+  font-family: 'Poppins', sans-serif;
+}
+
+.nav-user .login-text:hover {
+  color: #543ab7;
+}
+
+.nav-user .login-text .mat-icon {
+  font-size: 125% !important;
+  color: #425ab9;
+}
+
+.nav-user .cart {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.main-nav {
+  margin: 0;
+  padding: 0;
+  height: 6rem;
+  color: #dbe3ff;
+}
+
+.navbar-brand {
+  padding-left: 2rem;
+}
+
+.nav-search {
+  padding-right: 2rem;
+}
+
+.sub-nav {
+  z-index: 3;
+}
+
+.search {
+  width: 20rem;
+}
+/*# sourceMappingURL=sidebar.component.css.map */

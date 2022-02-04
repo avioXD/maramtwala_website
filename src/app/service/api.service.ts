@@ -24,32 +24,26 @@ export class ApiService {
   }
 
   /***API calls****** */
-  __getHomeCategory_API(): any{
+  _getHomeCategory_API(): any{
     if(!production){
-        this._http.get('../../assets/dummy_data/category.json').pipe(map(res=> res)).subscribe((result:any)=>{    
-          this._state.setCategoryTree(result)
-          return true
-        },(err)=>{
-          console.log(err)
-          return false
-        })
+        return this._http.get('../../assets/dummy_data/category.json').pipe(map((res:any)=> {
+          this._state.setCategoryTree(res)
+          console.log(res)
+          return res
+        }))
     }else{
-      this._http.get(BASE_URL+'/api/v1/category').pipe(map((res:any)=> {
-        if( res.status == 'success') return  res.data  
-          },(err)=>{
-            console.log(err)
-          })).subscribe((result:any)=>{    
-        this._state.setCategoryTree(result)
-        return true
-      },(err)=>{
-        console.log(err)
-        return false
-      })
+      return this._http.get(BASE_URL+'/api/v1/category').pipe(map((res:any)=> {
+        if( res.status == 'success') {
+          this._state.setCategoryTree(res.data )
+        }
+        console.log(res.data)
+        return  res.data  
+      }))
     }
   }
 
   _getSubCategoryContentById_API(pageid: string){
-    if(production){
+    if(!production){
        return this._http.get('../../assets/dummy_data/subcatagory_byid.json').pipe(map((res:any)=> 
         res.filter(x=> x.code == this.getDecryptString(pageid))[0]
        ))

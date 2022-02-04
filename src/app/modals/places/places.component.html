@@ -1,4 +1,10 @@
-<p-dialog  [modal]="true" (onHide)="onOALswitchClose()" [(visible)]="visible" [style]="{width: '50rem'}">
+<p-dialog   (onHide)="onHide()" [(visible)]="visible" [style]="{width: '50rem'}">
+    <!-- <span data-aos="fade-right" class="content-header"> 	<mat-icon> map</mat-icon><p>Places</p> </span> -->
+    <div class="pt-2">
+        <span class="d-flex justify-content-end p-2" style="position :absolute ; top: 1rem; left: 1rem ;z-index: 4;">
+            <span data-aos="fade-right" class="content-header"> 	<mat-icon> map</mat-icon><p>Places</p> </span>
+        </span>
+    </div>
     <div class="row p-2 ">
         <div *ngFor="let item of places ; i "   data-aos="zoom-in" data-aos-duration="1222"  class="col-sm-3 mt-2 d-flex flex-column align-items-center justify-content-center balls">
               <img style="width:5rem" class="rounded-circle" src="{{item.logo}}" alt="" srcset="">

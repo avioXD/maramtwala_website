@@ -1,23 +1,36 @@
-<div class="container-fluid main"  [ngClass]="scrolled? 'main': ''" >
-    <div class="main-nav d-flex align-items-center justify-content-between" data-aos-duration="1000"  data-aos="fade-down">
-        <div class="navbar-brand mx-4 d-flex align-items-end logo" href="#" >
-            <img src="../../../assets/logo.svg" class=" " alt="" srcset="">
-        </div>
-        <div class="nav-search d-flex align-items-center justify-content-between ">
-            <span class="p-input-icon-left">
-                <i class="pi pi-search"></i>
-                <input class="search" type="text" pInputText [(ngModel)]="value" placeholder="Search for service">         
-            </span>
-             <div [ngSwitch]="isLogin" class="mx-4 my-auto">
-                 <div *ngSwitchCase="true" > <p-avatar  class="p-3 cursor-pointer"  image="{{userData.profile_pic}}" pBadge value="4" shape="circle" severity="danger" size="large" [routerLink]="['profile']"></p-avatar> </div>
-                 <div *ngSwitchCase="false"><p  (click)="switchLoginSignup()" class="login-icon mt-3">Login / Signup</p></div>
-             </div>
-            
-             
+<div class="container-fluid d-flex flex-column justify-content-center main" >
+    <div class="container-fluid justify-content-between"  [ngClass]="scrolled? 'nav-scrolled': ''"   data-aos-duration="1000"  data-aos="fade-down" >
+        <div class="container d-flex align-items-center nav" [ngClass]="!responsive? 'justify-content-between': 'justify-content-center'"    >
+            <div class="logo"   >
+                <img *ngIf="scrolled" [routerLink]="['/']" src="../../../assets/logo.svg" class=" " alt="" srcset="">
+            </div>
+            <div *ngIf="!responsive" class="nav-user d-flex align-items-center justify-content-between ">
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input style="color: #dbe3ff!important" class="search" type="text" pInputText [(ngModel)]="value" placeholder="Search for service">         
+                </span>
+                 <div [ngSwitch]="isLogin" class="mx-4 my-auto d-flex align-items-center user">
+                     <div *ngSwitchCase="true" > <p-avatar  class="p-3 cursor-pointer"  image="{{userData.profile_pic? userData.profile_pic: '../../../assets/images/user.jpg' }}" pBadge  shape="circle" severity="danger" size="large" [routerLink]="['profile']"></p-avatar> </div>
+                     <p *ngSwitchCase="true" class="login-text cursor-pointer mt-3">{{userData.first_name}} {{userData.last_name}}</p>
+                     <mat-icon *ngSwitchCase="true" (click)="logOutUser()" [routerLink]="['/home']"  class="mx-2 cursor-pointer" pTooltip="logout" tooltipPosition="bottom">exit_to_app</mat-icon>
+                     <div *ngSwitchCase="false"><p (click)="switchLoginSignup()" class="login-text cursor-pointer mt-3">Login / Signup</p></div>
+                 </div>
+                 <div class="cart cursor-pointer mt-2" pBadge value="2" >
+                    <mat-icon  pTooltip="Carted service" tooltipPosition="bottom" >shopping_cart</mat-icon>
+                 </div>
+            </div>
+            <div *ngIf="responsive" class="burger-menu" (click)="openSideMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </div>
-    <div class="sub-nav d-flex align-items-center justify-content-end" data-aos-duration="1000"  data-aos="fade-down">
-          <app-service-options ></app-service-options>
-    </div>
+    <div class="container-fluid sub-nav  " [ngClass]="scrolled? 'sub-nav-on-scroll': ''"  data-aos-duration="1000"  data-aos="fade-down">
+        <div class="container d-flex align-items-center justify-content-end">
+            <app-service-options *ngIf="!responsive" ></app-service-options>
+        </div>
+  </div>
 </div>
+ 
  

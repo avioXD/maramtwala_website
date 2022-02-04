@@ -18,3 +18,6 @@ export const getSubcatagories_SwitchState = createSelector(switchService, (state
 export const getloginToSignup_SwitchState =  createSelector(switchService, (state)=>{
     return state.loginToSignUp
 })
+export const getSideMenu_SwitchState =  createSelector(switchService, (state)=>{
+    return state.sidemenu
+})

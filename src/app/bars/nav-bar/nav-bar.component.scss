@@ -1,66 +1,68 @@
 .main{
     position: fixed;
     z-index: 4;
-}
-.main-nav{
-    margin: 0;
-    padding: 0;
-    
-    background-color: #F9C000;
-    height: 6rem;
-    font-family: 'Questrial', sans-serif;;
-    color: white
-}
-.container-fluid{
-    margin: 0px;
-    padding: 0px;
-} 
-.navbar-brand{
-    padding-left: 2rem;
-}
-.nav-search{
-     padding-right: 2rem;
+    .nav-scrolled{
+        background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
+        
+        }
+    .sub-nav-on-scroll{
+        background: linear-gradient(60deg, rgba(83, 58, 183, 0.808) 0%, rgba(0, 171, 193, 0.808) 100%);
+        z-index: 3;
+        border-radius:  0px 0px 15px 15px  ;
+    }
+    .nav{
+        position: relative;
+        .logo{
+            left: 0px;
+            cursor: pointer; 
+            border-radius: 8px;
+            position: relative;
+            margin-top: 1rem;
+            min-width: 14rem;
+            min-height: 7rem;
+           img{
+               width: 12.5rem
+           }
+         .nav-user{
+            position: absolute;
+            right: 0;
+            padding-right: 2rem;
+            .search{
+                width:20rem
+            }
+        }
+    }
+    .burger-menu{
+        padding: 0.3rem;
+        position: absolute;
+        right: 2rem;
+        span{
+            display: block;
+             width: 33px;
+            height: 4px;
+            margin-bottom: 5px;
+            position: relative;
+            background: rgb(0, 255, 200);;
+            border-radius: 3px;
+        }
+
+    }
      
+   }
 }
-.logo{
-     margin-left: 1rem;
-     cursor: pointer;
-  
-    img{
-        width: 12.5rem
-    }
-    p{
-        font-family: 'Questrial', sans-serif;;
-        color: rgb(255, 255, 255);
-        font-weight: 600;
-    }
-}
+ .login-text{
+     color: #dbe3ff;
+     font-size: 120%;
+     font-family: 'Poppins', sans-serif;;
+     &:hover{
+        color: rgb(0, 255, 200);
+     }
+ }
+
  
-.sub-nav{
-     
-    background-color: #535034a1;
-    z-index: 3;
-}
  
-.active{
-    color: rgb(255, 102, 0);
-}
-.search{
-    width:20rem
-}
  
-.login-icon{
-    color: white;
-    font-weight: 500;
-    text-align: center;
-    margin-top: 5px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    &:hover{
-        font-weight: 600;
-        color: rgb(255, 104, 44);
-       // color: #f9bf00d8;
-         filter: drop-shadow(0px, 0px, 20px, rgb(248, 248, 248));
-    }
-}
+
+ 
+ 
  

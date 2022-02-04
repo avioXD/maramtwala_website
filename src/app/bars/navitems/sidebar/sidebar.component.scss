@@ -1,0 +1,84 @@
+ 
+  
+.dropdown {
+    position: relative;
+    display: inline-block;
+    align-self: flex-start;
+    width: max-content
+    
+}
+ 
+ 
+
+.nav-link{
+  color: #425ab9;
+  font-weight: 500;
+  font-size: 125%;
+  cursor: pointer;
+  &:hover{
+      color:  rgba(84,58,183,1);
+      background-color:rgba(255, 255, 255, 0.966); 
+  }
+}
+.dropdown-menu-comtent{
+  .items{
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 110%;
+      color: #425ab9;
+      font-weight: 500;
+       font-family: 'Poppins', sans-serif;;
+      &:hover{
+        color:rgba(84,58,183,1)
+      }
+    }
+}
+
+.nav-user{
+  .search{
+    width: 100%;
+  }
+  .login-text{
+    font-weight: 500;
+    color: #425ab9;
+    font-size: 125%;
+    font-family: 'Poppins', sans-serif;;
+    &:hover{
+       color: rgba(84,58,183,1)
+    } 
+    .mat-icon{
+      font-size: 125%!important;
+      color:#425ab9
+    }
+
+  }
+  .cart{
+    width: fit-content
+  }
+}
+ 
+ 
+.main-nav{
+  margin: 0;
+  padding: 0;
+//   background-color: #d8d8d8;
+  height: 6rem;
+  color: #dbe3ff
+}
+
+.navbar-brand{
+  padding-left: 2rem;
+}
+.nav-search{
+   padding-right: 2rem;
+}
+
+
+.sub-nav{
+
+  z-index: 3;
+}
+ 
+.search{
+  width:20rem
+}

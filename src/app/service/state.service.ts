@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../store/app.state';
-import { setAllProviders_Store, setCategorytree_Store, setfinalServicesContent, setServiceAvailablePlaces, setSubcategoryItems, } from '../store/Shared/shared.action';
-import { getAllProviders, getAvailableServicePlaces, getCategorytree, getFinalServicescontent, getSubcategoryList,  } from '../store/shared/shared.selector';
+import { setAllProviders_Store, setCategorytree_Store, setfinalServicesContent, setServiceAvailablePlaces, setSubcategoryItems, setSubcategoryPageContent, setWindowWidth, } from '../store/Shared/shared.action';
+import { getAllProviders, getAvailableServicePlaces, getCategorytree, getFinalServicescontent, getSubcategoryList, getSubcategorypageContent, getWindowWidth,  } from '../store/shared/shared.selector';
 import { AvailabePlacesState, CategoryTreeState, ProviderState, ServicesState, SubcategoryState, } from '../store/Shared/shared.state';
-import {  setLoginToSignupSwitch, setPlacesSwitch, setSignuploginSwitch, setSubCategoriesSwitch } from '../store/switch/switch.action';
+import {  setLoginToSignupSwitch, setPlacesSwitch, setSideMenuSwitch, setSignuploginSwitch, setSubCategoriesSwitch } from '../store/switch/switch.action';
 import * as CryptoJS from 'crypto-js'
 import { environment } from '../../environments/environment';
 import { setUser_exist, setUser_isLogin, setUser_location, setUser_token } from '../store/user/user.action';
 import { getUser } from '../store/user/user.selector';
 import { map, of } from 'rxjs';
 import  jwt_decode from 'jwt-decode';
-import {  getloginToSignup_SwitchState, getPlaces_SwitchState, getSignupLogin_SwitchState, getSubcatagories_SwitchState } from '../store/switch/switch.selector';
+import {  getloginToSignup_SwitchState, getPlaces_SwitchState, getSideMenu_SwitchState, getSignupLogin_SwitchState, getSubcatagories_SwitchState } from '../store/switch/switch.selector';
 
 @Injectable({
   providedIn: 'root'
@@ -58,6 +58,12 @@ export class StateService {
   getLoginToSignUp(){
     return this._store.select(getloginToSignup_SwitchState)
   }
+  setSwitchSideMenu(state: boolean){
+    return this._store.dispatch(setSideMenuSwitch({state: state}))
+  }
+  getSwitchSideMenu(){
+   return this._store.select(getSideMenu_SwitchState)
+  }
   /************** */
   ////
   /*****SHARED USER***** */
@@ -94,7 +100,7 @@ export class StateService {
      this.getUserToken().subscribe((res=>{
            user = this.getTokenObject(res)
      }))
-     return of(user)
+     return of(user.user)
   }
   isTokenValid(date: number){
       return new Date() <  new Date(date*1000) 
@@ -111,7 +117,7 @@ export class StateService {
      }
       return ''
   }
-
+   
 
   /****************** */
   /*******SHARED STORE*********** */
@@ -144,6 +150,18 @@ export class StateService {
   }
   getAvailablePlacesList(){
     return this._store.select(getAvailableServicePlaces)
+  }
+  setWindowSize(content: number){
+    return this._store.dispatch(setWindowWidth({state: content}))
+  }
+  getWindowSize( ){
+    return this._store.select(getWindowWidth)
+  }
+  setpageContent(content: any){
+    this._store.dispatch(setSubcategoryPageContent({state: content}))
+  }
+  getPageContent(){
+    return this._store.select(getSubcategorypageContent)
   }
 
 

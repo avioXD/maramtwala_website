@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 //primeng module
 import { PrimeNGModule } from './modules/prime-ng/prime-ng.module';
+import {MatIconModule} from '@angular/material/icon';
 //History: 
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { SwiperModule } from 'swiper/angular';
@@ -32,14 +33,14 @@ import { LoginComponent } from './modals/login-register/login/login.component';
 import { OtpsendComponent } from './modals/login-register/register/otpsend/otpsend.component';
 import { ServiceOptionsComponent } from './bars/navitems/service-options/service-options.component';
 import { SubCategoryPageComponent } from './pages/sub-category-page/sub-category-page.component';
-import { SubCategoriesComponent } from './modals/sub-categories/sub-categories.component';
+import { SubCategoriesComponent } from './bars/navitems/sidebar/sub-categories/sub-categories.component';
 import { ProviderInDetailComponent } from './pages/components/provider-in-detail/provider-in-detail.component';
 import { CartedItemsComponent } from './pages/carted-items/carted-items.component';
  
 import { BookingPageComponent } from './pages/sub-category-page/booking-page/booking-page.component';
 import { SelectProviderComponent } from './pages/sub-category-page/booking-page/select-provider/select-provider.component';
 import { SelectServiceComponent } from './pages/sub-category-page/booking-page/select-service/select-service.component';
-
+import { SidebarComponent } from './bars/navitems/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,8 @@ import { SelectServiceComponent } from './pages/sub-category-page/booking-page/s
     BookingPageComponent,
     SelectProviderComponent,
     SelectServiceComponent,
+    SidebarComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -74,6 +77,8 @@ import { SelectServiceComponent } from './pages/sub-category-page/booking-page/s
     RouterModule,
     SwiperModule,
     PrimeNGModule,
+    MatIconModule,
+  
     StoreModule.forRoot(appReducer),
  
   ],

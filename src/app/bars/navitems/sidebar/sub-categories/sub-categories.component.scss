@@ -1,0 +1,35 @@
+.items{
+    padding-top:1rem;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 100%;
+    font-weight: 500;
+    color: #425ab9;
+     
+    &:hover{
+       color:  rgba(84,58,183,1);
+    }
+  }
+  .text-sub{
+    font-family: 'Poppins', sans-serif;
+    font-size: 150%;
+    padding-left: 1rem;
+    color:  rgba(84,58,183,1);
+    position: fixed;
+     
+    top: 2rem
+  }
+  .content-header{
+    display: flex;
+    p{
+      font-size: 150%;
+      color: #6e8bff;
+      font-weight: 500;
+      font-family: 'Poppins', sans-serif;;
+    }
+    .mat-icon{
+      margin-top: 6px;
+      font-size: 150%;
+    }
+  }
