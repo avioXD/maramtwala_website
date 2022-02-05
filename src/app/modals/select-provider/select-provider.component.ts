@@ -29,7 +29,8 @@ export class SelectProviderComponent implements OnInit {
                 this.isLoading = false
                 this.isProFetched = true
           },(err)=>{ console.log("Error,",err);
-           this.isProFetched = true})
+           this.isProFetched = true
+           this.isLoading = false})
           })
         })
       }
@@ -39,6 +40,9 @@ export class SelectProviderComponent implements OnInit {
   onHide(){
     this.visible = false
     this._state.setSelectProviderModalState(false)
+    this.isProFetched = false
+    this.isLoading = false,
+    this.isProFetched = false
   }
   
 }

@@ -97,3 +97,17 @@
 svg path,svg rect{
     fill: #425ab9;
   }
+
+  .content-header{
+    display: flex;
+    p{
+      font-size: 150%;
+      color: #6e8bff;
+      font-weight: 500;
+      font-family: 'Poppins', sans-serif;;
+    }
+    .mat-icon{
+      margin-top: 6px;
+      font-size: 150%;
+    }
+  }
