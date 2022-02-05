@@ -10,13 +10,13 @@
               <div class="logo">
                 <img src="../../../assets/logo.png" class=" " alt="" srcset="">
               </div>
-                <p class="title  display-2 ">{{pageData.label}} with <span style="text-decoration: underline; margin-bottom: 0.5rem;
-                  text-decoration-color:  rgb(0, 255, 200);">Marammatwala</span>   </p> 
-                <p class="sub-title display-6">{{pageData.despo}}</p>
+                <p class="title  display-2 ">{{pageData.label}} with <span style="text-decoration: none; margin-bottom: 0.5rem;
+                  text-decoration-color:  rgb(0, 255, 200); color:rgb(0, 255, 200) ">Marammatwala</span>   </p> 
+                <p class="sub-title h4">{{pageData.despo}}</p>
                 <!-- <p class="text-white sub-title">Formed in 2021, MARAMMATWALA “Right 2 Repair” is a brand of Swadesi Indigene Technologies Private Limited. At Marammatwala, we are committed to being there for all your home service, repair and maintenance needs. We are custom service and solution provider</p> -->
                 <div class="curve-border ">
                     <p class="title  display-5">Why Marammatwala Right 2 Repair?</p>
-                    <p class="sub-title display-6" > 
+                    <p class="sub-title h4 " > 
                         <span *ngFor="let item of whyRepair">
                             <i   class="pi pi-circle-fill" style="font-size: 0.8rem; color: #F9C000"></i> {{item}} <br>
                         </span >
@@ -59,15 +59,39 @@
 <div class="content">
     <div class="container services">
         <span data-aos="fade-right" class="content-header"> <mat-icon>extension</mat-icon><p> Select Services</p> </span>
+        <div *ngIf="!servicesList" class="loader loader--style8" title="7">
+            <svg fill="#7891f7" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+               width="48px" height="60px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+              <rect fill="#7891f7" x="0" y="10" width="4" height="10" fill="#333" opacity="0.2">
+                <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0s" dur="0.6s" repeatCount="indefinite" />
+                <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0s" dur="0.6s" repeatCount="indefinite" />
+                <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0s" dur="0.6s" repeatCount="indefinite" />
+              </rect>
+              <rect  fill="#7891f7" x="8" y="10" width="4" height="10" fill="#333"  opacity="0.2">
+                <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.15s" dur="0.6s" repeatCount="indefinite" />
+                <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.15s" dur="0.6s" repeatCount="indefinite" />
+                <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.15s" dur="0.6s" repeatCount="indefinite" />
+              </rect>
+              <rect  fill="#7891f7" x="16" y="10" width="4" height="10" fill="#333"  opacity="0.2">
+                <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.3s" dur="0.6s" repeatCount="indefinite" />
+                <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.3s" dur="0.6s" repeatCount="indefinite" />
+                <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.3s" dur="0.6s" repeatCount="indefinite" />
+              </rect>
+            </svg>
+        </div>
+
         <div class="row">
-            <div class="col-sm-4" *ngFor="let item of [0,1,2,3,4]">
+            <div class="col-sm-4" *ngFor="let item of servicesList">
                 <div class="service-card ">
                     <div class="card-bg" >
                         <!-- [style.background-image]="'url('+item.image_url+')'" -->
                         <div class="card-forground container">
                         </div>
-                        <p class="sub-title h6">{{"Shoe leather replacement"}}</p>
-                        <button pButton pRipple type="button  " label="select provider" class="p-button-outlined add-button"></button>
+                        <div class="d-flex service-label">
+                            <mat-icon>card_travel</mat-icon>
+                            <p class="sub-title h6 my-1"> {{item.label}}</p>
+                        </div>
+                        <button pButton pRipple type="button  " label="select provider" class="p-button-outlined add-button" (click)=" onBookingProceed(item.code)" ></button>
                     </div>
                 </div>
             </div>
@@ -156,3 +180,4 @@
 
 
  -->
+<router-outlet></router-outlet>

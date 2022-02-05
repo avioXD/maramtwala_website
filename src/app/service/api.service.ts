@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { map } from 'rxjs';
 import { StateService } from './state.service';
 import * as CryptoJS from 'crypto-js'
+import { ProviderState } from '../store/shared/shared.state';
 
 const BASE_URL = environment.apiKey
 const production = false
@@ -25,10 +26,10 @@ export class ApiService {
 
   /***API calls****** */
   _getHomeCategory_API(): any{
-    if(!production){
+    if(production){
         return this._http.get('../../assets/dummy_data/category.json').pipe(map((res:any)=> {
           this._state.setCategoryTree(res)
-          console.log(res)
+        //  console.log(res)
           return res
         }))
     }else{
@@ -43,7 +44,7 @@ export class ApiService {
   }
 
   _getSubCategoryContentById_API(pageid: string){
-    if(!production){
+    if(production){
        return this._http.get('../../assets/dummy_data/subcatagory_byid.json').pipe(map((res:any)=> 
         res.filter(x=> x.code == this.getDecryptString(pageid))[0]
        ))
@@ -54,32 +55,19 @@ export class ApiService {
   }
   }
 
-  __getFinalSubCategoryServiceList_API(pageid:string): void{
-    if(production){
-      this._http.get('../../assets/dummy_data/subCategory_byid.json').pipe(map(res=> res)).subscribe((result:any)=>{    
-        this._state.setFinalServicesList(result)
-        return true
-      },(err)=>{
-        console.log(err)
-        return false
-      })
+  _getFinalSubCategoryServiceList_API(pageid:string){
+  if(production){
+      return this._http.get('../../assets/dummy_data/subCategory_byid.json').pipe(map(res=> res))
   }else{
-   this._http.get(BASE_URL+'/api/v1/service/'+this.getDecryptString(pageid)).pipe(map((res:any)=> {
+    return this._http.get(BASE_URL+'/api/v1/service/'+this.getDecryptString(pageid)).pipe(map((res:any)=> {
       if( res.status == 'success') return  res.data  
-        },(err)=>{
-          console.log(err)
-        })).subscribe((result:any)=>{    
-      this._state.setFinalServicesList(result)
-      return true
-    },(err)=>{
-      console.log(err)
-      return false
-    })
+      return res
+    })) 
   }
   }
 
   _getServiceAvailablePlaces_API(){
-    if(!production){
+    if(production){
       return this._http.get('../../assets/dummy_data/places.json').pipe(map(res=> res)) 
     }else{
      return this._http.get(BASE_URL+'/api/v1/places').pipe(map((res:any)=> {
@@ -94,27 +82,27 @@ export class ApiService {
    }
   }
 
-  __getProviderByServiceCode_API(content:{servicecode: string , location: {lat: number, lon: number}}){
+__getProviderByServiceCode_API(content:{servicecode: string , location: {lat: number, lon: number}}){
       if(production){
         return this._http.get('../../assets/dummy_data/Providers/AllProviders.json')
       }else{
        return this._http.post(BASE_URL+'/api/v1/provider', content.location ).pipe(map((res:any)=>{
-          if(res.status == 'success'){
+        if(res.status == 'success'){
            return res.data
           }else{
-            throw new Error("Failed");
+           return res.status
           }
-    },(err)=>{
-      console.log(err)
-      return false
-    })).subscribe((result)=>{
-         this._state.setAllProvidersList(result)
+    })).subscribe((result:any[])=>{
+         let pos = result.filter(x=> x.code = this._state.getDecryptString(content.servicecode))
+         this._state.setAllProvidersList(pos)
          return true
     },(err)=>{
       console.log(err)
     })
       }
   }
+
+  //not implimented in back: 
   _getProviderByPageId_API(params: string){
     const pagecode = this.getDecryptString(params)
     if(production){

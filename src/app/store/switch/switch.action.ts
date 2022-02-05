@@ -30,3 +30,7 @@ export const setSideMenuSwitch = createAction(
     '[shared state] sidemenu',
     props<{state: boolean}>()
 )
+export const setSelectProviderSwitch = createAction(
+    '[shared state] select provider',
+    props<{state: boolean}>()
+)

@@ -1,0 +1,45 @@
+<p-dialog  [showHeader]="false"  (onHide)="onHide()" [(visible)]="visible" [style]="{width: '80%'}">
+    <div class="pt-2">
+        <span class="d-flex justify-content-end p-2" style="position :absolute ; top: 0px; right: 1rem ;z-index: 4;">
+           <button pButton (click)="onHide()" pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-text "></button>
+        </span>
+    </div>
+    <div class="row" *ngFor="let item of [providers]">
+         <div class="provider-card">
+        <div class="booking ">
+            <div class="on-bbok align-content-center">
+                <div class="d-flex"> 
+                    <mat-icon>assignment_ind</mat-icon>
+                    <p class="title h7">Suresh Kumar Choudhury</p>
+                </div>
+                <div class="d-flex"> 
+                    <mat-icon>loyalty</mat-icon>
+                    <p class="title h7">Charges: 170/-</p>
+                </div>
+                <div class="d-flex">
+                    <mat-icon>track_changes</mat-icon>
+                    <p class="title h7">7km away </p>
+                </div> 
+                <button  class="p-button-outlined mx-auto  my-2 " pRipple pButton label="book"></button>
+            </div>
+        </div>
+        <div  alt="" class="provider-dp-bg" [style.background-image]="'url('+'../../../assets/images/provider_dp.jpg'+')'">
+            <div class="content">
+                <div class="price-tag d-flex">
+                    <mat-icon style="color:#425ab9 " >loyalty</mat-icon>
+                    <p class="h5 title text-start">  200/-</p>
+                </div>
+                <div class="distance d-flex  ">
+                    <mat-icon style="color:#425ab9 ">track_changes</mat-icon>
+                    <p class="h6 title text-start" >{{''+getDistance(28.6, 26.5)}} km away</p>
+                </div>
+                <div class="details">
+                    <p class="name text-center title h5">Suresh Kumar Choudhury <br></p>
+                </div>
+           </div>
+           
+        </div>
+    </div>
+    </div>
+     
+</p-dialog>

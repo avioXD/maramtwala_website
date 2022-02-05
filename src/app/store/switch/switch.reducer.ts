@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store"
-import {   setLoginToSignupSwitch, setPlacesSwitch, setSideMenuSwitch, setSignuploginSwitch, setSubCategoriesSwitch } from "./switch.action"
+import {   setLoginToSignupSwitch, setPlacesSwitch, setSelectProviderSwitch, setSideMenuSwitch, setSignuploginSwitch, setSubCategoriesSwitch } from "./switch.action"
 import { switch_init } from "./switch.state"
 
 
@@ -35,6 +35,12 @@ const _switchReducer = createReducer(
         return {
             ...state,
             sidemenu: action.state
+        }
+    }),
+    on(setSelectProviderSwitch,(state, action)=>{
+        return {
+            ...state,
+            selectProvider: action.state
         }
     }),
     

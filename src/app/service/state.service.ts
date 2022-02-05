@@ -4,14 +4,16 @@ import { AppState } from '../store/app.state';
 import { setAllProviders_Store, setCategorytree_Store, setfinalServicesContent, setServiceAvailablePlaces, setSubcategoryItems, setSubcategoryPageContent, setWindowWidth, } from '../store/Shared/shared.action';
 import { getAllProviders, getAvailableServicePlaces, getCategorytree, getFinalServicescontent, getSubcategoryList, getSubcategorypageContent, getWindowWidth,  } from '../store/shared/shared.selector';
 import { AvailabePlacesState, CategoryTreeState, ProviderState, ServicesState, SubcategoryState, } from '../store/Shared/shared.state';
-import {  setLoginToSignupSwitch, setPlacesSwitch, setSideMenuSwitch, setSignuploginSwitch, setSubCategoriesSwitch } from '../store/switch/switch.action';
+import {  setLoginToSignupSwitch, setPlacesSwitch, setSelectProviderSwitch, setSideMenuSwitch, setSignuploginSwitch, setSubCategoriesSwitch } from '../store/switch/switch.action';
 import * as CryptoJS from 'crypto-js'
 import { environment } from '../../environments/environment';
 import { setUser_exist, setUser_isLogin, setUser_location, setUser_token } from '../store/user/user.action';
 import { getUser } from '../store/user/user.selector';
 import { map, of } from 'rxjs';
 import  jwt_decode from 'jwt-decode';
-import {  getloginToSignup_SwitchState, getPlaces_SwitchState, getSideMenu_SwitchState, getSignupLogin_SwitchState, getSubcatagories_SwitchState } from '../store/switch/switch.selector';
+import {  getloginToSignup_SwitchState, getPlaces_SwitchState, getSelectProvider_SwitchState, getSideMenu_SwitchState, getSignupLogin_SwitchState, getSubcatagories_SwitchState } from '../store/switch/switch.selector';
+import { ActivatedRoute } from '@angular/router';
+import { LocationState } from '../store/user/user.state';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +21,8 @@ import {  getloginToSignup_SwitchState, getPlaces_SwitchState, getSideMenu_Switc
 export class StateService {
 
   constructor(
-    private _store: Store<AppState>
+    private _store: Store<AppState>,
+    private _activeRoute: ActivatedRoute
     ) { }
 
     getEncryptString(message: string){
@@ -64,6 +67,12 @@ export class StateService {
   getSwitchSideMenu(){
    return this._store.select(getSideMenu_SwitchState)
   }
+  setSelectProviderModalState(state: boolean){
+    return this._store.dispatch(setSelectProviderSwitch({state: state}))
+  }
+  getSelectProviderModalState(){
+    return this._store.select(getSelectProvider_SwitchState)
+  }
   /************** */
   ////
   /*****SHARED USER***** */
@@ -89,8 +98,12 @@ export class StateService {
     this._store.dispatch(setUser_exist({state: Boolean(result)}))
     return this._store.select(getUser).pipe(map(res=> res.isuserexist))
   }
-  setUserCurrentLocation(content: {lat: number, lon: number}){
-    return this._store.dispatch(setUser_location({state: content}))
+  setUserCurrentLocation(content: LocationState){
+    this._store.dispatch(setUser_location({state: content}))
+     
+  }
+  getUserCurrentLocation(){
+    return this._store.select(getUser).pipe(map(res=> res.location))
   }
   getTokenObject(token: string): any{
     return jwt_decode(token)
@@ -164,6 +177,54 @@ export class StateService {
     return this._store.select(getSubcategorypageContent)
   }
 
+  /*******Get distance between two place******** */
+  getDistanceBetweenByLatLon(content:{user:{lat:number, lon: number},provider:{lat: number, lon: number}}){
+     // The math module contains a function
+        // named toRadians which converts from
+        // degrees to radians.
+        let lat1 = content.user.lat
+        let lat2 = content.provider.lat
+        let lon1 = content.user.lon
+        let lon2 = content.provider.lon
 
+
+        lon1 =  lon1 * Math.PI / 180;
+        lon2 = lon2 * Math.PI / 180;
+        lat1 = lat1 * Math.PI / 180;
+        lat2 = lat2 * Math.PI / 180;
+   
+        // Haversine formula
+        let dlon = lon2 - lon1;
+        let dlat = lat2 - lat1;
+        let a = Math.pow(Math.sin(dlat / 2), 2)
+                 + Math.cos(lat1) * Math.cos(lat2)
+                 * Math.pow(Math.sin(dlon / 2),2);
+               
+        let c = 2 * Math.asin(Math.sqrt(a));
+   
+        // Radius of earth in kilometers. Use 3956
+        // for miles
+        let r = 6371;
+   
+        // calculate the result
+        return(c * r);
+  }
+  getCurrentGeoLocation(){
+    if(navigator.geolocation){
+      return navigator.geolocation.getCurrentPosition((position)=>{
+        if(position){
+          let location : LocationState = {
+            lat: position.coords.latitude,
+            lon: position.coords.longitude
+          }
+          this.setUserCurrentLocation(location)
+        }
+      return true
+      })
+    }else{
+      return false
+    }
+  }
+  
 
 }

@@ -36,11 +36,8 @@ import { SubCategoryPageComponent } from './pages/sub-category-page/sub-category
 import { SubCategoriesComponent } from './bars/navitems/sidebar/sub-categories/sub-categories.component';
 import { ProviderInDetailComponent } from './pages/components/provider-in-detail/provider-in-detail.component';
 import { CartedItemsComponent } from './pages/carted-items/carted-items.component';
- 
-import { BookingPageComponent } from './pages/sub-category-page/booking-page/booking-page.component';
-import { SelectProviderComponent } from './pages/sub-category-page/booking-page/select-provider/select-provider.component';
-import { SelectServiceComponent } from './pages/sub-category-page/booking-page/select-service/select-service.component';
 import { SidebarComponent } from './bars/navitems/sidebar/sidebar.component';
+import { SelectProviderComponent } from './modals/select-provider/select-provider.component';
 
 @NgModule({
   declarations: [
@@ -62,10 +59,8 @@ import { SidebarComponent } from './bars/navitems/sidebar/sidebar.component';
     SubCategoriesComponent,
     ProviderInDetailComponent,
     CartedItemsComponent,
-    BookingPageComponent,
-    SelectProviderComponent,
-    SelectServiceComponent,
     SidebarComponent,
+    SelectProviderComponent,
     
   ],
   imports: [

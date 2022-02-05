@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "",
-    "sources": [
-        "select-provider.component.scss"
-    ],
-    "names": [],
-    "file": "select-provider.component.css"
-}

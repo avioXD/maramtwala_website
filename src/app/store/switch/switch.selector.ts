@@ -21,3 +21,7 @@ export const getloginToSignup_SwitchState =  createSelector(switchService, (stat
 export const getSideMenu_SwitchState =  createSelector(switchService, (state)=>{
     return state.sidemenu
 })
+export const getSelectProvider_SwitchState =  createSelector(switchService, (state)=>{
+    return state.selectProvider
+})
+

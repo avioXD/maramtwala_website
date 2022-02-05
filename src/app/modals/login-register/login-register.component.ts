@@ -11,6 +11,7 @@ import { StateService } from 'src/app/service/state.service';
   styleUrls: ['./login-register.component.scss']
 })
 export class LoginRegisterComponent implements OnInit {
+  
   visible!:boolean;
   isLoginToSignup: boolean = true
   constructor(
@@ -21,6 +22,9 @@ export class LoginRegisterComponent implements OnInit {
   ngOnInit(): void {
       this._state.getSwitch_signuplogin().subscribe((res: boolean)=>{
         this.visible = res
+        if(!res){
+          
+        }
       })
       this._state.getLoginToSignUp().subscribe((res: boolean)=>{
         this.isLoginToSignup = res

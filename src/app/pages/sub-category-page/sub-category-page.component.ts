@@ -1,8 +1,10 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
 import { PrimeIcons} from 'primeng/api';
 import { ApiService } from 'src/app/service/api.service';
 import { StateService } from 'src/app/service/state.service';
+import { ServicesState } from 'src/app/store/shared/shared.state';
 
 @Component({
   selector: 'app-sub-category-page',
@@ -11,22 +13,29 @@ import { StateService } from 'src/app/service/state.service';
 })
 export class SubCategoryPageComponent implements OnInit {
   constructor(
-     private _route:ActivatedRoute,
+     
      private _state: StateService,
-     private _api: ApiService
+     private _api: ApiService,
+      private _activeRouter: ActivatedRoute
      ) { }
   howWeWork!: any[];
   img: string = ""
   pageData!: any
   whyRepair: string[]
-  pagecode!: string
+  pagecode!: string;
+  servicesList: ServicesState[]  
       ngOnInit(): void {
-        this._route.paramMap.subscribe(paraMap=>{
+        this._activeRouter.paramMap.subscribe(paraMap=>{
             this.pagecode = paraMap.get('code')
             this._api._getSubCategoryContentById_API(this.pagecode).subscribe(res=>{
               // console.log("pageData",res)
                this.pageData = res 
                this.img = `url(${this.pageData.image_url})`
+               this._api._getFinalSubCategoryServiceList_API(this.pagecode).subscribe((res: any)=>{
+                  this.servicesList = res
+               },(err)=>{
+                 console.log(err)
+               })
              })
        
        })
@@ -53,12 +62,11 @@ export class SubCategoryPageComponent implements OnInit {
     
   }
 
-  onBookingProceed(){
-        
+  onBookingProceed(sid: string){
+    this._api.__getProviderByServiceCode_API({servicecode: this._state.getEncryptString(sid), location:{ lat: 0, lon: 0}})
+    this._state.setSelectProviderModalState(true)
   }
-random(number){
-  return Math.random()
-}
+   
 
 
 }

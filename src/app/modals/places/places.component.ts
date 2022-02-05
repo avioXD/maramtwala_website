@@ -28,6 +28,7 @@ export class PlacesComponent implements OnInit {
     
   }
   onHide(){
+    this.visible = false
     this._state.setSwitch_places(false)
    }
 

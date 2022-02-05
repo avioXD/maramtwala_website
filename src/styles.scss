@@ -6,6 +6,7 @@
  
  
 body{
+    transition: all 0.4s;
     padding: 0px;
     margin: 0px;
      
@@ -21,7 +22,7 @@ body{
         font-family: 'Poppins', sans-serif;
     }
     .sub-title{
-    font-size: 150%;
+   // font-size: 150%;
     color: #dbe3ff;
     font-weight:400;
   //  filter: drop-shadow(5px 5px 4px #00000067);
@@ -53,14 +54,14 @@ body{
     }
     mat-icon{
         font-size: 2rem;
-        color: #dbe3ff;
+        color: #c2cfff;
         margin: 0;
         margin-left: 0.2rem;
         margin-right: 0.2rem;
         padding: 0;
         transition: all 0.3s;
         &:hover{
-            color: #b4c3fd;
+            color: #425ab9;
         }
     }
     input,textarea{
@@ -127,6 +128,14 @@ body{
         background: transparent;
         border: transparent;
       }
+      .p-dialog-content{
+        border-radius: 0px !important;
+        background-color: #f1f4fc !important;
+    }
+    .p-sidebar{
+        background-color: #f1f4fc !important;
+    }
+       
 }  
 
 
@@ -151,9 +160,6 @@ html{
 
  .p-timeline-event-opposite{
     flex: 0 !important;
-}
-body .p-dialog-content{
-    border-radius: 0px !important;
 }
  
 html, body { height: 100%; }

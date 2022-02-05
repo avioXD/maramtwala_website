@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { SelectProviderComponent } from './modals/select-provider/select-provider.component';
 import { CartedItemsComponent } from './pages/carted-items/carted-items.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { BookingPageComponent } from './pages/sub-category-page/booking-page/booking-page.component';
-import { SelectProviderComponent } from './pages/sub-category-page/booking-page/select-provider/select-provider.component';
-import { SelectServiceComponent } from './pages/sub-category-page/booking-page/select-service/select-service.component';
 import { SubCategoryPageComponent } from './pages/sub-category-page/sub-category-page.component';
 
 
@@ -24,21 +22,8 @@ const routes: Routes = [
     path: 'services', component: SubCategoryPageComponent,
   },
   {
-  path: 'services/:code', component: SubCategoryPageComponent,
-   },
-  {
-    path: 'create-booking/:pageid', 
-    component: BookingPageComponent,
-    children: [
-      {
-        path: 'select-service',
-        component: SelectServiceComponent,
-      },
-      {
-        path: 'select-provider',
-        component:  SelectProviderComponent
-      }
-    ]
+    path: 'services/:code', component: SubCategoryPageComponent,
+       
   },
   { 
     path: 'profile', component: ProfileComponent

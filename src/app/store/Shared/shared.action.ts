@@ -33,3 +33,4 @@ export const setSubcategoryPageContent = createAction(
     '[Shared Storage] store subcategorypagecontent  ',
     props<{state: number}>()
 )
+

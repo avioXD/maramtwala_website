@@ -3,12 +3,16 @@
   <div >
     <a class="nav-link" (mouseenter)="showMenu = false" [routerLink]="['/']">Home</a> 
   </div>
-  <div class="dropdown  " (mouseenter)="showMenu = true"  >
-      <a class="nav-link" [ngClass]="showMenu? 'bg-white-c ': '' ">Services</a> 
-      <div *ngIf="showMenu" class="dropdown-menu-fluid container d-flex justify-content-end  " (mouseleave)="showMenu=false" >
-        <div class="container dropdown-menu-comtent shadow row">
-            <div  *ngFor="let item of Category_names;i " class="col-sm-6 items">
-              <a class="items " (click)="onCategorySelect(item)" > <span pRipple> {{item.label}}</span> </a>  
+  <div class="dropdown" (mouseenter)="showMenu = true"  >
+      <a class="nav-link"  [ngClass]="{'bg-white-c': showMenu}"  (mouseover)="showMenu=true">Services</a> 
+      <div *ngIf="showMenu" class="dropdown-menu-fluid  d-flex justify-content-end  " (mouseleave)="showMenu=false" >
+        <div class="dropdown-menu-comtent shadow row " (mouseover)="showMenu=true">
+            <div  *ngFor="let item of Category_names;i " class="col-sm-6 my-1">
+              <div class="d-flex my-2">
+                <mat-icon>pages</mat-icon>
+                <a class="items " (click)="onCategorySelect(item)" > <span pRipple>  {{item.label}}   </span> </a>  
+              </div>
+              
             </div>
         </div>
       </div>

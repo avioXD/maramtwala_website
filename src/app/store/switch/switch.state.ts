@@ -4,7 +4,8 @@ export interface SwitchState{
     places: boolean,
     subcatagories: boolean,
     loginToSignUp: boolean,
-    sidemenu: boolean
+    sidemenu: boolean,
+    selectProvider: boolean
 }
 
 export const switch_init: SwitchState = {
@@ -12,5 +13,6 @@ export const switch_init: SwitchState = {
     places: false,
     subcatagories: false,
     loginToSignUp: true,
-    sidemenu: false
+    sidemenu: false,
+    selectProvider: false
 }
