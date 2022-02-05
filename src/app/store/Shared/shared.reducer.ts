@@ -1,4 +1,4 @@
-import { setCategorytree_Store, setAllProviders_Store, setfinalServicesContent, setServiceAvailablePlaces, setSubcategoryItems, setWindowWidth, setSubcategoryPageContent } from "./shared.action"
+import { setCategorytree_Store, setAllProviders_Store, setfinalServicesContent, setServiceAvailablePlaces, setSubcategoryItems, setWindowWidth, setSubcategoryPageContent, setSelectedServiceCode } from "./shared.action"
 import { createReducer, on } from '@ngrx/store';
 import { appSharedStore_init } from "./shared.state";
 
@@ -48,6 +48,12 @@ const _selectSharedStoreReducer = createReducer(
         return {
             ...state,
             subcatagory_page_content: action.state
+        }
+    }),
+    on(setSelectedServiceCode, (state,action)=>{
+        return {
+            ...state,
+            selected_service_code: action.state
         }
     }),
 

@@ -48,7 +48,8 @@ export interface ProviderState{
     id: string,
     code: string,
     label: string,
-    price: number
+    price: number,
+    distance: number
 }
 
 /*******ROOT***** */
@@ -59,7 +60,8 @@ export interface AppSharedStoreState{
     available_service_places: AvailabePlacesState[],
     subCategoryList: SubcategoryState[],
     window_width: number,
-    subcatagory_page_content: any
+    subcatagory_page_content: any,
+    selected_service_code: string
 }
 export const appSharedStore_init:AppSharedStoreState = {
     category_tree: [],
@@ -68,5 +70,6 @@ export const appSharedStore_init:AppSharedStoreState = {
     available_service_places: [],
     subCategoryList: [],
     window_width: 250000,
-    subcatagory_page_content: {}
+    subcatagory_page_content: {},
+    selected_service_code: ''
 }

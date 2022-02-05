@@ -16,13 +16,8 @@ const production = false
 export class ApiService {
  
   constructor(private _http: HttpClient, private _state: StateService) { }
-  getEncryptString(message: string){
-    return  CryptoJS.AES.encrypt(message, environment.web_salt).toString();
-  }
-  getDecryptString(message: string){
-    const bytes  = CryptoJS.AES.decrypt(message, environment.web_salt);
-    return bytes.toString(CryptoJS.enc.Utf8);
-  }
+ 
+   
 
   /***API calls****** */
   _getHomeCategory_API(): any{
@@ -46,10 +41,10 @@ export class ApiService {
   _getSubCategoryContentById_API(pageid: string){
     if(production){
        return this._http.get('../../assets/dummy_data/subcatagory_byid.json').pipe(map((res:any)=> 
-        res.filter(x=> x.code == this.getDecryptString(pageid))[0]
+        res.filter(x=> x.code == this._state.getDecryptString(pageid))[0]
        ))
   }else{
-     return this._http.get(BASE_URL+'/api/v1/subcategory/content/'+this.getDecryptString(pageid)).pipe(map((res:any)=> res.status == 'success'? res.data: res,(err)=>{
+     return this._http.get(BASE_URL+'/api/v1/subcategory/content/'+this._state.getDecryptString(pageid)).pipe(map((res:any)=> res.status == 'success'? res.data: res,(err)=>{
             console.log(err)
         }))
   }
@@ -59,7 +54,7 @@ export class ApiService {
   if(production){
       return this._http.get('../../assets/dummy_data/subCategory_byid.json').pipe(map(res=> res))
   }else{
-    return this._http.get(BASE_URL+'/api/v1/service/'+this.getDecryptString(pageid)).pipe(map((res:any)=> {
+    return this._http.get(BASE_URL+'/api/v1/service/'+this._state.getDecryptString(pageid)).pipe(map((res:any)=> {
       if( res.status == 'success') return  res.data  
       return res
     })) 
@@ -67,7 +62,7 @@ export class ApiService {
   }
 
   _getServiceAvailablePlaces_API(){
-    if(production){
+    if(!production){
       return this._http.get('../../assets/dummy_data/places.json').pipe(map(res=> res)) 
     }else{
      return this._http.get(BASE_URL+'/api/v1/places').pipe(map((res:any)=> {
@@ -82,29 +77,23 @@ export class ApiService {
    }
   }
 
-__getProviderByServiceCode_API(content:{servicecode: string , location: {lat: number, lon: number}}){
+ _getProviderByServiceCode_API(content: {lat: number, lon: number, code: string}){
       if(production){
         return this._http.get('../../assets/dummy_data/Providers/AllProviders.json')
       }else{
-       return this._http.post(BASE_URL+'/api/v1/provider', content.location ).pipe(map((res:any)=>{
+       return this._http.post(BASE_URL+'/api/v1/provider', content ).pipe(map((res:any)=>{
         if(res.status == 'success'){
-           return res.data
+          return res.data
           }else{
            return res.status
           }
-    })).subscribe((result:any[])=>{
-         let pos = result.filter(x=> x.code = this._state.getDecryptString(content.servicecode))
-         this._state.setAllProvidersList(pos)
-         return true
-    },(err)=>{
-      console.log(err)
-    })
-      }
+    }))
+  }
   }
 
   //not implimented in back: 
   _getProviderByPageId_API(params: string){
-    const pagecode = this.getDecryptString(params)
+    const pagecode = this._state.getDecryptString(params)
     if(production){
          return this._http.get('../../assets/dummy_data/Providers/AllProviders.json')
     }else{

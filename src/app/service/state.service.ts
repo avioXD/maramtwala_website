@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../store/app.state';
-import { setAllProviders_Store, setCategorytree_Store, setfinalServicesContent, setServiceAvailablePlaces, setSubcategoryItems, setSubcategoryPageContent, setWindowWidth, } from '../store/Shared/shared.action';
-import { getAllProviders, getAvailableServicePlaces, getCategorytree, getFinalServicescontent, getSubcategoryList, getSubcategorypageContent, getWindowWidth,  } from '../store/shared/shared.selector';
+import { setAllProviders_Store, setCategorytree_Store, setfinalServicesContent, setSelectedServiceCode, setServiceAvailablePlaces, setSubcategoryItems, setSubcategoryPageContent, setWindowWidth, } from '../store/Shared/shared.action';
+import { getAllProviders, getAvailableServicePlaces, getCategorytree, getFinalServicescontent, getSelectedServiceCode, getSubcategoryList, getSubcategorypageContent, getWindowWidth,  } from '../store/shared/shared.selector';
 import { AvailabePlacesState, CategoryTreeState, ProviderState, ServicesState, SubcategoryState, } from '../store/Shared/shared.state';
 import {  setLoginToSignupSwitch, setPlacesSwitch, setSelectProviderSwitch, setSideMenuSwitch, setSignuploginSwitch, setSubCategoriesSwitch } from '../store/switch/switch.action';
 import * as CryptoJS from 'crypto-js'
@@ -26,9 +26,12 @@ export class StateService {
     ) { }
 
     getEncryptString(message: string){
+     // return message
       return  CryptoJS.AES.encrypt(message, environment.web_salt).toString();
     }
     getDecryptString(message: string){
+
+      //return message
       const bytes  = CryptoJS.AES.decrypt(message, environment.web_salt);
       const res = bytes.toString(CryptoJS.enc.Utf8);
       console.log(res)
@@ -72,6 +75,13 @@ export class StateService {
   }
   getSelectProviderModalState(){
     return this._store.select(getSelectProvider_SwitchState)
+  }
+
+  setSelectedServiceCode(code: string){
+    this._store.dispatch(setSelectedServiceCode({state: code}))
+  }
+  getSelectedServiceCode(){
+    return this._store.select(getSelectedServiceCode)
   }
   /************** */
   ////
@@ -220,6 +230,8 @@ export class StateService {
           this.setUserCurrentLocation(location)
         }
       return true
+      },(err)=>{
+        
       })
     }else{
       return false

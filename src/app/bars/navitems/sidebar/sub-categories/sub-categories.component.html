@@ -3,7 +3,7 @@
   <span data-aos="fade-right" class="content-header"> <mat-icon>loyalty</mat-icon><p>Services</p> </span>
         <div class="dropdown-menu-comtent row mx-2  ">
             <div  *ngFor="let item of subCategory; i " class="col-sm-12 my-2">
-              <a class="items " (click)="hideBar()" [routerLink]="['/services', createhashKey(item.code)]" >   <span pRipple> {{item.label}} </span> </a>  
+              <a class="items " (click)="checkOut(item.code)"  >   <span pRipple> {{item.label}} </span> </a>  
             </div>
       </div>
 </p-sidebar>

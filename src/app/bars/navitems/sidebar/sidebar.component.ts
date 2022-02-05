@@ -24,16 +24,23 @@ export class SidebarComponent implements OnInit {
     })
     this._state.getSwitchSideMenu().subscribe(res=>{
       this.visible = res
-    })
-    this._state.getUserIsLogin().subscribe(res=>{
-      this.isLogin = res
-      if(this.isLogin){
-      this._state.getUserObject().subscribe((res)=>{
-        console.log(res)
-        this.userData = res
-      },(err=>{}))
+      if(this.visible){
+        this._state.getCategoryTree().subscribe(res=>{
+          this.Category_names = res
+          this._state.setCategoryTree(res)
+        })
+        this._state.getUserIsLogin().subscribe(res=>{
+          this.isLogin = res
+          if(this.isLogin){
+          this._state.getUserObject().subscribe((res)=>{
+            console.log(res)
+            this.userData = res
+          },(err=>{}))
+          }
+        })
       }
     })
+    
   }
   onCategorySelect(item: CategoryTreeState){
     console.log(item)

@@ -20,9 +20,12 @@ export class PlacesComponent implements OnInit {
   ngOnInit(): void {
     this._state.getSwitch_places().subscribe(((res: boolean)=>{
       this.visible = res
-      this._api._getServiceAvailablePlaces_API().subscribe((res=>{
-        this.places = res
-      }))
+      if(this.visible){
+        this._api._getServiceAvailablePlaces_API().subscribe((res=>{
+          this.places = res
+        }))
+      }
+      
   }))
     
     

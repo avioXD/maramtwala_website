@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 import { StateService } from 'src/app/service/state.service';
 import { SubcategoryState } from 'src/app/store/shared/shared.state';
+ 
 @Component({
   selector: 'app-sub-categories',
   templateUrl: './sub-categories.component.html',
@@ -16,20 +17,27 @@ export class SubCategoriesComponent implements OnInit {
   ngOnInit(): void {
     this._state.getSwitch_subCategory().subscribe(res=>{
       this.visible = res
+      if(this.visible){
+        this._state.getSubcategoryList().subscribe(data=>{
+        this.subCategory = data
+      })
+      }
+       
     })
-    this._state.getSubcategoryList().subscribe(data=>{
-      this.subCategory = data
-    })
+     
   }
   hideBar(){
     this._state.setSwitch_subCategory(false)
     this._state.setSwitchSideMenu(false)
   }
-   
-  createhashKey(content: string){
-   //console.log("Hash",content)
-    return this._state.getEncryptString(content)
+  checkOut(code: string){
+      let hashed = this._state.getEncryptString(code)
+      if(hashed){
+        this._router.navigate(['/sub_catagory',hashed])
+        this.hideBar()
+      }
   }
+   
   
 
 }

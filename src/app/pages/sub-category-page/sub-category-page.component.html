@@ -10,7 +10,7 @@
               <div class="logo">
                 <img src="../../../assets/logo.png" class=" " alt="" srcset="">
               </div>
-                <p class="title  display-2 ">{{pageData.label}} with <span style="text-decoration: none; margin-bottom: 0.5rem;
+                <p class="title  display-2 " *ngIf="pageData">{{pageData.label}} with <span style="text-decoration: none; margin-bottom: 0.5rem;
                   text-decoration-color:  rgb(0, 255, 200); color:rgb(0, 255, 200) ">Marammatwala</span>   </p> 
                 <p class="sub-title h4">{{pageData.despo}}</p>
                 <!-- <p class="text-white sub-title">Formed in 2021, MARAMMATWALA “Right 2 Repair” is a brand of Swadesi Indigene Technologies Private Limited. At Marammatwala, we are committed to being there for all your home service, repair and maintenance needs. We are custom service and solution provider</p> -->
@@ -83,7 +83,7 @@
         <div class="row">
             <div class="col-sm-4" *ngFor="let item of servicesList">
                 <div class="service-card ">
-                    <div class="card-bg" >
+                    <div class="card-bg" [style.background-image]="'url('+item.image_url+')'" >
                         <!-- [style.background-image]="'url('+item.image_url+')'" -->
                         <div class="card-forground container">
                         </div>
@@ -91,7 +91,7 @@
                             <mat-icon>card_travel</mat-icon>
                             <p class="sub-title h6 my-1"> {{item.label}}</p>
                         </div>
-                        <button pButton pRipple type="button  " label="select provider" class="p-button-outlined add-button" (click)=" onBookingProceed(item.code)" ></button>
+                        <button pButton pRipple type="button  " label="select provider" class="p-button-outlined add-button" (click)="onSelectService(item.code)" ></button>
                     </div>
                 </div>
             </div>
@@ -180,4 +180,3 @@
 
 
  -->
-<router-outlet></router-outlet>

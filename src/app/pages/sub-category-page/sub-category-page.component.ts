@@ -62,8 +62,8 @@ export class SubCategoryPageComponent implements OnInit {
     
   }
 
-  onBookingProceed(sid: string){
-    this._api.__getProviderByServiceCode_API({servicecode: this._state.getEncryptString(sid), location:{ lat: 0, lon: 0}})
+  onSelectService(sid: string){
+    this._state.setSelectedServiceCode(sid)
     this._state.setSelectProviderModalState(true)
   }
    

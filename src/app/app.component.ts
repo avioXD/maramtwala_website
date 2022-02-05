@@ -26,7 +26,8 @@ export class AppComponent implements OnInit{
     }
     ngOnInit(){
       this._api._getHomeCategory_API().subscribe(res=>{
-        this._state.getCurrentGeoLocation()
+        // await this._state.getCurrentGeoLocation()
+          this._state.getCurrentGeoLocation()
       })
     }
     

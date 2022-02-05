@@ -19,11 +19,7 @@ const routes: Routes = [
     path: '404error', component: PageNotFoundComponent
   },
   {
-    path: 'services', component: SubCategoryPageComponent,
-  },
-  {
-    path: 'services/:code', component: SubCategoryPageComponent,
-       
+    path: 'sub_catagory/:code', component: SubCategoryPageComponent,  
   },
   { 
     path: 'profile', component: ProfileComponent

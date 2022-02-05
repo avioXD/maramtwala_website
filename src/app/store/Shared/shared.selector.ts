@@ -27,3 +27,6 @@ export const getWindowWidth =  createSelector(_selectedAppSharedStore, (state)=>
 export const getSubcategorypageContent =  createSelector(_selectedAppSharedStore, (state)=>{
     return state.subcatagory_page_content
 })
+export const getSelectedServiceCode = createSelector(_selectedAppSharedStore, (state)=>{
+    return state.selected_service_code
+})
