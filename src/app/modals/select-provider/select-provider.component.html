@@ -1,12 +1,12 @@
-<p-dialog  [showHeader]="false"  (onHide)="onHide()" [(visible)]="visible"  [style]="{width: '100%', height:'100%'}">
+<p-dialog  [showHeader]="false"  (onHide)="onHide()" [(visible)]="visible"  [style]="{ height:'100%'}">
    
     <div class="pt-2">
         <span class="d-flex justify-content-end p-2" style="position :absolute ; top: 0px; right: 1rem ;z-index: 4;">
            <button pButton (click)="onHide()" pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-text "></button>
         </span>
     </div>
-    <span data-aos="fade-right" class="content-header"> <mat-icon>loyalty</mat-icon><p>Available Providers</p> </span>
-    <div class="befre-init " *ngIf="isProFetched" >
+    <span data-aos="fade-right" class="content-header pt-4"> <mat-icon>loyalty</mat-icon><p>Available Providers</p> </span>
+    <div class="befre-init " *ngIf="isProFetched " >
             <p class="title my-5 pt-5 text-center h5" style="color: rgb(240, 26, 26)">No provider Aviable!</p>
     </div>
     <div class="loading my-5 pt-5 d-flex justify-content-center align-item-center  p-2" *ngIf="isLoading" >
@@ -31,10 +31,12 @@
             </svg>
 </div>
 
+ 
     </div>
-    <div class="after-init row"  *ngIf="providers && !isProFetched">
-        <div class="col-sm mt-5" *ngFor="let item of providers">
-            <div class="provider-card shadow-sm cursor-pointer ">
+    <div class="after-init  mt-5  d-flex justify-content-center align-item-center"  *ngIf="providers ">
+        <div class="row">
+        <div class="d-flex col-sm justify-content-center  " *ngFor="let item of providers; let i = index">
+            <div class="provider-card mt-3  shadow cursor-pointer ">
             <div class="booking ">
                 <div class="on-bbok align-content-center">
                     <div class="d-flex"> 
@@ -47,20 +49,32 @@
                     </div>
                     <div class="d-flex">
                         <mat-icon>track_changes</mat-icon>
-                        <p class="title h7">{{item.distance}}km away </p>
+                        <p class="title h7"> <{{item.distance | number: '1.0-0'}} km </p>
                     </div> 
-                    <button  class="p-button-outlined mx-auto  my-2 " pRipple pButton label="book"></button>
+                    <div class=" row buttons"  >
+
+                        <div class="col">
+                            <label for="vertical" class="h7" style="display: block">Services</label>
+                            <p-inputNumber #count [(ngModel)]="count[i]"  value="0"[min]="0" [max]="5" value    [showButtons]="true" buttonLayout="horizontal" spinnerMode="horizontal" inputId="horizontal"
+                            decrementButtonClass="p-button " incrementButtonClass="p-button" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus">
+                        </p-inputNumber>
+                        </div>
+                        <div class="col">
+                            <button  class="p-button-outlined my-2 " pRipple pButton label="book" (click)="onBooking(item, count[i])"></button>
+                        </div>
+                    </div>
+                     
                 </div>
             </div>
             <div  alt="" class="provider-dp-bg" [style.background-image]="'url('+item.profile_img+')'">
                 <div class="content">
                     <div class="price-tag d-flex">
                         <mat-icon style="color:#425ab9 " >loyalty</mat-icon>
-                        <p class="h5 title text-start">  {{item.price}}/-</p>
+                        <p class="h6 title text-start">  {{item.price}}/-</p>
                     </div>
                     <div class="distance d-flex  ">
                         <mat-icon style="color:#425ab9 ">track_changes</mat-icon>
-                        <p class="h6 title text-start" > {{ item.distance}}km away</p>
+                        <p class="h7 title text-start" > <{{item.distance | number: '1.0-0'}} km</p>
                     </div>
                     <div class="details">
                         <p class="name text-center title h5">{{item.provider_name}}<br></p>
@@ -70,6 +84,7 @@
             </div>
         </div>
         </div>
+    </div>
     </div>
     
      

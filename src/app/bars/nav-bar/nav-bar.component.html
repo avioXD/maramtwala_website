@@ -15,8 +15,8 @@
                      <mat-icon *ngSwitchCase="true" (click)="logOutUser()" [routerLink]="['/home']"  class="mx-2 cursor-pointer" pTooltip="logout" tooltipPosition="bottom">exit_to_app</mat-icon>
                      <div *ngSwitchCase="false"><p (click)="switchLoginSignup()" class="login-text cursor-pointer mt-3">Login / Signup</p></div>
                  </div>
-                 <div data-aos="fade-down" class="cart cursor-pointer mt-2" pBadge value="2" >
-                    <mat-icon  pTooltip="Carted service" tooltipPosition="bottom" >shopping_cart</mat-icon>
+                 <div data-aos="fade-down" class="cart cursor-pointer mt-2" pBadge value="{{cartCount}}"   (click)="gotoCartPage()" >
+                    <mat-icon    pTooltip="Carted service" tooltipPosition="bottom" >shopping_cart</mat-icon>
                  </div>
             </div>
             <div data-aos="flip-up"  data-aos-duration="500"  *ngIf="responsive" class="burger-menu" (click)="openSideMenu()">

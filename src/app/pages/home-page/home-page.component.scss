@@ -9,7 +9,7 @@ body{
 
 .header {
   position:relative;
-  padding-top: 10vh;
+  padding-top: 4vh;
   background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
 }
  
@@ -22,8 +22,8 @@ body{
   padding: 0;
   .logo {
     background-color: rgb(252, 252, 252);
-    padding: 0.6rem;
-    border-radius: 23px;
+    padding: 0.1rem;
+    border-radius: 5px;
     img{
         width: 16rem;
     }

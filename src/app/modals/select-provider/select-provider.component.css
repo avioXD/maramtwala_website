@@ -1,0 +1,134 @@
+.after-itit {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+
+.provider-card {
+  border-radius: 5px;
+  width: 14rem;
+  height: 20rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.provider-card .provider-dp-bg {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  opacity: 1;
+}
+
+.provider-card .content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.provider-card .content .details {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  border-radius: 15px  15px 0px 0px;
+  padding: 0.3rem;
+  padding-top: 0.4rem;
+  background: linear-gradient(120deg, #ff0751 0%, #5812da 100%);
+}
+
+.provider-card .content .details .name {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.provider-card .content .price-tag {
+  position: absolute;
+  top: 1%;
+  left: 0;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 0px 35px 35px 0px;
+  background-color: #dbe3ff;
+  padding: 0.4rem;
+  padding-left: 0.3rem;
+}
+
+.provider-card .content .price-tag p {
+  font-weight: 600;
+  color: #425ab9;
+  margin: 0;
+}
+
+.provider-card .content .distance {
+  position: absolute;
+  bottom: 20%;
+  right: 0;
+  border-radius: 35px 0px 0px 35px;
+  background-color: #dbe3ff;
+  padding: 0.4rem;
+  padding-left: 0.6rem;
+}
+
+.provider-card .content .distance p {
+  font-weight: 600;
+  color: #425ab9;
+  margin: 0;
+  margin-top: 3px;
+}
+
+.provider-card .booking {
+  z-index: 5;
+  -webkit-transition: all 0.6s;
+  transition: all 0.6s;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, #0d10aa 0%, rgba(65, 37, 97, 0.897) 100%);
+  padding: 1rem;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+}
+
+.provider-card .booking .on-bbok .buttons {
+  position: absolute;
+  bottom: 5%;
+  width: 100%;
+  right: 0;
+}
+
+.provider-card:hover .booking {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+
+.h7 {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+svg path, svg rect {
+  fill: #425ab9;
+}
+
+.content-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.content-header p {
+  font-size: 150%;
+  color: #6e8bff;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+}
+
+.content-header .mat-icon {
+  margin-top: 6px;
+  font-size: 150%;
+}
+/*# sourceMappingURL=select-provider.component.css.map */

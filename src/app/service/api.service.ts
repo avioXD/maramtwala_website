@@ -78,10 +78,15 @@ export class ApiService {
   }
 
  _getProviderByServiceCode_API(content: {lat: number, lon: number, code: string}){
+  let con ={
+    code: "MIR3S1",
+    lat: 11.8019,
+    lon: 93.2386
+}
       if(production){
         return this._http.get('../../assets/dummy_data/Providers/AllProviders.json')
       }else{
-       return this._http.post(BASE_URL+'/api/v1/provider', content ).pipe(map((res:any)=>{
+       return this._http.post(BASE_URL+'/api/v1/provider', con ).pipe(map((res:any)=>{
         if(res.status == 'success'){
           return res.data
           }else{

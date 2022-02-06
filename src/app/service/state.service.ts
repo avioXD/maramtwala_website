@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../store/app.state';
-import { setAllProviders_Store, setCategorytree_Store, setfinalServicesContent, setSelectedServiceCode, setServiceAvailablePlaces, setSubcategoryItems, setSubcategoryPageContent, setWindowWidth, } from '../store/Shared/shared.action';
-import { getAllProviders, getAvailableServicePlaces, getCategorytree, getFinalServicescontent, getSelectedServiceCode, getSubcategoryList, getSubcategorypageContent, getWindowWidth,  } from '../store/shared/shared.selector';
-import { AvailabePlacesState, CategoryTreeState, ProviderState, ServicesState, SubcategoryState, } from '../store/Shared/shared.state';
+import {  setCartedItems, setCategorytree_Store, setfinalServicesContent, setSelectedServiceCode, setServiceAvailablePlaces, setSubcategoryItems, setSubcategoryPageContent, setWindowWidth, } from '../store/Shared/shared.action';
+import { getAvailableServicePlaces, getCartitems, getCategorytree, getFinalServicescontent, getSelectedServiceCode, getSubcategoryList, getSubcategorypageContent, getWindowWidth,  } from '../store/shared/shared.selector';
+import { AvailabePlacesState, CartState, CategoryTreeState, ProviderState, ServicesState, SubcategoryState, } from '../store/Shared/shared.state';
 import {  setLoginToSignupSwitch, setPlacesSwitch, setSelectProviderSwitch, setSideMenuSwitch, setSignuploginSwitch, setSubCategoriesSwitch } from '../store/switch/switch.action';
 import * as CryptoJS from 'crypto-js'
 import { environment } from '../../environments/environment';
@@ -27,15 +27,25 @@ export class StateService {
 
     getEncryptString(message: string){
      // return message
+     if(message){
       return  CryptoJS.AES.encrypt(message, environment.web_salt).toString();
+     }
+     else{
+        return ''
+      }
     }
     getDecryptString(message: string){
 
+      if(message){
+        const bytes  = CryptoJS.AES.decrypt(message, environment.web_salt);
+        const res = bytes.toString(CryptoJS.enc.Utf8);
+        console.log(res)
+        return res
+      }else{
+        return ''
+      }
       //return message
-      const bytes  = CryptoJS.AES.decrypt(message, environment.web_salt);
-      const res = bytes.toString(CryptoJS.enc.Utf8);
-      console.log(res)
-      return res
+       
     }
     ////////
    //*****SHARED SWITCH***************** */
@@ -122,7 +132,7 @@ export class StateService {
     let user : any
      this.getUserToken().subscribe((res=>{
            user = this.getTokenObject(res)
-     }))
+     })).unsubscribe()
      return of(user.user)
   }
   isTokenValid(date: number){
@@ -149,12 +159,6 @@ export class StateService {
   }
   getCategoryTree(){
     return this._store.select(getCategorytree)
-  }
-  setAllProvidersList(content: ProviderState[]){
-    return this._store.dispatch(setAllProviders_Store({state: content}))
-  }
-  getAllProvidersList(){
-    return  this._store.select(getAllProviders)
   }
   setSubcategoryList(content: SubcategoryState[]){
     return this._store.dispatch(setSubcategoryItems({state: content}))
@@ -185,6 +189,55 @@ export class StateService {
   }
   getPageContent(){
     return this._store.select(getSubcategorypageContent)
+  }
+  addToCart(item: CartState){
+    let list = []
+    let flag = 0
+    this.getCartList().subscribe((res)=>{
+        res.map(x=> {
+            if(x.provider.id == item.provider.id){
+              let p: CartState = {
+                provider : x.provider,
+                count : x.count+item.count,
+                time: item.time
+              }
+              list.push(p)
+              flag = 1
+            }else{
+              list.push(x)
+            }
+          return x
+        })
+    }).unsubscribe()
+    if(!list.length){
+      list = [item]
+    }else if(!flag){
+      list.push(item)
+    }
+    this.setCartList(list)
+  }
+  setCartList(content: CartState[]){
+    localStorage.removeItem(environment.STORAGE_KEY.CART_ITEMS_KEY)
+    localStorage.setItem(environment.STORAGE_KEY.CART_ITEMS_KEY, this.getEncryptString( JSON.stringify(content)))
+    //post to api: 
+    
+    //'
+    this._store.dispatch(setCartedItems({state: content}))
+  }
+  getCartListLocal(){
+    let a = this.getDecryptString(localStorage.getItem(environment.STORAGE_KEY.CART_ITEMS_KEY))
+    return JSON.parse(a || "[]")
+     
+  }
+  getCartList(){
+    //post to api: 
+    this.setCartList(this.getCartListLocal())
+    return this._store.select(getCartitems) 
+  }
+  getCartCount(){
+    let i = 0
+    this.getCartList().pipe(map((x:any)=>  i =+ x.count))
+    return of(i)
   }
 
   /*******Get distance between two place******** */

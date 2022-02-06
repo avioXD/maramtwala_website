@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
 import { StateService } from 'src/app/service/state.service';
-import { CategoryTreeState } from 'src/app/store/shared/shared.state';
+import { CartState, CategoryTreeState } from 'src/app/store/shared/shared.state';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,20 +11,28 @@ import { CategoryTreeState } from 'src/app/store/shared/shared.state';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor(private _state: StateService , private _auth: AuthService) { }
+  constructor(private _state: StateService , private _auth: AuthService, private _route: Router) { }
   showMenu: boolean;
   isLogin: boolean = false;
   userData: any
   searchValue: string
   Category_names: CategoryTreeState[]
   visible : boolean = false
+  cartCount: number 
+  cartList: CartState[] = []
   ngOnInit(): void {
+    this.cartCount = 0
+    this.cartList = []
     this._state.getCategoryTree().subscribe(res=>{
       this.Category_names = res
       this._state.setCategoryTree(res)
     })
     this._state.getSwitchSideMenu().subscribe(res=>{
       this.visible = res
+      this._state.getCartList().subscribe(data=>{
+        this.cartList =data
+        this.cartCount = data.length
+      })
       if(this.visible){
         this._state.getCategoryTree().subscribe(res=>{
           this.Category_names = res
@@ -58,6 +67,10 @@ export class SidebarComponent implements OnInit {
   }
   logOutUser(){
     this._auth.logOutUser()
+  }
+  gotoCartPage(){
+     let content =  this._state.getEncryptString(JSON.stringify(this.cartList))
+     this._route.navigate(['/cart', content])
   }
 
 }

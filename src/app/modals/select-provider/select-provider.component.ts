@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs';
 import { ApiService } from 'src/app/service/api.service';
 import { StateService } from 'src/app/service/state.service';
-import { ProviderState } from 'src/app/store/shared/shared.state';
+import { CartState, ProviderState } from 'src/app/store/shared/shared.state';
 
 @Component({
   selector: 'app-select-provider',
@@ -16,7 +16,11 @@ export class SelectProviderComponent implements OnInit {
   isProFetched: boolean = false
   isLoading:boolean = false
   serviceCode: string = ""
+  count: number[] = [0]
   ngOnInit(): void {
+    this.isProFetched = false
+    this.isLoading = false
+    this.providers = []
     this._state.getSelectProviderModalState().subscribe(state=>{
       this.visible = state
       if(this.visible){
@@ -27,15 +31,17 @@ export class SelectProviderComponent implements OnInit {
               this._api._getProviderByServiceCode_API({lat: location.lat,lon:location.lon, code: code}).subscribe(pro=>{
               this.providers = pro
                 this.isLoading = false
-                this.isProFetched = true
-          },(err)=>{ console.log("Error,",err);
+                this.isProFetched = false
+                if(!this.providers){
+                  this.isProFetched = true
+                }
+          },(err)=>{ console.log("Error",err);
            this.isProFetched = true
            this.isLoading = false})
           })
         })
       }
       })
-      
   }
   onHide(){
     this.visible = false
@@ -43,6 +49,16 @@ export class SelectProviderComponent implements OnInit {
     this.isProFetched = false
     this.isLoading = false,
     this.isProFetched = false
+    this.providers = []
+  }
+  onBooking(pro: ProviderState, count: number){
+      let addItem : CartState = {
+        provider: pro,
+        count: count,
+        time: new Date()
+      }
+      this._state.addToCart(addItem)
+      this.onHide()
   }
   
 }

@@ -58,7 +58,7 @@
     <!-- content -->
 <div class="content">
     <div class="container services">
-        <span data-aos="fade-right" class="content-header"> <mat-icon>extension</mat-icon><p> Select Services</p> </span>
+        <span data-aos="fade-right" class="content-header"> <mat-icon style="color: #425ab9">extension</mat-icon><p> Select Services</p> </span>
         <div *ngIf="!servicesList" class="loader loader--style8" title="7">
             <svg fill="#7891f7" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                width="48px" height="60px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">
@@ -88,8 +88,8 @@
                         <div class="card-forground container">
                         </div>
                         <div class="d-flex service-label">
-                            <mat-icon>card_travel</mat-icon>
-                            <p class="sub-title h6 my-1"> {{item.label}}</p>
+                            <mat-icon class="mt-2">card_travel</mat-icon>
+                            <p class="sub-title h3 my-1"> {{item.label}}</p>
                         </div>
                         <button pButton pRipple type="button  " label="select provider" class="p-button-outlined add-button" (click)="onSelectService(item.code)" ></button>
                     </div>
@@ -97,7 +97,24 @@
             </div>
         </div>
     </div>
-
+    <div class="container mt-5 mb-5">
+        <p-divider></p-divider>
+        <span data-aos="fade-right" class="content-header mb-3"> <mat-icon style="color: #425ab9">extension</mat-icon><p>Working Procedure</p> </span> 
+        <p-timeline [value]="howWeWork">
+            <ng-template pTemplate="content" let-event>
+               <p class="mx-3 h5 " style="color: #425ab9 !important">{{event.status}}</p>  
+            </ng-template>
+        </p-timeline>
+    </div>
+    
+    <div class="container">
+        <p-divider type="dashed"></p-divider>
+        <span data-aos="fade-right" class="content-header mb-3"> <mat-icon style="color: #425ab9">extension</mat-icon><p>Blogs</p> </span> 
+        <div class="blog_content" *ngFor="let item of pageData.blogs">
+            <h4 class=" h3 p-3">{{item.label}}</h4>
+            <p *ngFor="let content of item.content" class="mx-4">{{content}}</p> <br>
+        </div>
+    </div>
 </div>
 <!-- content end -->
 
@@ -153,12 +170,7 @@
 <div class="container bg-white p-5 curve-border">
     <p-divider type="dashed"></p-divider>
     <div class="content  ">
-        <h5 class=" display-6 p-3">Working Procedure</h5>   
-        <p-timeline [value]="howWeWork">
-            <ng-template pTemplate="content" let-event>
-               <p class="mx-3 h5 ">{{event.status}}</p>  
-            </ng-template>
-        </p-timeline>
+        
     </div>
     <p-divider type="dashed"></p-divider>
     <div class="content">

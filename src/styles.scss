@@ -135,6 +135,16 @@ body{
     .p-sidebar{
         background-color: #f1f4fc !important;
     }
+    .p-timeline-event-opposite{
+        flex: 0 !important;
+    }
+    .p-inputnumber-buttons-horizontal, .p-inputnumber-input {
+        position: relative;
+        order: 2;
+        border-radius: 0;
+        width: 2rem;
+        height: 1.5rem;
+    }
        
 }  
 
@@ -158,9 +168,7 @@ html{
      background-color:#F9C000  ;
  }
 
- .p-timeline-event-opposite{
-    flex: 0 !important;
-}
+ 
  
 html, body { height: 100%; }
 body { margin: 0; font-family: 'Poppins', sans-serif; }

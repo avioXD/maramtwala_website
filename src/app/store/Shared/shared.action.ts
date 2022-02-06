@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { CategoryTreeState, AvailabePlacesState, ServicesState,   ProviderState, SubcategoryState } from './shared.state';
+import { CategoryTreeState, AvailabePlacesState, ServicesState,   ProviderState, SubcategoryState, CartState } from './shared.state';
 
 
 ////// shared storage //////////
@@ -13,10 +13,7 @@ export const setSubcategoryItems = createAction(
     '[Shared Storage] store  subcategory',
     props<{state: SubcategoryState[]}>()
 )
-export const setAllProviders_Store = createAction(
-    '[Shared Storage] store  Allproviders' ,
-    props<{state: ProviderState[]}>()
-)
+
 export const setfinalServicesContent = createAction(
     '[Shared Storage] store FinalServiceContent',
     props<{state: ServicesState[]}>()
@@ -36,6 +33,10 @@ export const setSubcategoryPageContent = createAction(
 export const setSelectedServiceCode = createAction(
     '[Shared Storage] store selected service code  ',
     props<{state: string}>()
+)
+export const setCartedItems = createAction(
+    '[Shared Storage] store cart  ',
+    props<{state: CartState[]}>()
 )
 
 

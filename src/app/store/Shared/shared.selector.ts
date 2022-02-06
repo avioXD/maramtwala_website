@@ -12,9 +12,7 @@ export const getCategorytree =  createSelector(_selectedAppSharedStore, (state)=
 export const getSubcategoryList =  createSelector(_selectedAppSharedStore, (state)=>{
     return state.subCategoryList
 })
-export const getAllProviders =  createSelector(_selectedAppSharedStore, (state)=>{
-    return state.all_providers
-})
+
 export const getFinalServicescontent =  createSelector(_selectedAppSharedStore, (state)=>{
     return state.final_services_content
 })
@@ -30,3 +28,7 @@ export const getSubcategorypageContent =  createSelector(_selectedAppSharedStore
 export const getSelectedServiceCode = createSelector(_selectedAppSharedStore, (state)=>{
     return state.selected_service_code
 })
+export const getCartitems = createSelector(_selectedAppSharedStore, (state)=>{
+    return state.cartItem
+})
+

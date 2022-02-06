@@ -51,25 +51,30 @@ export interface ProviderState{
     price: number,
     distance: number
 }
+export interface CartState{
+    provider: ProviderState
+    time: Date,
+    count: number
+}
 
 /*******ROOT***** */
 export interface AppSharedStoreState{
     category_tree: CategoryTreeState[],
-    all_providers: ProviderState[]
     final_services_content:  ServicesState[],
     available_service_places: AvailabePlacesState[],
     subCategoryList: SubcategoryState[],
     window_width: number,
     subcatagory_page_content: any,
-    selected_service_code: string
+    selected_service_code: string,
+    cartItem : CartState[]
 }
 export const appSharedStore_init:AppSharedStoreState = {
     category_tree: [],
-    all_providers:  [],
     final_services_content: [],
     available_service_places: [],
     subCategoryList: [],
     window_width: 250000,
     subcatagory_page_content: {},
-    selected_service_code: ''
+    selected_service_code: '',
+    cartItem: []
 }

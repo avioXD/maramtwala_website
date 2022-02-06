@@ -33,6 +33,7 @@ import {ScrollPanelModule} from 'primeng/scrollpanel';
 import {FocusTrapModule} from 'primeng/focustrap';
 import {BadgeModule} from 'primeng/badge';
 import {TooltipModule} from 'primeng/tooltip';
+
 const PrimeNgComponent = [
            CalendarModule,
            TooltipModule,

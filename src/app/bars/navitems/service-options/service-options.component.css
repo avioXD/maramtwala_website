@@ -17,23 +17,27 @@
 
 .dropdown-menu-fluid {
   position: absolute;
-  right: 0rem;
+  right: -300%;
   margin-top: 0;
   z-index: 4;
   border-radius: 5px;
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  max-width: 45rem;
+  min-width: 45rem;
+  max-width: 60rem;
 }
 
 .dropdown-menu-comtent {
-  background-color: white;
+  background-color: #f1f4fc;
   z-index: 4;
   min-width: 30vw;
-  padding: 1rem;
-  padding-bottom: 3rem;
+  padding: 1.5rem;
   border-radius: 10px 0px 10px 10px;
+}
+
+.dropdown-menu-comtent mat-icon {
+  color: #425ab9;
 }
 
 .items {
@@ -55,7 +59,6 @@
   font-size: 120%;
   cursor: pointer;
   font-family: 'Poppins', sans-serif;
-  border-radius: 10px 10px 10px 10px;
   margin-left: 0.3rem;
 }
 
@@ -68,7 +71,8 @@
 .bg-white-c {
   font-weight: 400;
   font-size: 120%;
+  border-radius: 10px 10px 0px 0px   !important;
+  background-color: #f1f4fc;
   color: #00ffc8;
-  border-radius: 10px 10px 0px 0px;
 }
 /*# sourceMappingURL=service-options.component.css.map */

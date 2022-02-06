@@ -25,7 +25,7 @@ const routes: Routes = [
     path: 'profile', component: ProfileComponent
   },
   {
-    path: 'cart', component: CartedItemsComponent
+    path: 'cart/:data', component: CartedItemsComponent
   }
   
 ];

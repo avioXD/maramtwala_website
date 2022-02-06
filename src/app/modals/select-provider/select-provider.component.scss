@@ -1,3 +1,8 @@
+
+
+.after-itit{
+    width: max-content;
+}
 .provider-card{
     border-radius: 5px;
     width: 14rem;
@@ -73,10 +78,11 @@
         background: linear-gradient(120deg, rgb(13, 16, 170) 0%, rgba(65, 37, 97, 0.897) 100%);  
         padding: 1rem;
         .on-bbok{
-            button{
+            .buttons{
                 position: absolute;
                 bottom:5%;
-                right: 10%;
+                width: 100%;
+                right: 0;
             }
         }
          
