@@ -1,15 +1,10 @@
 import { Injectable, isDevMode } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { map } from 'rxjs';
+import { map, of } from 'rxjs';
 import { StateService } from './state.service';
-import * as CryptoJS from 'crypto-js'
-import { ProviderState } from '../store/shared/shared.state';
-
 const BASE_URL = environment.apiKey
 const production = false
- 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -79,14 +74,14 @@ export class ApiService {
 
  _getProviderByServiceCode_API(content: {lat: number, lon: number, code: string}){
   let con ={
-    code: "MIR3S1",
-    lat: 11.8019,
-    lon: 93.2386
+    code: "MCR2S3",
+    lat: 31.794,
+    lon: 87.2172
 }
       if(production){
         return this._http.get('../../assets/dummy_data/Providers/AllProviders.json')
       }else{
-       return this._http.post(BASE_URL+'/api/v1/provider', con ).pipe(map((res:any)=>{
+       return this._http.post(BASE_URL+'/api/v1/provider',content).pipe(map((res:any)=>{
         if(res.status == 'success'){
           return res.data
           }else{
@@ -132,6 +127,20 @@ export class ApiService {
     }else{
       return this._http.get('../../assets/dummy_data/exclusive_set.json')
     }
+  }
+
+  _orderRequest_Api(content: any){
+    if(production){
+      return of([])
+    }else{
+      return  this._http.post(BASE_URL+'/api/v1/requestService', content)
+    }
+  } 
+  _getUserOrders(uid: string){
+     return this._http.get(BASE_URL+'/api/v1/requestService/user/'+uid).pipe(map((res: any)=>{
+          if(res.status == 'success') return res.data
+          else return res
+     }))
   }
  
 

@@ -2,7 +2,7 @@
     <div class="container-fluid justify-content-between"  [ngClass]="scrolled? 'nav-scrolled': ''"   data-aos-duration="1000"  data-aos="fade-down" >
         <div class="container d-flex align-items-center nav" [ngClass]="!responsive? 'justify-content-between': 'justify-content-center'"    >
             <div class="logo"   >
-                <img *ngIf="scrolled" [routerLink]="['/']" src="../../../assets/logo.svg" class=" " alt="" srcset="">
+                <img *ngIf="scrolled" [routerLink]="['/']" src="../../../assets/logo.png" class=" " alt="" srcset="">
             </div>
             <div *ngIf="!responsive" class="nav-user d-flex align-items-center justify-content-between ">
                 <span data-aos="fade-down" class="p-input-icon-left">
@@ -10,16 +10,25 @@
                     <input style="color: #dbe3ff!important" class="search" type="text" pInputText [(ngModel)]="value" placeholder="Search for service">         
                 </span>
                  <div data-aos="fade-down" [ngSwitch]="isLogin" class="mx-4 my-auto d-flex align-items-center user">
-                     <div *ngSwitchCase="true" > <p-avatar  class="p-3 cursor-pointer"  image="{{userData.profile_pic? userData.profile_pic: '../../../assets/images/user.jpg' }}" pBadge  shape="circle" severity="danger" size="large" [routerLink]="['profile']"></p-avatar> </div>
-                     <p *ngSwitchCase="true" class="login-text cursor-pointer mt-3">{{userData.first_name}} {{userData.last_name}}</p>
-                     <mat-icon *ngSwitchCase="true" (click)="logOutUser()" [routerLink]="['/home']"  class="mx-2 cursor-pointer" pTooltip="logout" tooltipPosition="bottom">exit_to_app</mat-icon>
+                     <div *ngSwitchCase="true" > <p-avatar  class="p-3 cursor-pointer"  image="{{userData.profile_pic? userData.profile_pic: '../../../assets/images/user.jpg' }}" pBadge  shape="circle" severity="danger" size="large" (click)="op.toggle($event)" ></p-avatar> </div>
+                     <p *ngSwitchCase="true" class="login-text cursor-pointer mt-3"  [routerLink]="['profile']">{{userData.first_name}} {{userData.last_name}}</p>
+                     <div *ngSwitchCase="true" class="drop mx-2 cursor-pointer"     (click)="op.toggle($event)">
+                        <i style="color: #dbe3ff!important" pRipple class="pi pi-chevron-circle-down" > </i>
+                     </div>
+                     <p-overlayPanel #op > 
+                        <div class="d-flex flex-column"  >
+                           <p class="title-dark cursor-pointer"   [routerLink]="['profile']" (click)="op.hide()">Profile</p>
+                           <p class="title-dark cursor-pointer"    (click)="gotoOrders()" (click)="op.hide()">Orders</p>
+                           <p class="title-dark cursor-pointer" (click)="logOutUser()" [routerLink]="['/home']" (click)="op.hide()">Logout</p>
+                        </div>
+                   </p-overlayPanel>
                      <div *ngSwitchCase="false"><p (click)="switchLoginSignup()" class="login-text cursor-pointer mt-3">Login / Signup</p></div>
                  </div>
-                 <div data-aos="fade-down" class="cart cursor-pointer mt-2" pBadge value="{{cartCount}}"   (click)="gotoCartPage()" >
+                 <div *ngIf="cartCount" data-aos="fade-down" class="cart cursor-pointer mt-2" pBadge value="{{cartCount}}"   (click)="gotoCartPage()" >
                     <mat-icon    pTooltip="Carted service" tooltipPosition="bottom" >shopping_cart</mat-icon>
                  </div>
             </div>
-            <div data-aos="flip-up"  data-aos-duration="500"  *ngIf="responsive" class="burger-menu" (click)="openSideMenu()">
+            <div data-aos="flip-up"  data-aos-duration="500"  *ngIf="responsive" class="burger-menu cursor-pointer" (click)="openSideMenu()">
                 <span ></span>
                 <span></span>
                 <span></span>

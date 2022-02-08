@@ -1,12 +1,14 @@
 <p-dialog  [showHeader]="false"  (onHide)="onHide()" [(visible)]="visible" [style]="{width: '50rem'}">
     <!-- <span data-aos="fade-right" class="content-header"> 	<mat-icon> map</mat-icon><p>Places</p> </span> -->
+     
     <div class="pt-2">
         <span class="d-flex justify-content-end p-2" style="position :absolute ; top: 0px; right: 1rem ;z-index: 4;">
            <button pButton (click)="onHide()" pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-text "></button>
         </span>
     </div>
-    <div class="pt-5">
-        <span class="d-flex justify-content-end p-2" style="position :absolute ; top: 1rem; left: 1rem ;z-index: 4;">
+    <div class=" ">
+        <div class="trademark"></div>
+        <span class="d-flex justify-content-start p-2"  >
             <span data-aos="fade-right" class="content-header"> 	<mat-icon> map</mat-icon><p>Places</p> </span>
         </span>
     </div>

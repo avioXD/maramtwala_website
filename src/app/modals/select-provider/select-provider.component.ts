@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { map } from 'rxjs';
 import { ApiService } from 'src/app/service/api.service';
 import { StateService } from 'src/app/service/state.service';
 import { CartState, ProviderState } from 'src/app/store/shared/shared.state';
-
+ 
 @Component({
   selector: 'app-select-provider',
   templateUrl: './select-provider.component.html',
@@ -11,13 +12,14 @@ import { CartState, ProviderState } from 'src/app/store/shared/shared.state';
 })
 export class SelectProviderComponent implements OnInit {
   visible:boolean = false
-  constructor(private _state: StateService, private _api: ApiService) { }
+  constructor(private _state: StateService, private _api: ApiService, private _route: Router) { }
   providers: ProviderState[]
   isProFetched: boolean = false
   isLoading:boolean = false
   serviceCode: string = ""
-  count: number[] = [0]
+  count: number[]  
   ngOnInit(): void {
+    this.count =  new Array(1000).fill(1)
     this.isProFetched = false
     this.isLoading = false
     this.providers = []
@@ -57,8 +59,23 @@ export class SelectProviderComponent implements OnInit {
         count: count,
         time: new Date()
       }
+      let id
+      this._state.getUserObject().pipe(map(x=> x._id )).subscribe(res=>{
+         id = res
+         id = this._state.getEncryptString(id)
+      }).unsubscribe()
+      this._route.navigate(['cart', id])
       this._state.addToCart(addItem)
       this.onHide()
   }
+  addonBooking(pro: ProviderState, count: number){
+    let addItem : CartState = {
+      provider: pro,
+      count: count,
+      time: new Date()
+    }
+    this._state.addToCart(addItem)
+    this.onHide()
+}
   
 }

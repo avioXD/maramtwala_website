@@ -71,15 +71,20 @@ export class AuthService {
          this._state.setToken(token)
          this._state.setIsNewUser(false)
       }
-      // else{
-      //    this._state.setUserIsLogin(false)
-      //    this._state.setToken('')
-      //    this._state.setIsNewUser(true)
-      // }
+      else{
+         this._state.setUserIsLogin(false)
+         this._state.setToken('')
+         this._state.setIsNewUser(true)
+    }
    }
    _isLoggedIn(){
       this.syncUserInApp()
-      return this._state.getUserIsLogin().subscribe(res=> res)
+      let isres = false
+       this._state.getUserIsLogin().subscribe(res=> {
+         isres= res
+           console.log(res)}).unsubscribe()
+           return isres
+
    }
    logOutUser(){
       this._state.setToken('')

@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import "../node_modules/primeng/resources/themes/fluent-light/theme.css" ;
+@import "../node_modules/primeng/resources/themes/tailwind-light/theme.css" ;
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
  
  
@@ -20,6 +20,18 @@ body{
         font-weight: 500;
         //filter: drop-shadow(5px 5px 4px #30303094);
         font-family: 'Poppins', sans-serif;
+        line-height: 90%;
+    }
+    .text-price-dark{
+        color: #425ab9;
+        font-weight: 500;
+        font-family:Arial, Helvetica, sans-serif !important;
+    }
+    .title-dark{
+        color: #425ab9;
+        font-weight: 500;
+        //filter: drop-shadow(5px 5px 4px #30303094);
+        font-family: 'Poppins', sans-serif;
     }
     .sub-title{
    // font-size: 150%;
@@ -27,6 +39,7 @@ body{
     font-weight:400;
   //  filter: drop-shadow(5px 5px 4px #00000067);
     font-family: 'Poppins', sans-serif;
+    
     }
     .landing{
         padding-top: 20vh
@@ -107,6 +120,7 @@ body{
             font-family: 'Poppins', sans-serif;;
         }
     }
+     
     .p-button {
         color: #dbe3ff;
         background: #6e8bff;
@@ -144,6 +158,12 @@ body{
         border-radius: 0;
         width: 2rem;
         height: 1.5rem;
+    }
+    .trademark{
+        width: 5rem;
+        height: 5rem;
+        background-image: url('./assets/trademark.png');
+        background-size: contain;
     }
        
 }  

@@ -1,0 +1,22 @@
+
+<div class="header">
+    <div class="inner-header">
+        <div class="container landing"  >
+            <span data-aos="fade-right" class=" d-flex title display-6"> <p>Booked Services</p> </span> 
+            <p-scrollPanel [style]="{width: '100%', height: '70vh' }" styleClass="custombar1">
+                <div class="item-card d-flex" *ngFor="let item of [0,2,3]">
+                    <div class="pro rounded-circle shadow-sm my-auto" [style.background-image]="'url('+ +')'"></div>
+                    <div class="pro-details my-auto">
+                        <span class="title-dark ">Provider: <h4 class="title-dark"> </h4>  </span>
+                        <span  class="title-dark">Service : <span class="h6 title-dark">  </span> </span>
+                        <span  class="title-dark">No of service: <span class="h6 title-dark"> </span> </span>
+                        <span  class="title-dark">Initial charges: <span class="text-price-dark" style="font-weight: 400; color:#364ca1;">  </span> </span>
+                    </div>
+                    <span class="removeicon">
+                        <button pButton pRipple  type="button" icon="pi pi-times" class="p-button-rounded p-button-danger p-button-text"></button>
+                    </span>
+                </div>
+            </p-scrollPanel>
+       </div>
+      </div>
+</div>

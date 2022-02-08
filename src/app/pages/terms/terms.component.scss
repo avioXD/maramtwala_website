@@ -1,0 +1,39 @@
+.background{
+    background-position: top;
+    background-attachment: local;
+    background-size:cover;
+    background-repeat: no-repeat;
+  }
+  .header {
+    position:relative;
+    background: linear-gradient(90deg, rgb(50, 138, 112) 0%, rgba(42, 29, 163, 0.788) 100%);
+  }
+  .inner-header {
+    min-height:80vh;
+    width:100%;
+    margin: 0;
+    padding: 0;
+    .logo {
+      //background-color: rgb(252, 252, 252);
+      padding: 0.6rem;
+      border-radius: 23px;
+      img{
+          width: 16rem;
+      }
+    }
+    .terms{
+        padding: 10%;
+        width: 100%;
+        background-color: aliceblue;
+        .content{
+            p, li {
+                color: #425ab9;
+                //filter: drop-shadow(5px 5px 4px #30303094);
+                font-family: 'Poppins', sans-serif;
+                margin: 0;
+                font-weight:  400;
+            }
+        }
+    }
+    
+  }

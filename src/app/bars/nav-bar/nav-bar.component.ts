@@ -37,12 +37,10 @@ export class NavBarComponent implements OnInit {
   value:any
   responsive: boolean
   cartCount: number = 0
-  cartList: CartState[] = []
   constructor(private _state: StateService, private _auth: AuthService, private _route: Router) { }
   
   ngOnInit(): void {
     this.cartCount = 0
-    this.cartList = []
     if(this.scrolled){
       AOS.refresh()
     }
@@ -70,7 +68,6 @@ export class NavBarComponent implements OnInit {
     //     }
     // })
     this._state.getCartList().subscribe(data=>{
-      this.cartList = data
       this.cartCount = data.length
     })
   }
@@ -84,7 +81,12 @@ export class NavBarComponent implements OnInit {
     this._auth.logOutUser()
   }
   gotoCartPage(){
-    let content =  this._state.getEncryptString(JSON.stringify(this.cartList))
-    this._route.navigate(['/cart', content])
+     
+    let content =  this._state.getEncryptString(this.userData._id)
+    this._route.navigate(['/cart',content ])
  }
+  gotoOrders(){
+    let content =  this._state.getEncryptString(this.userData._id)
+    this._route.navigate(['/orders',content ])
+  }
 }

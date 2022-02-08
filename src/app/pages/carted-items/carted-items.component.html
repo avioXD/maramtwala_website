@@ -1,1 +1,61 @@
-<p>carted-items works!</p>
+<div class="header">
+    <div class="inner-header">
+         
+        <div class="container landing"  >
+            <div *ngIf="!cartItems.length" class="title display-3 text-center d-flex justify-content-center align-items-center ">   
+            <p>Empty Cart</p>
+            </div>
+       <div class="row" *ngIf="cartItems.length">
+           <div class="col-sm-8 mt-3 " style="border-bottom: 5px solid #cdd7ff;">
+            <span data-aos="fade-right" class=" d-flex title display-6"><mat-icon style="font-size: 2.3rem; margin-right: 1rem;">add_cart</mat-icon><p>Carted Services</p> </span> 
+            <p-scrollPanel [style]="{width: '100%', height: '70vh' }" styleClass="custombar1">
+                <div class="item-card d-flex" *ngFor="let item of cartItems">
+                    <div class="pro rounded-circle shadow-sm my-auto" [style.background-image]="'url('+item.provider.profile_img+')'"></div>
+                    <div class="pro-details my-auto">
+                        <span class="title-dark ">Provider: <h4 class="title-dark">{{item.provider.provider_name}}</h4>  </span>
+                        <span  class="title-dark">Service : <span class="h6 title-dark">{{item.provider.label}} </span> </span>
+                        <span  class="title-dark">No of service: <span class="h6 title-dark">{{item.count}} </span> </span>
+                        <span  class="title-dark">Initial charges: <span class="text-price-dark" style="font-weight: 400; color:#364ca1;"> {{item.provider.price | currency:'INR'}}</span> </span>
+                    </div>
+                    <span class="removeicon">
+                        <button pButton pRipple (click)="removeItem(item)" type="button" icon="pi pi-times" class="p-button-rounded p-button-danger p-button-text"></button>
+                    </span>
+                </div>
+            </p-scrollPanel>
+           </div>
+           <div class="col-sm-4 mt-3 ">
+            <span data-aos="fade-right" class=" d-flex title display-6"> <mat-icon style="font-size: 2.3rem; margin-right: 1rem;">booking</mat-icon><p>Booking Details</p> </span> 
+               <div class="proceed-card" >
+                    <table>
+                        <p-scrollPanel>
+                        <tr>
+                          <th>Service</th>
+                          <th>Quantity</th>
+                          <th>Price</th>
+                        </tr>
+                        <tr *ngFor="let item of cartItems">
+                          <td>{{item.provider.label}}</td>
+                          <td>{{item.count}} x <span class="text-price-dark"> {{ item.provider.price | currency:'INR'}} </span> </td>
+                          <td class="text-price-dark">{{item.count*item.provider.price | currency:'INR'}}</td>
+                        </tr>
+                             </p-scrollPanel>
+                      </table>
+                        <hr>
+                        <span class="d-flex justify-content-between">
+                            <p class=" ">Date: </p>
+                            <p>{{ date | date: 'M/d/yy, h:mm a' }}</p>
+                        </span>
+                      <span class="d-flex justify-content-between">
+                          <p class="title-dark"> Total payble Ammount:  </p>
+                          <p class="text-price-dark"> {{total_payble | currency:'INR'}}</p>
+                      </span>
+                      <hr>
+                      <div class="order d-flex justify-content-end">
+                        <button pButton pRipple type="button" class="p-button" label="Book Now" (click)="onConfirmBook()"></button>
+                    </div>
+               </div>
+                
+           </div>
+       </div>
+      </div>
+</div>

@@ -38,6 +38,9 @@ import { ProviderInDetailComponent } from './pages/components/provider-in-detail
 import { CartedItemsComponent } from './pages/carted-items/carted-items.component';
 import { SidebarComponent } from './bars/navitems/sidebar/sidebar.component';
 import { SelectProviderComponent } from './modals/select-provider/select-provider.component';
+import { TermsComponent } from './pages/terms/terms.component';
+import { FAQComponent } from './pages/faq/faq.component';
+import { OrderPageComponent } from './pages/order-page/order-page.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +64,9 @@ import { SelectProviderComponent } from './modals/select-provider/select-provide
     CartedItemsComponent,
     SidebarComponent,
     SelectProviderComponent,
+    TermsComponent,
+    FAQComponent,
+    OrderPageComponent,
     
   ],
   imports: [

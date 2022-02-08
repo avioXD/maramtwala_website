@@ -3,7 +3,7 @@
         "label": "Home Appliance Repair",
         "image_url":"../../assets/images/homeAp.png",
         "code":"HARS",
-        "items": [
+        "subcategory": [
             {"label": "Air conditioner repair" , "code": "HARS1"},
             {"label": "Cctv repair" ,"code": "HARS2"},
             {"label": "Chimney repair" , "code": "HARS3"},
@@ -29,7 +29,7 @@
         "label": "Mobile and computer repairing",
         "image_url":"../../assets/images/mobileRepair.png",
         "code":"MCS",
-        "items":[
+        "subcategory":[
             {"label":   "Mobile repairing", "code": "MCS1"},
             {"label":   "Laptop repairing", "code": "MCS2"},
             {"label":   "Computer repairing", "code": "MCS3"},
@@ -40,8 +40,8 @@
     {
         "label": "Contractor services",
         "image_url":"../../assets/images/ContractorService.png",
-        "code":"",
-        "items":[
+        "code":"CS",
+        "subcategory":[
             {"label":   " Architectural service", "code": "CS1"},
             {"label":   "Fabrication service", "code": "CS2"},
             {"label":   "False ceiling service", "code": "CS3"},
@@ -57,8 +57,8 @@
     {
         "label": "Fashionable alteration and repair",
         "image_url":"../../assets/images/Fashion.png",
-        "code":"fashionablealteration",
-        "items":[
+        "code":"FAS",
+        "subcategory":[
             {"label": "Shoes and Foot wear repair", "code": "FAS1"},
             {"label":    "Handbag repair",  "code": "FAS2"},
             {"label":     "Dress alteration for Men", "code": "FAS3"},
@@ -73,8 +73,8 @@
     {
         "label": "Musical instrument Repair",
         "image_url":"../../assets/images/instrumentRepair.png",
-        "code":"musicalinstrument",
-        "items":[
+        "code":"MIS",
+        "subcategory":[
             {"label":   "Guitar repair", "code": "MIS1"},
             {"label":   "Tabla repair", "code": "MIS1"},
             {"label":    "Piano repair", "code": "MIS1"},
@@ -85,8 +85,8 @@
     {
         "label": "Cleaning and pest control",
         "image_url":"../../assets/images/cleaner.png",
-        "code":"cleaningandpestcontrol",
-        "items":[
+        "code":"CPCS",
+        "subcategory":[
             {"label":  "Laundry and dry cleaning service", "code": "CPCS1"},
             {"label":   "Aquarium cleaning and maintenance service", "code": "CPCS2"},
             {"label":   "Car wash service", "code": "CPCS3"},
@@ -103,8 +103,8 @@
     {
         "label": "Handyman service",
         "image_url":"../../assets/images/handyman.png",
-        "code":"handyman",
-        "items":[
+        "code":"HMS",
+        "subcategory":[
             {"label":  "Carpenter service", "code": "HMS1"},
             {"label":  "Electrician service", "code": "HMS1"},
             {"label":  "Furniture installation and assembling", "code": "HMS1"},
@@ -116,8 +116,8 @@
     {
         "label": "Sports accessories repair",
         "image_url":"../../assets/images/crafts.png",
-        "code":"sports",
-        "items":[
+        "code":"SPAS",
+        "subcategory":[
             {"label":   " Bicycle repair", "code": "SPAS1"},
             {"label":  "Cricket bat repair","code": "SPAS2"},
             {"label":  "Other sports good repair", "code": "SPAS3"},

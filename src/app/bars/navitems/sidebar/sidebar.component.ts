@@ -19,10 +19,10 @@ export class SidebarComponent implements OnInit {
   Category_names: CategoryTreeState[]
   visible : boolean = false
   cartCount: number 
-  cartList: CartState[] = []
+ 
   ngOnInit(): void {
     this.cartCount = 0
-    this.cartList = []
+   
     this._state.getCategoryTree().subscribe(res=>{
       this.Category_names = res
       this._state.setCategoryTree(res)
@@ -30,7 +30,6 @@ export class SidebarComponent implements OnInit {
     this._state.getSwitchSideMenu().subscribe(res=>{
       this.visible = res
       this._state.getCartList().subscribe(data=>{
-        this.cartList =data
         this.cartCount = data.length
       })
       if(this.visible){
@@ -69,8 +68,11 @@ export class SidebarComponent implements OnInit {
     this._auth.logOutUser()
   }
   gotoCartPage(){
-     let content =  this._state.getEncryptString(JSON.stringify(this.cartList))
+     let content =  this._state.getEncryptString(this.userData._id)
      this._route.navigate(['/cart', content])
   }
-
+  gotoOrders(){
+    let content =  this._state.getEncryptString(this.userData._id)
+    this._route.navigate(['/orders',content ])
+  }
 }

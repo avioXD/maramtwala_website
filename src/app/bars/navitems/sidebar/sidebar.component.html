@@ -1,19 +1,28 @@
 <p-sidebar [(visible)]="visible" position="right" [baseZIndex]="10000" (onHide)="onHide()">
+   
   <div class="nav-user d-flex flex-column justify-content-start">
+    <div  class="trademark " style="margin-left: auto; margin-right: auto;"></div>
     <span class="p-input-icon-left ">
         <i class="pi pi-search"></i>
         <input class="search" type="text" pInputText [(ngModel)]="searchValue" placeholder="Search for service">         
     </span>
      <div [ngSwitch]="isLogin" class="d-flex flex-column justify-content-around align-items-center mt-5">
-      <div *ngSwitchCase="true" > <p-avatar  class="p-3 cursor-pointer"  image="{{userData.profile_pic? userData.profile_pic: '../../../assets/images/user.jpg' }}" pBadge shape="circle" severity="danger" size="large" [routerLink]="['profile']"></p-avatar> </div>
-      <div class="d-flex justify-content-center login-text align-items-center">
-        <p *ngSwitchCase="true" class="  cursor-pointer mt-3">{{userData.first_name}} {{userData.last_name}} </p>
-        <mat-icon *ngSwitchCase="true" (click)="logOutUser()" [routerLink]="['/home']"    class=" cursor-pointer mx-2" pTooltip="logout" tooltipPosition="bottom">exit_to_app</mat-icon>   
+      <div *ngSwitchCase="true" [routerLink]="['profile']" > <p-avatar  class="p-3 cursor-pointer"  image="{{userData.profile_pic? userData.profile_pic: '../../../assets/images/user.jpg' }}" pBadge shape="circle" severity="danger" size="large" [routerLink]="['profile']"></p-avatar> </div>
+      <div *ngSwitchCase="true" class="d-flex justify-content-center login-text align-items-center mt-3">
+        <p class="cursor-pointer  ">{{userData.first_name}} {{userData.last_name}} </p>
+        <p class="cursor-pointer mr-1"  (click)="op.toggle($event)"><i class="pi pi-chevron-circle-down" style="color:#425ab9!important" > </i> </p >  
       </div>
+      <p-overlayPanel #op > 
+        <div class="d-flex flex-column"  >
+           <p class="title-dark cursor-pointer"   [routerLink]="['profile']" (click)="op.hide()">Profile</p>
+           <p class="title-dark cursor-pointer"    (click)="gotoOrders()" (click)="op.hide()">Orders</p>
+           <p class="title-dark cursor-pointer" (click)="logOutUser()" [routerLink]="['/home']" (click)="op.hide()">Logout</p>
+        </div>
+    </p-overlayPanel>
       <div *ngSwitchCase="false"><p (click)="switchLoginSignup()" class="login-text cursor-pointer mt-3">Login / Signup</p></div>
-      <div class="d-flex"   (click)="gotoCartPage()">
-        <div class="cart mx-2 cursor-pointer " pBadge value="{{cartCount}}">
-          <mat-icon style="color: rgba(84,58,183,1)" pTooltip="Carted service" tooltipPosition="bottom" >shopping_cart</mat-icon>
+      <div *ngIf="cartCount" class="d-flex"   (click)="gotoCartPage()">
+        <div  class="cart mx-2 cursor-pointer " pBadge value="{{cartCount}}">
+          <mat-icon style="color: #425ab9" pTooltip="Carted service" tooltipPosition="bottom" >shopping_cart</mat-icon>
          </div>
       </div>
       </div>

@@ -11,7 +11,9 @@
     <span class="col d-flex justify-content-start">
       <button  class="p-button-outlined  my-2 " pRipple pButton (click)="sendOtp()">{{text}}</button>
     </span>
+    
     <div *ngIf="isSnedOtpLoading" class="d-flex justify-content-start mx-3">
+       
       <div class="loader loader--style8" title="7">
           <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
              width="24px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">
@@ -63,7 +65,6 @@
         <!-- <button *ngIf="isLoading" pButton pRipple type="button" icon="pi pi-spin pi-spinner" class="p-button-outlined p-button-rounded mx-3"></button> -->
     </div>
     <p class="text-center text-danger">{{errorMessage}}</p>
-     
  </div>
  
  <!-- <div>

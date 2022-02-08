@@ -217,29 +217,44 @@ export class StateService {
     this.setCartList(list)
   }
   setCartList(content: CartState[]){
-    localStorage.removeItem(environment.STORAGE_KEY.CART_ITEMS_KEY)
-    localStorage.setItem(environment.STORAGE_KEY.CART_ITEMS_KEY, this.getEncryptString( JSON.stringify(content)))
+   
+
     //post to api: 
     
     //'
     this._store.dispatch(setCartedItems({state: content}))
+    localStorage.removeItem(environment.STORAGE_KEY.CART_ITEMS_KEY)
+    localStorage.setItem(environment.STORAGE_KEY.CART_ITEMS_KEY, this.getEncryptString( JSON.stringify(content)))
   }
   getCartListLocal(){
     let a = this.getDecryptString(localStorage.getItem(environment.STORAGE_KEY.CART_ITEMS_KEY))
     return JSON.parse(a || "[]")
      
   }
+  setCartLocalToState(){
+    this.setCartList(this.getCartListLocal())
+  }
   getCartList(){
     //post to api: 
-    this.setCartList(this.getCartListLocal())
     return this._store.select(getCartitems) 
+  }
+  removeFromCart(item:CartState){
+    let list   
+    this.getCartList().subscribe(res=>{
+        list = res.filter(x=> x.provider.id != item.provider.id)
+      }).unsubscribe()
+      console.log("Removed",list)
+      this.setCartList(list)
   }
   getCartCount(){
     let i = 0
     this.getCartList().pipe(map((x:any)=>  i =+ x.count))
     return of(i)
   }
-
+  clearCart(){
+    localStorage.removeItem(environment.STORAGE_KEY.CART_ITEMS_KEY)
+    this._store.dispatch(setCartedItems({state: []}))
+  }
   /*******Get distance between two place******** */
   getDistanceBetweenByLatLon(content:{user:{lat:number, lon: number},provider:{lat: number, lon: number}}){
      // The math module contains a function

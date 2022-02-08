@@ -5,8 +5,8 @@
 }
 .provider-card{
     border-radius: 5px;
-    width: 14rem;
-    height: 20rem;
+    width: 15rem;
+    height: 22rem;
     overflow: hidden;
     position: relative;
     .provider-dp-bg{
@@ -80,9 +80,10 @@
         .on-bbok{
             .buttons{
                 position: absolute;
-                bottom:5%;
                 width: 100%;
+                bottom: 0;
                 right: 0;
+                left:0;
             }
         }
          
@@ -117,3 +118,26 @@ svg path,svg rect{
       font-size: 150%;
     }
   }
+
+
+  .counter-btn{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    
+    /* Firefox */
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+    input{
+        padding: 0.3rem;
+        width: 2.3rem;
+        text-align: center;
+        margin: 0px 3px 0px 3px ;
+    }
+}
