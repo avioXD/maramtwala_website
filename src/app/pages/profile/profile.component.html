@@ -1,1 +1,44 @@
-
+<div class="header">
+    <div class="inner-header">
+        <div class="container landing">
+            <div class="row">
+                <div class="col-sm-2 d-flex justify-content-center align-items-start">
+                    <div class="profile-img rounded-circle">
+                        <button pButton pRipple type="button" icon="pi pi-images" class="p-button-rounded upload-btn"></button>
+                    </div>
+                </div>
+                <div class="col-sm-10 p-5 ">
+                    <div class="row position-relative" [ngClass]="editableDetails? 'edit-details': 'show-details'">
+                        <button *ngIf="!editableDetails" pButton pRipple type="button" icon="pi pi-user-edit" class="p-button-rounded upload-btn" (click)="editableDetails = !editableDetails"></button>
+                        <div class="col-sm-6 my-2 ">
+                            <label for="name" class="form-label">Name</label>
+                            <input *ngIf="!editableDetails" disabled type="name" class="form-control p-input" id="exampleFormControlInput1"  [(ngModel)]="userData.name">
+                            <input  *ngIf="editableDetails" type="name" class="form-control p-input" id="name"  [(ngModel)]="userData.name">
+                        </div>
+                        <div class="col-sm-4 my-2">
+                            <label for="phone_number" class="form-label">Phone Number</label>
+                            <input *ngIf="!editableDetails" disabled type="number" class="form-control p-input" id="phone_number"  [(ngModel)]="userData.phone_no">
+                            <input *ngIf="editableDetails" type="number" class="form-control p-input" id="phone_number"  [(ngModel)]="userData.phone_no">
+                        </div>
+                        <div class="col-sm-4 my-2">
+                            <label disabled for="emailid" class="form-label">Email</label>
+                            <input *ngIf="!editableDetails" disabled type="email" class="form-control p-input" id="emailid"  [(ngModel)]="userData.email">
+                            <input *ngIf="editableDetails" type="email" class="form-control p-input" id="exampleFormControlInput1"  [(ngModel)]="userData.email">
+                        </div>
+                        <div class="col-sm-4 my-2">
+                            <label for="aphonenumber" class="form-label">Alternate Phone Number</label>
+                            <input  *ngIf="!editableDetails" disabled type="number" class="form-control p-input" id="aphonenumber"  [(ngModel)]="userData.alternate_no">
+                            <input *ngIf="editableDetails" type="number" class="form-control p-input" id="exampleFormControlInput1"  [(ngModel)]="userData.alternate_no">
+                        </div>
+                        <div class="col-sm-8 my-2">
+                            <label for="address" class="form-label">Address</label>
+                            <textarea *ngIf="!editableDetails" disabled class="form-control p-textarea disabled" id="exampleFormControlTextarea1" rows="3"  [(ngModel)]="userData.address"></textarea>
+                            <textarea *ngIf="editableDetails" class="form-control p-textarea disabled" id="exampleFormControlTextarea1" rows="3"  [(ngModel)]="userData.address"></textarea>
+                        </div>
+                    </div>
+                    <button *ngIf="editableDetails" pButton pRipple type="button" label="save" icon="pi pi-user-edit" class="p-button  " (click)="editableDetails = !editableDetails"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

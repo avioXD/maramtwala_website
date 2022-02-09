@@ -17,11 +17,14 @@
             cursor: pointer; 
             border-radius: 8px;
             position: relative;
-            margin-top: 1rem;
             min-width: 14rem;
+            
             min-height: 5rem;
            img{
-               width: 16rem
+               background-color: #ffffff;
+               padding: 0rem;
+               width: 16rem;
+               border-radius: 6px;
            }
          .nav-user{
             position: absolute;

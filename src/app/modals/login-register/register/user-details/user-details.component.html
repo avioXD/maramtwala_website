@@ -3,19 +3,19 @@
     <span data-aos="fade-right" class="content-header">	<mat-icon> bubble_chart</mat-icon><p>Person Details:</p> </span>
     <div class="d-flex my-3">
      <span class="p-float-label">
-        <input id="float-input" type="text" style="width: 11rem" pInputText  [(ngModel)]="userData.f_name" (keyup)="onKeyUp()"> 
+        <input   class="p-input" id="float-input" type="text" style="width: 11rem" pInputText  [(ngModel)]="userData.f_name" (keyup)="onKeyUp()"> 
         <label for="float-input">First Name</label>
     </span>
     <span class="p-float-label">
-        <input id="float-input" type="text" style="width: 11rem" pInputText [(ngModel)]="userData.l_name" (keyup)="onKeyUp()"> 
+        <input class="p-input" id="float-input" type="text" style="width: 11rem" pInputText [(ngModel)]="userData.l_name" (keyup)="onKeyUp()"> 
         <label for="float-input">Last Name</label>
     </span>
     </div>
     <span class="p-float-label  my-3 ">
-        <input id="float-input" type="text" style="width: 15rem" pInputText  [(ngModel)]="userData.email" (keyup)="onKeyUp()"> 
+        <input class="p-input" id="float-input" type="text" style="width: 15rem" pInputText  [(ngModel)]="userData.email" (keyup)="onKeyUp()"> 
         <label for="float-input">Email</label>
     </span>
     <span class="p-float-label my-3"  >
-        <textarea id="float-input" rows="3" cols="30" pInputTextarea (keyup)="onKeyUp()" [(ngModel)]="userData.address"></textarea>
+        <textarea class="p-textarea" id="float-input" rows="3" cols="30" pInputTextarea (keyup)="onKeyUp()" [(ngModel)]="userData.address"></textarea>
         <label for="float-input">Address</label>
     </span>

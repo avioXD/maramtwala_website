@@ -4,7 +4,7 @@
     <div  class="trademark " style="margin-left: auto; margin-right: auto;"></div>
     <span class="p-input-icon-left ">
         <i class="pi pi-search"></i>
-        <input class="search" type="text" pInputText [(ngModel)]="searchValue" placeholder="Search for service">         
+        <input class="search p-input" type="text" pInputText [(ngModel)]="searchValue" placeholder="Search for service">         
     </span>
      <div [ngSwitch]="isLogin" class="d-flex flex-column justify-content-around align-items-center mt-5">
       <div *ngSwitchCase="true" [routerLink]="['profile']" > <p-avatar  class="p-3 cursor-pointer"  image="{{userData.profile_pic? userData.profile_pic: '../../../assets/images/user.jpg' }}" pBadge shape="circle" severity="danger" size="large" [routerLink]="['profile']"></p-avatar> </div>

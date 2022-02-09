@@ -1,0 +1,55 @@
+.header {
+    position:relative;
+    background: linear-gradient(60deg, rgb(33, 48, 187) 0%, rgba(173, 0, 23, 0.466) 100%);
+  }
+ 
+  
+  .inner-header {
+    min-height:80vh;
+    width:100%;
+    margin: 0;
+    padding: 0;
+    .logo {
+      background-color: rgb(252, 252, 252);
+      padding: 0.1rem;
+      border-radius: 5px;
+      img{
+          width: 16rem;
+      }
+    }
+    .hero-img{
+      border-radius: 50px 50px 50px 50px ;
+      width: 100%;
+    }
+  }
+   
+  .profile-img{
+      background-image: url('../../../assets/images/user.jpg');
+      width: 12rem;
+      height: 12rem;
+      border:5px solid rgb(0, 109, 173);
+      background-size: cover;
+      background-repeat: no-repeat;
+      position: relative;
+      
+  }
+  
+  .show-details{
+      position: relative;
+      .p-input, .p-textarea {
+        color: #dbe3ff!important;   
+        border : 5px gold!important;
+        padding-left: 0px;
+     }
+  }
+  .edit-details{
+    position: relative;
+
+  }
+  .upload-btn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    align-self: flex-end;
+}
+

@@ -1,10 +1,10 @@
 
- <div class="" style="margin-top: 5rem;">
+ <div class="my-2">
     <span data-aos="fade-right" class="content-header"><mat-icon style="color: #425ab9"> stay_current_portrait</mat-icon><p>Enter your number</p> </span>
     <div class="row my-1">
       <div class="col">
         <span class="p-float-label my-2  "  >
-          <input id="float-input" type="text" style="min-width:15rem; width: 100%;" pInputText [(ngModel)]="phone_number"> 
+          <input  class="p-input" id="float-input" type="text" style="min-width:15rem; width: 100%;" pInputText [(ngModel)]="phone_number"> 
           <label for="float-input">Phone</label>
       </span>
       </div>
@@ -39,7 +39,7 @@
     
      
     <div data-aos="fade-right" class="otp-input d-flex"  *ngIf="switchOtpField">
-        <input #otpbox type="text" id="inputtext"  [(ngModel)]="OTP" (keyup)="isOTPcheck()" pInputText class=" ng-dirty " placeholder="code"  >
+        <input class="p-input ng-dirty" #otpbox type="text" id="inputtext"  [(ngModel)]="OTP" (keyup)="isOTPcheck()" pInputText  placeholder="code"  >
         <div *ngIf="isLoading" class="d-flex justify-content-start mx-3">
             <div class="loader loader--style8" title="7">
                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"

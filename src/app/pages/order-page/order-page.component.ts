@@ -12,12 +12,14 @@ export class OrderPageComponent implements OnInit {
 
   constructor(private _route: ActivatedRoute, private _api: ApiService, private _state: StateService) { }
   uid: string
+  orderList: any
   ngOnInit(): void {
     this.uid = ''
     this._route.paramMap.subscribe(paramMap=>{
       this.uid = paramMap.get('uid')
-      this._api._getUserOrders(this._state.getDecryptString(this.uid)   ).subscribe(res=>{
-          console.log("Order List ", res)
+      this._api._getUserOrders(this._state.getDecryptString(this.uid)).subscribe(res=>{
+          //console.log("Order List ", res)
+          this.orderList = res
       })
     }).unsubscribe()
     

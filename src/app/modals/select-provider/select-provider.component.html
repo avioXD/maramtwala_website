@@ -57,7 +57,7 @@
                             <label for="vertical" class="h7 text-center" style="display: block">No of Services</label>
                             <div class="counter-btn">
                                 <button pButton pRipple type="button" icon="pi pi-minus" class="p-button-rounded p-button-sm" (click)=" count[i]==0? count[i] = 1 : count[i] = count[i]-1   " ></button>
-                                <input pInputText type="number" #counter value="1"  [(ngModel)]="count[i]" />
+                                <input  class="p-input" pInputText type="number" #counter value="1"  [(ngModel)]="count[i]" />
                                 <button pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded p-button-sm" (click)="count[i]==5? count[i] = 5 : count[i] = count[i]+1"></button>
                             </div>
                         </div>

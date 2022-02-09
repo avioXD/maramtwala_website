@@ -21,6 +21,16 @@
         }
          
       }
+      .order{
+        padding: 1rem;
+      }
+    
+      .item{
+        background-color: #a3c8ff;
+        height: auto;
+        padding: 0.6rem;
+        border-radius: 8px;
+      }
       .proceed-card{
           width: 100%;
           min-height: 50vh;
@@ -42,23 +52,27 @@
             width:100%;
           }
       }
-      .order{
-          position:relative;
-          width: 100%;
-          right: 0;
-      }
+      
       .item-card{
           width: 100%;
           border-radius: 5px;
           padding: 2%;
           height: max-content;
           min-height: 16vh;
-          background: linear-gradient(60deg, rgb(177, 233, 255) 0%,   rgb(129, 173, 255) 100%);
+         // background: linear-gradient(60deg, rgb(177, 233, 255) 0%,   rgb(129, 173, 255) 100%);
           margin-top: 0.3rem;
           position: relative;
+          .status{
+            position: absolute;
+            top: 45%;
+            right:10%;
+            background-color: #dbe3ff;
+            padding: 0.1rem;
+            border-radius: 5px;
+          }
           .pro{
               position: relative;
-              border: 2px solid rgb(177, 233, 255);
+              border: 2px solid rgb(0, 49, 68);
               margin-left: 2%;
               overflow: hidden;
               width: 7rem;
@@ -85,3 +99,43 @@
       }
   }
    
+  // // ["requested", "accepted", "reject", "inspection", "inprogress", "completed"]
+  .s-color{
+    text-transform: uppercase;
+  }
+  .requested{
+    background : linear-gradient(60deg, rgb(16, 19, 194) 0%,   rgb(78, 133, 235) 100%);
+    .s-color{
+      color: rgb(78, 133, 235) !important;
+    }
+  }
+  .accepted{
+    background : linear-gradient(60deg, rgba(0, 153, 38, 0.918) 0%,   rgb(9, 219, 167) 100%);
+    .s-color{
+      color: rgb(9, 219, 167) !important;
+    }
+  }
+  .reject{
+    background : linear-gradient(60deg, rgba(168, 0, 65, 0.918) 0%,   rgba(255, 154, 129, 0.856) 100%);
+    .s-color{
+      color: rgba(255, 154, 129, 0.856) !important;
+    }
+  }
+  .inspection{
+    background : linear-gradient(60deg, rgba(173, 133, 0, 0.993) 0%,   rgba(253, 213, 104, 0.856) 100%);
+    .s-color{
+      color: (253, 213, 104, 0.856) !important;
+    }
+  }
+  .inprogress{
+    background : linear-gradient(60deg, rgba(98, 8, 182, 0.918) 0%,   rgb(9, 160, 219) 100%);
+    .s-color{
+      color: rgb(9, 160, 219) !important;
+    }
+  }
+  .completed{
+    background : linear-gradient(60deg, rgba(4, 122, 34, 0.918) 0%,   rgb(5, 66, 156) 100%);
+    .s-color{
+      color: rgb(5, 66, 156) !important;
+    }
+  }

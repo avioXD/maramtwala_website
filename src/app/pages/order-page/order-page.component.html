@@ -4,18 +4,34 @@
         <div class="container landing"  >
             <span data-aos="fade-right" class=" d-flex title display-6"> <p>Booked Services</p> </span> 
             <p-scrollPanel [style]="{width: '100%', height: '70vh' }" styleClass="custombar1">
-                <div class="item-card d-flex" *ngFor="let item of [0,2,3]">
-                    <div class="pro rounded-circle shadow-sm my-auto" [style.background-image]="'url('+ +')'"></div>
-                    <div class="pro-details my-auto">
-                        <span class="title-dark ">Provider: <h4 class="title-dark"> </h4>  </span>
-                        <span  class="title-dark">Service : <span class="h6 title-dark">  </span> </span>
-                        <span  class="title-dark">No of service: <span class="h6 title-dark"> </span> </span>
-                        <span  class="title-dark">Initial charges: <span class="text-price-dark" style="font-weight: 400; color:#364ca1;">  </span> </span>
+               
+               <div class="row">
+                <div class="order col-sm-12 " *ngFor="let item of orderList">
+                    <div class="item">
+                        <p class="title-dark h4">Order date: {{item.date | date: 'mm-dd-yyyy hh:mm a'}} <br>Total Price: {{item.amount | currency: 'INR'}}</p>
+                        <div class="item-card d-flex " *ngFor="let book of item.bookings"
+                        [ngClass]="{'requested': book.status == 'requested',
+                        'accepted': book.status == 'accepted',
+                        'reject': book.status == 'reject',
+                        'inspection' : book.status == 'inspection',
+                        'inprogress' : book.status == 'inprogress',
+                        'completed': book.status == 'completed'
+                    }"
+                        >
+                            <div class="pro-details my-auto" >
+                                <span class="status "><p class="title-dark h5 s-color">{{book.status}}</p> </span>
+                                <span class="title h4">Provider: {{book.provider}} <h4 class="title"> </h4>  </span>
+                                <span  class="title">Service : {{book.service}}<span class="h6 title">  </span> </span>
+                                <span  class="title">No of service: {{book.quantity}} <span class="h6 title"> </span> </span>
+                                <span  class="title">Initial charges: {{book.price | currency: 'INR' }} <span class="text-price-dark" style="font-weight: 400; color:#364ca1;">  </span> </span>
+                            </div>
+                            <!-- <span class="removeicon">
+                                <button pButton pRipple  type="button" icon="pi pi-times" class="p-button-rounded p-button-danger p-button-text"></button>
+                            </span> -->
+                        </div>
                     </div>
-                    <span class="removeicon">
-                        <button pButton pRipple  type="button" icon="pi pi-times" class="p-button-rounded p-button-danger p-button-text"></button>
-                    </span>
-                </div>
+            </div>
+               </div>  
             </p-scrollPanel>
        </div>
       </div>

@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import "../node_modules/primeng/resources/themes/tailwind-light/theme.css" ;
+@import "../node_modules/primeng/resources/themes/fluent-light/theme.css" ;
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
  
  
@@ -20,7 +20,7 @@ body{
         font-weight: 500;
         //filter: drop-shadow(5px 5px 4px #30303094);
         font-family: 'Poppins', sans-serif;
-        line-height: 90%;
+      
     }
     .text-price-dark{
         color: #425ab9;
@@ -77,7 +77,7 @@ body{
             color: #425ab9;
         }
     }
-    input,textarea{
+    .p-input, .p-textarea{
         border: 1px solid #9caef7 !important;
         background: transparent !important;
         color: #7891f7!important;
@@ -87,6 +87,7 @@ body{
             color:#9caef7
         }
     }
+    
     label{
         color: #9caef7!important;
     }
