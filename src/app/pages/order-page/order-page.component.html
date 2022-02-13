@@ -2,13 +2,13 @@
 <div class="header">
     <div class="inner-header">
         <div class="container landing"  >
+            <div class="trademark"></div>
             <span data-aos="fade-right" class=" d-flex title display-6"> <p>Booked Services</p> </span> 
             <p-scrollPanel [style]="{width: '100%', height: '70vh' }" styleClass="custombar1">
-               
                <div class="row">
                 <div class="order col-sm-12 " *ngFor="let item of orderList">
                     <div class="item">
-                        <p class="title-dark h4">Order date: {{item.date | date: 'mm-dd-yyyy hh:mm a'}} <br>Total Price: {{item.amount | currency: 'INR'}}</p>
+                        <p class="title-dark h5">Booking date: {{item.date | date: 'MMM d, y, h:mm a'}} <br>Total Price: {{item.amount | currency: 'INR'}}</p>
                         <div class="item-card d-flex " *ngFor="let book of item.bookings"
                         [ngClass]="{'requested': book.status == 'requested',
                         'accepted': book.status == 'accepted',
@@ -16,11 +16,11 @@
                         'inspection' : book.status == 'inspection',
                         'inprogress' : book.status == 'inprogress',
                         'completed': book.status == 'completed'
-                    }"
+                           }"
                         >
                             <div class="pro-details my-auto" >
-                                <span class="status "><p class="title-dark h5 s-color">{{book.status}}</p> </span>
-                                <span class="title h4">Provider: {{book.provider}} <h4 class="title"> </h4>  </span>
+                                <span class="status "><p class="title-dark s-color">{{book.status}}</p> </span>
+                                <span class="title h6">Provider: {{book.provider}}</span>
                                 <span  class="title">Service : {{book.service}}<span class="h6 title">  </span> </span>
                                 <span  class="title">No of service: {{book.quantity}} <span class="h6 title"> </span> </span>
                                 <span  class="title">Initial charges: {{book.price | currency: 'INR' }} <span class="text-price-dark" style="font-weight: 400; color:#364ca1;">  </span> </span>

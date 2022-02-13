@@ -52,9 +52,11 @@
       <div class="" >
           <span data-aos="fade-right" class="content-header"> <mat-icon>label_important</mat-icon><p>Services</p> </span>
           <div class="row p-2 ">
-            <div *ngFor="let item of catagories; "  data-aos="zoom-in" data-aos-duration="1222"  class="col-sm-3 mt-2 flex-column d-flex align-items-center justify-content-center">
-                  <img style="width: 100%; max-width: 12rem;" class="rounded-circle shadow-sm p-3" src="{{item.image_url}}" alt="" srcset="">
-                  <!-- <p class="text-items text-center" (click)="onOpenMicroservice(item)">{{item.label}}</p> -->
+            <div *ngFor="let item of catagories; "  data-aos="zoom-in" data-aos-duration="1222"  class="col-sm-3 mt-2  ">
+              <span *ngIf="item.image_url" class="flex-column d-flex align-items-center justify-content-center">
+                <img style="width: 100%; max-width: 12rem; height: 12rem;" class="rounded-circle shadow-sm p-3" src="{{item.image_url}}" alt="" srcset="">
+                <p class="text-items text-center" (click)="onOpenMicroservice(item)">{{item.label}}</p>
+              </span>    
             </div>
           </div>
         </div>

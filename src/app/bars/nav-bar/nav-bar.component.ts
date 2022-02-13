@@ -52,6 +52,9 @@ export class NavBarComponent implements OnInit {
         this.responsive = true
       }
     })
+    this._state.getUserToken().subscribe(r=>{
+      
+    })
     this._state.getUserIsLogin().subscribe(res=>{
       this.isLogin = res
       if(this.isLogin){

@@ -1,17 +1,21 @@
 
 <div class="container d-flex justify-content-left align-items-start flex-column my-4">
     <span data-aos="fade-right" class="content-header">	<mat-icon> bubble_chart</mat-icon><p>Person Details:</p> </span>
-    <div class="d-flex my-3">
-     <span class="p-float-label">
-        <input   class="p-input" id="float-input" type="text" style="width: 11rem" pInputText  [(ngModel)]="userData.f_name" (keyup)="onKeyUp()"> 
-        <label for="float-input">First Name</label>
-    </span>
-    <span class="p-float-label">
-        <input class="p-input" id="float-input" type="text" style="width: 11rem" pInputText [(ngModel)]="userData.l_name" (keyup)="onKeyUp()"> 
-        <label for="float-input">Last Name</label>
-    </span>
+    <div class="row my-3">
+        <div class="col-sm-6 my-3">
+            <span class="p-float-label">
+                <input   class="p-input" id="float-input" type="text" style="width: 11rem" pInputText  [(ngModel)]="userData.f_name" (keyup)="onKeyUp()"> 
+                <label for="float-input">First Name</label>
+            </span>
+        </div>
+        <div class="col-sm-6 my-3">
+            <span class="p-float-label">
+                <input class="p-input" id="float-input" type="text" style="width: 11rem" pInputText [(ngModel)]="userData.l_name" (keyup)="onKeyUp()"> 
+                <label for="float-input">Last Name</label>
+            </span>
+        </div>
     </div>
-    <span class="p-float-label  my-3 ">
+    <span class="p-float-label  my-2 ">
         <input class="p-input" id="float-input" type="text" style="width: 15rem" pInputText  [(ngModel)]="userData.email" (keyup)="onKeyUp()"> 
         <label for="float-input">Email</label>
     </span>

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { map, of } from 'rxjs';
 import { StateService } from './state.service';
+import { LocationState } from '../store/user/user.state';
 const BASE_URL = environment.apiKey
 const production = false
 @Injectable({
@@ -142,7 +143,9 @@ export class ApiService {
           else return res
      }))
   }
- 
+  _getUserAddressPosition_API(content: LocationState){
+      return this._http.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${content.lat},${content.lon}&key=${environment.MAP_API}`)
+  }
 
 
  

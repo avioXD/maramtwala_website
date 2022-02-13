@@ -120,7 +120,6 @@ export class StateService {
   }
   setUserCurrentLocation(content: LocationState){
     this._store.dispatch(setUser_location({state: content}))
-     
   }
   getUserCurrentLocation(){
     return this._store.select(getUser).pipe(map(res=> res.location))
@@ -133,6 +132,7 @@ export class StateService {
      this.getUserToken().subscribe((res=>{
            user = this.getTokenObject(res)
      })).unsubscribe()
+     user.user['profile_pic'] = this.getProfileImage()
      return of(user.user)
   }
   isTokenValid(date: number){
@@ -149,6 +149,12 @@ export class StateService {
        return this.getDecryptString(res)
      }
       return ''
+  }
+  setProfileImage(img: string){
+    localStorage.setItem(environment.STORAGE_KEY.PROFILE_IMAGE,img)
+  }
+  getProfileImage(){
+    return localStorage.getItem(environment.STORAGE_KEY.PROFILE_IMAGE);
   }
    
 

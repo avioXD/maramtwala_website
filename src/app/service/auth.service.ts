@@ -5,8 +5,10 @@ import jwtDecode from 'jwt-decode';
 import { environment } from 'src/environments/environment';
 import { StateService } from './state.service';
 import { map } from 'rxjs';
- 
-const base_url = 'https://marammatwala-api.herokuapp.com'
+import { UserState } from '../store/user/user.state';
+import { UserProfileState } from '../pages/profile/profile.component';
+
+const base_url = environment.apiKey
 @Injectable({
   providedIn: 'root'
 })
@@ -35,6 +37,7 @@ export class AuthService {
      return this._http.post(`${base_url}/api/v1/user/login`,{phone: `+91${creds.phone}`, code: creds.code}).pipe(map((res: any)=>{
       if(res.status == 'success'){
          this._state.setToken(res.token)
+         this._state.setProfileImage(res.data.user.profile_pic)
          return 200
       } else return res.status
        
@@ -55,6 +58,7 @@ export class AuthService {
      console.log(res)
       if(res.status == 'success'){
          this._state.setToken(res.token)
+         this._state.setProfileImage(res.data.user.profile_pic)
          return 200
       } else return res.status
     } ))
@@ -89,6 +93,17 @@ export class AuthService {
    logOutUser(){
       this._state.setToken('')
       this._state.setUserIsLogin(false)
+   }
+   _updateUser_Api(user: UserProfileState){
+         return this._http.patch(base_url+'/api/v1/user/'+user._id, user).pipe(map((res: any)=>{
+            console.log(res)
+             if(res.status == 'success'){
+                this._state.setToken(res.token)
+                this._state.setUserIsLogin(true)
+                this._state.setProfileImage(res.data.user.profile_pic)
+                return 200
+             } else return res.status
+      } ))
    }
 
 

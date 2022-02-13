@@ -1,10 +1,13 @@
 <div class="header">
     <div class="inner-header">
-         
+          
         <div class="container landing"  >
+            
             <div *ngIf="!cartItems.length" class="title display-3 text-center d-flex justify-content-center align-items-center ">   
-            <p>Empty Cart</p>
+                <div class="trademark"></div>
+                <p>Empty Cart</p>
             </div>
+            <div *ngIf="cartItems.length" class="trademark"></div>
        <div class="row" *ngIf="cartItems.length">
            <div class="col-sm-8 mt-3 " style="border-bottom: 5px solid #cdd7ff;">
             <span data-aos="fade-right" class=" d-flex title display-6"><mat-icon style="font-size: 2.3rem; margin-right: 1rem;">add_cart</mat-icon><p>Carted Services</p> </span> 
@@ -24,7 +27,10 @@
             </p-scrollPanel>
            </div>
            <div class="col-sm-4 mt-3 ">
-            <span data-aos="fade-right" class=" d-flex title display-6"> <mat-icon style="font-size: 2.3rem; margin-right: 1rem;">booking</mat-icon><p>Booking Details</p> </span> 
+            <span data-aos="fade-right" class=" d-flex title h3"><mat-icon> my_location</mat-icon><p>Location</p> </span> 
+            <p-gmap  [style]="{'width':'100%','height':'300px', 'margin-bottom': '1em'}" [options]="options" [overlays]="overlays"
+            (onMapClick)="handleMapClick($event)"></p-gmap>
+            <span data-aos="fade-right" class=" d-flex title h3"> <mat-icon >booking</mat-icon><p>Booking Details</p> </span> 
                <div class="proceed-card" >
                     <table>
                         <p-scrollPanel>

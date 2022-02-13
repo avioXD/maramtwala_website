@@ -2,6 +2,7 @@ import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guard/auth.guard';
 import { SelectProviderComponent } from './modals/select-provider/select-provider.component';
+import { AboutComponent } from './pages/about/about.component';
 import { CartedItemsComponent } from './pages/carted-items/carted-items.component';
 import { FAQComponent } from './pages/faq/faq.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
@@ -20,7 +21,7 @@ const routes: Routes = [
     path: 'home', component: HomePageComponent,  
   },
   {
-    path: '404error', component: PageNotFoundComponent
+    path: 'about', component: AboutComponent
   },
   {
     path: 'sub_catagory/:code', component: SubCategoryPageComponent,  canActivate: [AuthGuard] 
@@ -39,7 +40,10 @@ const routes: Routes = [
   },
   {
     path: 'faq_seller_portal' ,  component: FAQComponent
-  }
+  },
+  {
+    path: '**', component: PageNotFoundComponent
+  },
   
 ];
 

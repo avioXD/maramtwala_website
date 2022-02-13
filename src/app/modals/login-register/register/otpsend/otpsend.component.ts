@@ -126,7 +126,7 @@ export class OtpsendComponent implements OnInit, OnDestroy {
           this._state.setSwitch_signuplogin(false)
         }   
       },(err)=>{
-          this.showErrorMessage('worng OTP')
+          this.showErrorMessage('wrong OTP')
           this.clearForm()
           this.resendOTP()
       })

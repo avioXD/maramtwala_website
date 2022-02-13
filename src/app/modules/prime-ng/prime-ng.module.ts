@@ -34,8 +34,10 @@ import {FocusTrapModule} from 'primeng/focustrap';
 import {BadgeModule} from 'primeng/badge';
 import {TooltipModule} from 'primeng/tooltip';
 import {ScrollTopModule} from 'primeng/scrolltop';
+import {GMapModule} from 'primeng/gmap';
 const PrimeNgComponent = [
            CalendarModule,
+           GMapModule,
            ScrollTopModule,
            TooltipModule,
            FocusTrapModule,

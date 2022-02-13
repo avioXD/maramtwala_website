@@ -1,15 +1,16 @@
-<p-dialog  [showHeader]="false"  (onHide)="onHide()" [(visible)]="visible"  [style]="{ height:'100%', minWidth: '50%'}">
+<p-dialog  [showHeader]="false"  (onHide)="onHide()" [(visible)]="visible"  [style]="{ height:'100%', maxWidth: '70%'}">
    
     <div class="pt-2">
         <span class="d-flex justify-content-end p-2" style="position :absolute ; top: 0px; right: 1rem ;z-index: 4;">
            <button pButton (click)="onHide()" pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-text "></button>
         </span>
     </div>
-    <span data-aos="fade-right" class="content-header pt-4"> <mat-icon>loyalty</mat-icon><p>Available Providers</p> </span>
+    <div class="trademark"></div>
+    <span data-aos="fade-right" class="content-header pt-1"> <mat-icon>loyalty</mat-icon><p>Available Providers</p> </span>
     <div class="befre-init " *ngIf="isProFetched " >
-            <p class="title my-5 pt-5 text-center h5" style="color: rgb(240, 26, 26)">No provider Aviable!</p>
+            <p class="title my-2 pt-5 text-center h5" style="color: rgb(240, 26, 26)">No provider Aviable!</p>
     </div>
-    <div class="loading my-5 pt-5 d-flex justify-content-center align-item-center  p-2" *ngIf="isLoading" >
+    <div class="loading my-2 pt-5 d-flex justify-content-center align-item-center  p-2" *ngIf="isLoading" >
         <div class="loader loader--style8 "  title="7">
             <svg fill="#7891f7" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                width="72px" height="90px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">
@@ -33,61 +34,64 @@
 
  
     </div>
-    <div class="after-init  mt-5  d-flex justify-content-center align-item-center"  *ngIf="providers ">
-        <div class="row">
-        <div class="d-flex col-sm justify-content-center  " *ngFor="let item of providers; let i = index">
-            <div class="provider-card mt-3  shadow cursor-pointer ">
-            <div class="booking ">
-                <div class="on-bbok align-content-center">
-                    <div class="d-flex"> 
-                        <mat-icon>assignment_ind</mat-icon>
-                        <p class="title h7">{{item.provider_name}}</p>
-                    </div>
-                    <div class="d-flex"> 
-                        <mat-icon>loyalty</mat-icon>
-                        <p class="title h7">Charges: {{item.price}}/-</p>
-                    </div>
-                    <div class="d-flex">
-                        <mat-icon>track_changes</mat-icon>
-                        <p class="title h7"> <{{item.distance | number: '1.0-0'}} km </p>
-                    </div> 
-                    <div class="buttons justify-content-center"  >
-
-                        <div class="">
-                            <label for="vertical" class="h7 text-center" style="display: block">No of Services</label>
-                            <div class="counter-btn">
-                                <button pButton pRipple type="button" icon="pi pi-minus" class="p-button-rounded p-button-sm" (click)=" count[i]==0? count[i] = 1 : count[i] = count[i]-1   " ></button>
-                                <input  class="p-input" pInputText type="number" #counter value="1"  [(ngModel)]="count[i]" />
-                                <button pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded p-button-sm" (click)="count[i]==5? count[i] = 5 : count[i] = count[i]+1"></button>
-                            </div>
+    <p-scrollPanel [style]="{height: '65vh'}" styleClass="view ">
+        <div class="after-init  mt-2 d-flex justify-content-center align-item-center"  *ngIf="providers ">
+            <div class="row">
+            <div class="d-flex col-sm mx-2 justify-content-center" *ngFor="let item of providers; let i = index">
+                <div class="provider-card mt-3  shadow cursor-pointer ">
+                <div class="booking ">
+                    <div class="on-bbok align-content-center">
+                        <div class="d-flex"> 
+                            <mat-icon>assignment_ind</mat-icon>
+                            <p class="title h7">{{item.provider_name}}</p>
                         </div>
-                        <div class="d-flex justify-content-start">
-                            <button pRipple  class="p-button p-button-sm my-2 mx-2 " pRipple pButton label="Place Order"  (click)="onBooking(item, count[i])"></button>
-                            <button pRipple  class="p-button p-button-sm my-2 " pRipple pButton label="Add Order" (click)="addonBooking(item, count[i])"></button>
+                        <div class="d-flex"> 
+                            <mat-icon>loyalty</mat-icon>
+                            <p class="title h7">Charges: {{item.price}}/-</p>
+                        </div>
+                        <div class="d-flex">
+                            <mat-icon>track_changes</mat-icon>
+                            <p class="title h7"> <{{item.distance | number: '1.0-0'}} km </p>
+                        </div> 
+                        <div class="buttons justify-content-center"  >
+    
+                            <div class="">
+                                <label for="vertical" class="h7 text-center" style="display: block">No of Services</label>
+                                <div class="counter-btn">
+                                    <button pButton pRipple type="button" icon="pi pi-minus" class="p-button-rounded p-button-sm" (click)=" count[i]==0? count[i] = 1 : count[i] = count[i]-1   " ></button>
+                                    <input  class="p-input" pInputText type="number" #counter value="1"  [(ngModel)]="count[i]" />
+                                    <button pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded p-button-sm" (click)="count[i]==5? count[i] = 5 : count[i] = count[i]+1"></button>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-start">
+                                <button pRipple  class="p-button p-button-sm my-2 mx-2 " pRipple pButton label="Place Order"  (click)="onBooking(item, count[i])"></button>
+                                <button pRipple  class="p-button p-button-sm my-2 " pRipple pButton label="Add Order" (click)="addonBooking(item, count[i])"></button>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div  alt="" class="provider-dp-bg" [style.background-image]="'url('+item.profile_img+')'">
+                    <div class="content">
+                        <div class="price-tag d-flex">
+                            <mat-icon style="color:#425ab9 " >loyalty</mat-icon>
+                            <p class="h6 title text-start">  {{item.price}}/-</p>
+                        </div>
+                        <div class="distance d-flex  ">
+                            <mat-icon style="color:#425ab9 ">track_changes</mat-icon>
+                            <p class="h7 title text-start" > <{{item.distance | number: '1.0-0'}} km</p>
+                        </div>
+                        <div class="details">
+                            <p class="name text-center title h5">{{item.provider_name}}<br></p>
+                        </div>
+                   </div>
+                   
+                </div>
             </div>
-            <div  alt="" class="provider-dp-bg" [style.background-image]="'url('+item.profile_img+')'">
-                <div class="content">
-                    <div class="price-tag d-flex">
-                        <mat-icon style="color:#425ab9 " >loyalty</mat-icon>
-                        <p class="h6 title text-start">  {{item.price}}/-</p>
-                    </div>
-                    <div class="distance d-flex  ">
-                        <mat-icon style="color:#425ab9 ">track_changes</mat-icon>
-                        <p class="h7 title text-start" > <{{item.distance | number: '1.0-0'}} km</p>
-                    </div>
-                    <div class="details">
-                        <p class="name text-center title h5">{{item.provider_name}}<br></p>
-                    </div>
-               </div>
-               
             </div>
         </div>
         </div>
-    </div>
-    </div>
+    </p-scrollPanel>
+     
     
      
 </p-dialog>

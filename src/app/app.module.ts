@@ -16,6 +16,8 @@ import { SwiperModule } from 'swiper/angular';
 //
 import { StoreModule } from '@ngrx/store';
 import { appReducer } from './store/app.state';
+import { ImageCropperModule } from 'ngx-image-cropper';
+import {NgxImageCompressService} from "ngx-image-compress";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -41,6 +43,7 @@ import { SelectProviderComponent } from './modals/select-provider/select-provide
 import { TermsComponent } from './pages/terms/terms.component';
 import { FAQComponent } from './pages/faq/faq.component';
 import { OrderPageComponent } from './pages/order-page/order-page.component';
+import { AboutComponent } from './pages/about/about.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +70,7 @@ import { OrderPageComponent } from './pages/order-page/order-page.component';
     TermsComponent,
     FAQComponent,
     OrderPageComponent,
+    AboutComponent,
     
   ],
   imports: [
@@ -79,11 +83,11 @@ import { OrderPageComponent } from './pages/order-page/order-page.component';
     SwiperModule,
     PrimeNGModule,
     MatIconModule,
-  
+    ImageCropperModule,
+     
     StoreModule.forRoot(appReducer),
- 
   ],
-  providers: [{provide:LocationStrategy , useClass:HashLocationStrategy }],
+  providers: [{provide:LocationStrategy , useClass:HashLocationStrategy },NgxImageCompressService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

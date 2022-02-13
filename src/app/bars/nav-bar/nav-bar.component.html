@@ -1,8 +1,8 @@
 <div class="container-fluid d-flex flex-column justify-content-center main" >
     <div class="container-fluid justify-content-between"  [ngClass]="scrolled? 'nav-scrolled': ''"   data-aos-duration="1000"  data-aos="fade-down" >
         <div class="container d-flex align-items-center nav" [ngClass]="!responsive? 'justify-content-between': 'justify-content-center'"    >
-            <div class="logo"   >
-                <img *ngIf="scrolled" [routerLink]="['/']" src="../../../assets/logo.png" class=" " alt="" srcset="">
+            <div class="logo"   *ngIf="scrolled"  >
+                <!-- <img *ngIf="scrolled" [routerLink]="['/']" src="../../../assets/logo_white.png" class=" " alt="" srcset=""> -->
             </div>
             <div *ngIf="!responsive" class="nav-user d-flex align-items-center justify-content-between ">
                 <span data-aos="fade-down" class="p-input-icon-left">

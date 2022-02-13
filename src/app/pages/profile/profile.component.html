@@ -3,17 +3,40 @@
         <div class="container landing">
             <div class="row">
                 <div class="col-sm-2 d-flex justify-content-center align-items-start">
-                    <div class="profile-img rounded-circle">
-                        <button pButton pRipple type="button" icon="pi pi-images" class="p-button-rounded upload-btn"></button>
+                    <div class="profile-img rounded-circle"  [style.backgroundImage]="userData.profile_pic? 'url('+userData.profile_pic+')' : 'url('+'../../../assets/images/user.jpg'+')'">
+                        <input #upload type="file" (change)="fileChangeEvent($event)" />
+                        <button pButton pRipple type="button" icon="pi pi-images" class="p-button-rounded upload-btn" (click)="upload.click()"></button>
                     </div>
+                    <p-dialog  [(visible)]="imcrp" [style]="{'width':'100%', 'max-width': '30rem'}">
+                    <image-cropper
+                    [imageChangedEvent]="imageChangedEvent"
+                     [maintainAspectRatio]="true"
+                     [aspectRatio]="4 / 4"
+                     format="png"
+                    (imageCropped)="imageCropped($event)"
+                     
+                    ></image-cropper>
+                    <button pButton type="button" label="Crop"  (click)="onCrop()"></button>
+                    </p-dialog>
                 </div>
                 <div class="col-sm-10 p-5 ">
                     <div class="row position-relative" [ngClass]="editableDetails? 'edit-details': 'show-details'">
                         <button *ngIf="!editableDetails" pButton pRipple type="button" icon="pi pi-user-edit" class="p-button-rounded upload-btn" (click)="editableDetails = !editableDetails"></button>
                         <div class="col-sm-6 my-2 ">
-                            <label for="name" class="form-label">Name</label>
-                            <input *ngIf="!editableDetails" disabled type="name" class="form-control p-input" id="exampleFormControlInput1"  [(ngModel)]="userData.name">
-                            <input  *ngIf="editableDetails" type="name" class="form-control p-input" id="name"  [(ngModel)]="userData.name">
+                            <div class="row">
+                                <label *ngIf="!editableDetails" for="name" class="form-label">Name</label>
+                                <div class="col-sm-6">
+                                    <label *ngIf="editableDetails"  for="name" class="form-label"> First Name</label>
+                                    <input *ngIf="!editableDetails" disabled type="name" class="form-control p-input" id="exampleFormControlInput1"  [(ngModel)]="userData.first_name+' '+ userData.last_name">
+                                    <input  *ngIf="editableDetails" type="name" class="form-control p-input" id="name"  [(ngModel)]="userData.first_name">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label *ngIf="editableDetails"  for="name" class="form-label"> Last Name</label>
+                                    <!-- <input *ngIf="!editableDetails" disabled type="name" class="form-control p-input" id="exampleFormControlInput1"  [(ngModel)]="userData.last_name"> -->
+                                    <input  *ngIf="editableDetails" type="name" class="form-control p-input" id="name"  [(ngModel)]="userData.last_name">
+                                </div>
+                            </div>
+                            
                         </div>
                         <div class="col-sm-4 my-2">
                             <label for="phone_number" class="form-label">Phone Number</label>
@@ -36,7 +59,8 @@
                             <textarea *ngIf="editableDetails" class="form-control p-textarea disabled" id="exampleFormControlTextarea1" rows="3"  [(ngModel)]="userData.address"></textarea>
                         </div>
                     </div>
-                    <button *ngIf="editableDetails" pButton pRipple type="button" label="save" icon="pi pi-user-edit" class="p-button  " (click)="editableDetails = !editableDetails"></button>
+                    <button *ngIf="editableDetails" pButton pRipple type="button" label="save" icon="pi pi-user-edit" class="p-button  " (click)=" onUpdate()"></button>
+                    <i *ngIf="isLoading" class="pi pi-spin pi-spinner" style="font-size: 2rem; margin-left: 1rem;"></i>
                 </div>
             </div>
         </div>
